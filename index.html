@@ -449,7 +449,7 @@
           </div>
         </div>
       </section>
-      <section id="details" class="bg-slate-50 pt-20 pb-10">
+      <section id="details" class="bg-slate-50 pt-20 pb-20">
         <div class="mx-auto max-w-6xl px-6 lg:px-0">
           <h2 class="text-center text-3xl font-semibold text-slateInk">
             Benchmark Details
@@ -463,89 +463,144 @@
             where each token is independent to those requiring strong
             interdependencies.
           </p>
-          <div class="mt-12 grid gap-8 lg:grid-cols-3">
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Waiting Line (10 tasks)
-              </h3>
-              <p class="mt-3 text-sm text-slate-600">
-                Realistic customer service queue management tasks extending
-                synthetic list operations:
-                <i>Copy, Sort, Reverse, Shuffle, Index</i> (<i
-                  >Insert, Replace, Remove</i
-                >) and <i>Random</i> (same as <i>Index</i>) to expose where
-                parallel decoding fails to maintain token dependencies.
-              </p>
-              <ul class="mt-6 space-y-2 text-sm text-slate-500"></ul>
-            </div>
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Text Writing (5 tasks)
-              </h3>
-              <p class="mt-3 text-sm text-slate-600">
-                Summarization, paraphrasing, and Words-to-Sentence generation
-                tasks at varying difficulty levels that expose quality
-                degradation through grammar scores and token-level dependencies.
-              </p>
-              <ul class="mt-6 space-y-2 text-sm text-slate-500"></ul>
-            </div>
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Puzzles (2 tasks)
-              </h3>
-              <p class="mt-3 text-sm text-slate-600">
-                <i>Sudoku (4x4)</i> and <i>Latin Square (4x4)</i> tasks that
-                compare structurally similar puzzles with different solution
-                spaces to demonstrate how token dependencies affect parallel
-                decoding performance.
-              </p>
-              <ul class="mt-6 space-y-2 text-sm text-slate-500"></ul>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div class="mt-12 grid gap-8 lg:grid-cols-[400px_1fr]">
+            <!-- Left side: Task descriptions with icon -->
+            <div class="space-y-3">
+              <button
+                onclick="showExample('waitingLine')"
+                class="group w-full text-left rounded-2xl border-2 border-primary bg-gradient-to-br from-primary/10 to-primary/5 p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:scale-[1.02] task-button"
+                data-task="waitingLine"
+              >
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-base font-bold text-slateInk flex items-center gap-2">
+                      Waiting Line
+                      <span class="text-xs font-medium text-primary bg-primary/20 px-2 py-0.5 rounded-full">10 tasks</span>
+                    </h3>
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                      Customer service queue management with
+                      <i>Copy, Sort, Reverse, Shuffle, Index</i> operations to expose token dependency failures.
+                    </p>
+                  </div>
+                </div>
+              </button>
 
-      <section id="examples" class="bg-slate-50 pt-5 pb-20">
-        <div class="mx-auto max-w-5xl px-6 lg:px-0">
-          <div
-            class="rounded-3xl border border-slate-200 bg-white p-6 text-sm text-slate-600 shadow-sm"
-          >
-            <h3 class="text-lg font-semibold text-slateInk">
-              Sample Prompt: Waiting Line (Shuffle)
-            </h3>
-            <pre
-              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
-            >
-You are managing a waiting line at a customer service desk.
+              <button
+                onclick="showExample('textWriting')"
+                class="group w-full text-left rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-primary/30 hover:scale-[1.02] task-button"
+                data-task="textWriting"
+              >
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-base font-bold text-slateInk flex items-center gap-2">
+                      Text Writing
+                      <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">5 tasks</span>
+                    </h3>
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                      Summarization, paraphrasing, and sentence generation tasks exposing quality degradation through grammar and dependencies.
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onclick="showExample('puzzles')"
+                class="group w-full text-left rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-primary/30 hover:scale-[1.02] task-button"
+                data-task="puzzles"
+              >
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-base font-bold text-slateInk flex items-center gap-2">
+                      Puzzles
+                      <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">2 tasks</span>
+                    </h3>
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                      <i>Sudoku (4×4)</i> and <i>Latin Square (4×4)</i> comparing solution spaces to demonstrate token dependency effects.
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Right side: Examples with smooth transitions -->
+            <div class="relative min-h-[400px] w-full">
+              <div class="sticky top-24 w-full max-w-3xl">
+                <!-- Waiting Line Example -->
+                <div
+                  id="waitingLine"
+                  class="example-content rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                >
+                  <div class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                      </svg>
+                      Sample Prompt: Waiting Line (Shuffle)
+                    </h3>
+                  </div>
+                  <div class="p-6">
+                    <pre class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700">You are managing a waiting line at a customer service desk.
 The waiting line should be randomly shuffled to ensure fair service distribution:
 
 ["Thomas Holmes", "Keith Ramos", "Victoria Collins", "Roger Hughes", "Austin Dunn"].
 
 Please randomly shuffle the list and provide only the final list.
-Ensure the sequence is different from the original.</pre
-            >
-            <h3 class="mt-6 text-lg font-semibold text-slateInk">
-              Sample Prompt: Text Writing (Words-to-Sentence)
-            </h3>
-            <pre
-              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
-            >
-Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.</pre
-            >
-            <h3 class="mt-6 text-lg font-semibold text-slateInk">
-              Sample Prompt: Puzzles (Latin Square)
-            </h3>
-            <pre
-              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
-            >
-Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result as CSV.</pre
-            >
+Ensure the sequence is different from the original.</pre>
+                  </div>
+                </div>
+
+                <!-- Text Writing Example -->
+                <div
+                  id="textWriting"
+                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                >
+                  <div class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                      </svg>
+                      Sample Prompt: Text Writing (Words-to-Sentence)
+                    </h3>
+                  </div>
+                  <div class="p-6">
+                    <pre class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700">Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.</pre>
+                  </div>
+                </div>
+
+                <!-- Puzzles Example -->
+                <div
+                  id="puzzles"
+                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                >
+                  <div class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                      </svg>
+                      Sample Prompt: Puzzles (Latin Square)
+                    </h3>
+                  </div>
+                  <div class="p-6">
+                    <pre class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700">Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result as CSV.</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1092,6 +1147,77 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
         if (e.key === 'Escape') {
           closeImageModal();
         }
+      });
+
+      // Example switching functionality with smooth animations
+      function showExample(taskId) {
+        // Hide all examples with fade out
+        const allExamples = document.querySelectorAll('.example-content');
+        allExamples.forEach((example) => {
+          example.style.opacity = '0';
+          example.style.transform = 'translateX(10px)';
+          setTimeout(() => {
+            example.classList.add('hidden');
+          }, 200);
+        });
+
+        // Show selected example with fade in
+        setTimeout(() => {
+          const selectedExample = document.getElementById(taskId);
+          if (selectedExample) {
+            selectedExample.classList.remove('hidden');
+            setTimeout(() => {
+              selectedExample.style.opacity = '1';
+              selectedExample.style.transform = 'translateX(0)';
+            }, 10);
+          }
+        }, 200);
+
+        // Update button styles
+        const allButtons = document.querySelectorAll('.task-button');
+        allButtons.forEach((button) => {
+          button.classList.remove('border-primary', 'bg-gradient-to-br', 'from-primary/10', 'to-primary/5');
+          button.classList.add('border-slate-200', 'bg-white');
+
+          // Update icon color
+          const icon = button.querySelector('svg');
+          if (icon) {
+            icon.classList.remove('text-primary');
+            icon.classList.add('text-slate-400', 'group-hover:text-primary', 'transition-colors');
+          }
+
+          // Update badge color
+          const badge = button.querySelector('span');
+          if (badge) {
+            badge.classList.remove('text-primary', 'bg-primary/20');
+            badge.classList.add('text-slate-500', 'bg-slate-100');
+          }
+        });
+
+        const activeButton = document.querySelector(`[data-task="${taskId}"]`);
+        if (activeButton) {
+          activeButton.classList.remove('border-slate-200', 'bg-white');
+          activeButton.classList.add('border-primary', 'bg-gradient-to-br', 'from-primary/10', 'to-primary/5');
+
+          // Update icon color
+          const icon = activeButton.querySelector('svg');
+          if (icon) {
+            icon.classList.remove('text-slate-400', 'group-hover:text-primary', 'transition-colors');
+            icon.classList.add('text-primary');
+          }
+
+          // Update badge color
+          const badge = activeButton.querySelector('span');
+          if (badge) {
+            badge.classList.remove('text-slate-500', 'bg-slate-100');
+            badge.classList.add('text-primary', 'bg-primary/20');
+          }
+        }
+      }
+
+      // Set initial active state
+      document.addEventListener('DOMContentLoaded', () => {
+        showExample('waitingLine');
       });
     </script>
   </body>
