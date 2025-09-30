@@ -1550,11 +1550,11 @@
               <div id="readMoreContainer" class="text-center">
                 <p id="abstractPreview" class="mb-4">
                   While most autoregressive LLMs are constrained to one-by-one
-                  decoding, diffusion LLMs (dLLMs) have attracted growing interest
-                  for their potential to dramatically accelerate inference through
-                  parallel decoding. Despite this promise, the conditional
-                  independence assumption in dLLMs causes parallel decoding to
-                  ignore token dependencies...
+                  decoding, diffusion LLMs (dLLMs) have attracted growing
+                  interest for their potential to dramatically accelerate
+                  inference through parallel decoding. Despite this promise, the
+                  conditional independence assumption in dLLMs causes parallel
+                  decoding to ignore token dependencies...
                 </p>
                 <button
                   id="readMoreBtn"
@@ -1562,8 +1562,18 @@
                   class="inline-flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                 >
                   <span>Read more</span>
-                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
               </div>
@@ -1579,24 +1589,25 @@
                 </button>
                 <p id="abstractFull">
                   While most autoregressive LLMs are constrained to one-by-one
-                  decoding, diffusion LLMs (dLLMs) have attracted growing interest
-                  for their potential to dramatically accelerate inference through
-                  parallel decoding. Despite this promise, the conditional
-                  independence assumption in dLLMs causes parallel decoding to
-                  ignore token dependencies, inevitably degrading generation
-                  quality when these dependencies are strong. However, existing
-                  works largely overlook these inherent challenges, and
-                  evaluations on standard benchmarks (e.g., math and coding) are
-                  not sufficient to capture the quality degradation caused by
-                  parallel decoding. To address this gap, we first provide an
-                  information-theoretic analysis of parallel decoding. We then
-                  conduct case studies on analytically tractable synthetic list
-                  operations from both data distribution and decoding strategy
-                  perspectives, offering quantitative insights that highlight the
-                  fundamental limitations of parallel decoding. Building on these
-                  insights, we propose ParallelBench, the first benchmark
-                  specifically designed for dLLMs, featuring realistic tasks that
-                  are trivial for humans and autoregressive LLMs yet exceptionally
+                  decoding, diffusion LLMs (dLLMs) have attracted growing
+                  interest for their potential to dramatically accelerate
+                  inference through parallel decoding. Despite this promise, the
+                  conditional independence assumption in dLLMs causes parallel
+                  decoding to ignore token dependencies, inevitably degrading
+                  generation quality when these dependencies are strong.
+                  However, existing works largely overlook these inherent
+                  challenges, and evaluations on standard benchmarks (e.g., math
+                  and coding) are not sufficient to capture the quality
+                  degradation caused by parallel decoding. To address this gap,
+                  we first provide an information-theoretic analysis of parallel
+                  decoding. We then conduct case studies on analytically
+                  tractable synthetic list operations from both data
+                  distribution and decoding strategy perspectives, offering
+                  quantitative insights that highlight the fundamental
+                  limitations of parallel decoding. Building on these insights,
+                  we propose ParallelBench, the first benchmark specifically
+                  designed for dLLMs, featuring realistic tasks that are trivial
+                  for humans and autoregressive LLMs yet exceptionally
                   challenging for dLLMs under parallel decoding. Using
                   ParallelBench, we systematically analyze both dLLMs and
                   autoregressive LLMs, revealing that: (i) dLLMs under parallel
@@ -1604,10 +1615,11 @@
                   scenarios, and (ii) current parallel decoding strategies
                   struggle to adapt their degree of parallelism based on task
                   difficulty, thus failing to achieve meaningful speedup without
-                  compromising quality. Our findings underscore the pressing need
-                  for innovative decoding methods that can overcome the current
-                  speed-quality trade-off. We are releasing our benchmark to help
-                  accelerate the development of truly efficient dLLMs.
+                  compromising quality. Our findings underscore the pressing
+                  need for innovative decoding methods that can overcome the
+                  current speed-quality trade-off. We are releasing our
+                  benchmark to help accelerate the development of truly
+                  efficient dLLMs.
                 </p>
               </div>
             </div>
@@ -2041,14 +2053,20 @@
     >
       <div class="relative w-full max-w-7xl" onclick="event.stopPropagation()">
         <!-- Modal Header -->
-        <div class="mb-3 sm:mb-4 flex flex-wrap items-center justify-between gap-2">
+        <div
+          class="mb-3 sm:mb-4 flex flex-wrap items-center justify-between gap-2"
+        >
           <div class="flex items-center gap-3">
-            <div class="rounded-lg bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2">
+            <div
+              class="rounded-lg bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2"
+            >
               <span
                 class="text-xs sm:text-sm font-semibold text-white flex items-center gap-2"
               >
                 <span class="sm:hidden">📊 Teaser Figure</span>
-                <span class="hidden sm:inline">📊 Teaser Figure - ParallelBench Overview</span>
+                <span class="hidden sm:inline"
+                  >📊 Teaser Figure - ParallelBench Overview</span
+                >
               </span>
             </div>
           </div>
@@ -2074,7 +2092,9 @@
         </div>
 
         <!-- Modal Content -->
-        <div class="overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-2xl p-4 sm:p-6 lg:p-8">
+        <div
+          class="overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-2xl p-4 sm:p-6 lg:p-8"
+        >
           <img
             id="modalImage"
             src="assets/images/teaser_figure.png"
@@ -2084,7 +2104,9 @@
         </div>
 
         <!-- Modal Footer -->
-        <div class="mt-3 sm:mt-4 rounded-lg bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4">
+        <div
+          class="mt-3 sm:mt-4 rounded-lg bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4"
+        >
           <p class="text-xs sm:text-sm leading-relaxed text-white/90">
             <strong>ParallelBench Overview:</strong> (left) Parallel decoding
             mixes individually likely tokens into invalid pairs when
@@ -2097,7 +2119,9 @@
 
         <!-- Hint Text -->
         <p class="mt-2 sm:mt-3 text-center text-xs text-white/60">
-          <span class="hidden sm:inline">Press ESC or click outside to close</span>
+          <span class="hidden sm:inline"
+            >Press ESC or click outside to close</span
+          >
           <span class="sm:hidden">Tap outside to close</span>
         </p>
       </div>
@@ -2149,7 +2173,9 @@
           readMoreContainer.classList.remove('hidden');
           readLessContainer.classList.add('hidden');
           // Scroll back to abstract section
-          document.getElementById('abstract').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document
+            .getElementById('abstract')
+            .scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
 
