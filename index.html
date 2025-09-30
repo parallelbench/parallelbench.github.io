@@ -910,12 +910,12 @@
             </div>
 
             <!-- Right side: Examples with smooth transitions -->
-            <div class="relative min-h-[400px] w-full">
-              <div class="sticky top-24 w-full max-w-3xl">
+            <div class="relative w-full">
+              <div class="sticky top-24 w-full max-w-3xl" style="min-height: 600px;">
                 <!-- Waiting Line Example -->
                 <div
                   id="waitingLine"
-                  class="example-content rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                  class="example-content rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
                 >
                   <div
                     class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
@@ -939,7 +939,7 @@
                       Sample Prompt: Waiting Line
                     </h3>
                   </div>
-                  <div class="p-6 space-y-6">
+                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
                     <div>
                       <h4 class="text-sm font-bold text-slate-700 mb-2">
                         Shuffle
@@ -977,7 +977,7 @@ Please replace the person at the specified position with "Henry Warren" and prov
                 <!-- Text Writing Example -->
                 <div
                   id="textWriting"
-                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
                 >
                   <div
                     class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
@@ -1001,7 +1001,7 @@ Please replace the person at the specified position with "Henry Warren" and prov
                       Sample Prompt: Text Writing
                     </h3>
                   </div>
-                  <div class="p-6 space-y-6">
+                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
                     <div>
                       <h4 class="text-sm font-bold text-slate-700 mb-2">
                         Summary
@@ -1059,7 +1059,7 @@ Construct a single, coherent sentence using the words algorithm, river, symphony
                 <!-- Puzzles Example -->
                 <div
                   id="puzzles"
-                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300"
+                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
                 >
                   <div
                     class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
@@ -1083,7 +1083,7 @@ Construct a single, coherent sentence using the words algorithm, river, symphony
                       Sample Prompt: Puzzles
                     </h3>
                   </div>
-                  <div class="p-6 space-y-6">
+                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
                     <div>
                       <h4 class="text-sm font-bold text-slate-700 mb-2">
                         Sudoku
@@ -2136,6 +2136,15 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
       // Set initial active state
       document.addEventListener('DOMContentLoaded', () => {
         showExample('waitingLine');
+
+        // Auto-rotate through examples every 10 seconds
+        const examples = ['waitingLine', 'textWriting', 'puzzles'];
+        let currentIndex = 0;
+
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % examples.length;
+          showExample(examples[currentIndex]);
+        }, 10000);
       });
 
       // Copy citation to clipboard
