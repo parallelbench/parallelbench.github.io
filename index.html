@@ -9,7 +9,7 @@
     </title>
     <meta
       name="description"
-      content="ParallelBench analyzes diffusion LLMs under parallel decoding, revealing the speed-quality trade-offs and benchmark tracks that surface token dependency failures."
+      content="ParallelBench analyzes diffusion LLMs under parallel decoding, revealing the speed-quality trade-offs and benchmark tasks that surface token dependency failures."
     />
     <link rel="icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,7 +77,6 @@
           <a href="#benchmark" class="transition hover:text-primary"
             >Benchmark</a
           >
-          <a href="#tracks" class="transition hover:text-primary">Tracks</a>
           <a href="#evaluation" class="transition hover:text-primary"
             >Evaluation</a
           >
@@ -94,7 +93,6 @@
           <a href="#benchmark" class="transition hover:text-primary"
             >Benchmark</a
           >
-          <a href="#tracks" class="transition hover:text-primary">Tracks</a>
           <a href="#evaluation" class="transition hover:text-primary"
             >Evaluation</a
           >
@@ -321,10 +319,7 @@
             </div>
           </div>
         </div>
-      </section>
-
-      <section id="tracks" class="bg-white py-20">
-        <div class="mx-auto max-w-6xl px-6 lg:px-0">
+        <div class="mx-auto max-w-6xl px-6 lg:px-0 pt-32">
           <h2 class="text-center text-3xl font-semibold text-slateInk">
             Benchmark Categories
           </h2>
@@ -695,7 +690,8 @@ as CSV.</pre
           </div>
           <div class="mx-auto mt-12 max-w-6xl px-6 lg:px-0">
             <div
-              class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card p-6 lg:p-8"
+              class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card p-6 lg:p-8 cursor-pointer transition hover:shadow-xl"
+              onclick="openImageModal()"
             >
               <img
                 src="assets/images/teaser_figure.png"
@@ -753,6 +749,41 @@ as CSV.</pre
       </div>
     </footer>
 
+    <!-- Image Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4"
+      onclick="closeImageModal()"
+    >
+      <button
+        class="absolute top-4 right-4 text-white hover:text-slate-300 transition"
+        onclick="closeImageModal()"
+        aria-label="Close modal"
+      >
+        <svg
+          class="h-8 w-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+      <img
+        id="modalImage"
+        src="assets/images/teaser_figure.png"
+        alt="ParallelBench: Overview of limitations, analysis, and benchmark"
+        class="max-h-full max-w-full object-contain"
+        onclick="event.stopPropagation()"
+      />
+    </div>
+
     <script>
       const toggleButton = document.getElementById('menu-toggle');
       const mobileNav = document.getElementById('mobile-nav');
@@ -762,6 +793,28 @@ as CSV.</pre
           mobileNav.classList.toggle('hidden');
         });
       }
+
+      // Image modal functions
+      function openImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      // Close modal on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeImageModal();
+        }
+      });
     </script>
   </body>
 </html>
