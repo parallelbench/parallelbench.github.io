@@ -1535,38 +1535,95 @@
             <div
               class="space-y-6 text-justify text-base leading-8 text-slate-600"
             >
-              <p>
-                While most autoregressive LLMs are constrained to one-by-one
-                decoding, diffusion LLMs (dLLMs) have attracted growing interest
-                for their potential to dramatically accelerate inference through
-                parallel decoding. Despite this promise, the conditional
-                independence assumption in dLLMs causes parallel decoding to
-                ignore token dependencies, inevitably degrading generation
-                quality when these dependencies are strong. However, existing
-                works largely overlook these inherent challenges, and
-                evaluations on standard benchmarks (e.g., math and coding) are
-                not sufficient to capture the quality degradation caused by
-                parallel decoding. To address this gap, we first provide an
-                information-theoretic analysis of parallel decoding. We then
-                conduct case studies on analytically tractable synthetic list
-                operations from both data distribution and decoding strategy
-                perspectives, offering quantitative insights that highlight the
-                fundamental limitations of parallel decoding. Building on these
-                insights, we propose ParallelBench, the first benchmark
-                specifically designed for dLLMs, featuring realistic tasks that
-                are trivial for humans and autoregressive LLMs yet exceptionally
-                challenging for dLLMs under parallel decoding. Using
-                ParallelBench, we systematically analyze both dLLMs and
-                autoregressive LLMs, revealing that: (i) dLLMs under parallel
-                decoding can suffer dramatic quality degradation in real-world
-                scenarios, and (ii) current parallel decoding strategies
-                struggle to adapt their degree of parallelism based on task
-                difficulty, thus failing to achieve meaningful speedup without
-                compromising quality. Our findings underscore the pressing need
-                for innovative decoding methods that can overcome the current
-                speed-quality trade-off. We are releasing our benchmark to help
-                accelerate the development of truly efficient dLLMs.
-              </p>
+              <div id="abstractContent">
+                <!-- Mobile: collapsed view -->
+                <div class="lg:hidden">
+                  <p id="abstractPreview">
+                    While most autoregressive LLMs are constrained to one-by-one
+                    decoding, diffusion LLMs (dLLMs) have attracted growing interest
+                    for their potential to dramatically accelerate inference through
+                    parallel decoding. Despite this promise, the conditional
+                    independence assumption in dLLMs causes parallel decoding to
+                    ignore token dependencies...
+                  </p>
+                  <button
+                    id="abstractToggle"
+                    onclick="toggleAbstract()"
+                    class="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  >
+                    <span id="toggleText">Read more</span>
+                    <svg id="toggleIcon" class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <p id="abstractFull" class="hidden mt-4">
+                    While most autoregressive LLMs are constrained to one-by-one
+                    decoding, diffusion LLMs (dLLMs) have attracted growing interest
+                    for their potential to dramatically accelerate inference through
+                    parallel decoding. Despite this promise, the conditional
+                    independence assumption in dLLMs causes parallel decoding to
+                    ignore token dependencies, inevitably degrading generation
+                    quality when these dependencies are strong. However, existing
+                    works largely overlook these inherent challenges, and
+                    evaluations on standard benchmarks (e.g., math and coding) are
+                    not sufficient to capture the quality degradation caused by
+                    parallel decoding. To address this gap, we first provide an
+                    information-theoretic analysis of parallel decoding. We then
+                    conduct case studies on analytically tractable synthetic list
+                    operations from both data distribution and decoding strategy
+                    perspectives, offering quantitative insights that highlight the
+                    fundamental limitations of parallel decoding. Building on these
+                    insights, we propose ParallelBench, the first benchmark
+                    specifically designed for dLLMs, featuring realistic tasks that
+                    are trivial for humans and autoregressive LLMs yet exceptionally
+                    challenging for dLLMs under parallel decoding. Using
+                    ParallelBench, we systematically analyze both dLLMs and
+                    autoregressive LLMs, revealing that: (i) dLLMs under parallel
+                    decoding can suffer dramatic quality degradation in real-world
+                    scenarios, and (ii) current parallel decoding strategies
+                    struggle to adapt their degree of parallelism based on task
+                    difficulty, thus failing to achieve meaningful speedup without
+                    compromising quality. Our findings underscore the pressing need
+                    for innovative decoding methods that can overcome the current
+                    speed-quality trade-off. We are releasing our benchmark to help
+                    accelerate the development of truly efficient dLLMs.
+                  </p>
+                </div>
+
+                <!-- Desktop: full view -->
+                <p class="hidden lg:block">
+                  While most autoregressive LLMs are constrained to one-by-one
+                  decoding, diffusion LLMs (dLLMs) have attracted growing interest
+                  for their potential to dramatically accelerate inference through
+                  parallel decoding. Despite this promise, the conditional
+                  independence assumption in dLLMs causes parallel decoding to
+                  ignore token dependencies, inevitably degrading generation
+                  quality when these dependencies are strong. However, existing
+                  works largely overlook these inherent challenges, and
+                  evaluations on standard benchmarks (e.g., math and coding) are
+                  not sufficient to capture the quality degradation caused by
+                  parallel decoding. To address this gap, we first provide an
+                  information-theoretic analysis of parallel decoding. We then
+                  conduct case studies on analytically tractable synthetic list
+                  operations from both data distribution and decoding strategy
+                  perspectives, offering quantitative insights that highlight the
+                  fundamental limitations of parallel decoding. Building on these
+                  insights, we propose ParallelBench, the first benchmark
+                  specifically designed for dLLMs, featuring realistic tasks that
+                  are trivial for humans and autoregressive LLMs yet exceptionally
+                  challenging for dLLMs under parallel decoding. Using
+                  ParallelBench, we systematically analyze both dLLMs and
+                  autoregressive LLMs, revealing that: (i) dLLMs under parallel
+                  decoding can suffer dramatic quality degradation in real-world
+                  scenarios, and (ii) current parallel decoding strategies
+                  struggle to adapt their degree of parallelism based on task
+                  difficulty, thus failing to achieve meaningful speedup without
+                  compromising quality. Our findings underscore the pressing need
+                  for innovative decoding methods that can overcome the current
+                  speed-quality trade-off. We are releasing our benchmark to help
+                  accelerate the development of truly efficient dLLMs.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -2049,6 +2106,30 @@
           closeImageModal();
         }
       });
+
+      // Toggle abstract expand/collapse on mobile
+      function toggleAbstract() {
+        const preview = document.getElementById('abstractPreview');
+        const full = document.getElementById('abstractFull');
+        const toggleText = document.getElementById('toggleText');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        if (full.classList.contains('hidden')) {
+          // Expand
+          preview.classList.add('hidden');
+          full.classList.remove('hidden');
+          toggleText.textContent = 'Read less';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        } else {
+          // Collapse
+          preview.classList.remove('hidden');
+          full.classList.add('hidden');
+          toggleText.textContent = 'Read more';
+          toggleIcon.style.transform = 'rotate(0deg)';
+          // Scroll back to abstract section
+          document.getElementById('abstract').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
 
       // Modal functionality
       const taskData = {
