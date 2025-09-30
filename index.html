@@ -121,7 +121,7 @@
             <img
               src="assets/images/logo.png"
               alt="ParallelBench logo"
-              class="h-28 bg-white object-cover"
+              class="h-28 object-cover"
             />
           </div>
           <h1
@@ -140,7 +140,7 @@
             challenging for dLLMs under parallel decoding.
           </p>
           <div class="mt-8 space-y-4 text-sm text-slate-600">
-            <p>
+            <p class="mx-auto text-center max-w-2xl">
               Wonjun Kang*<sup>1</sup>, Kevin Galim*<sup>1</sup>, Seunghyuk
               Oh*<sup>1</sup>, Minjae Lee<sup>1</sup>, Yuchen Zeng<sup>2</sup
               ><sup>3</sup>, Shuibai Zhang<sup>2</sup>, Coleman Richard Charles
@@ -445,9 +445,10 @@ as CSV.</pre
           <p
             class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
           >
-            We use simple, task-specific evaluation metrics tailored to each category.
-            For Waiting Line and Puzzles, we measure exact match accuracy. For Text Writing,
-            we use grammar scoring combined with task-appropriate metrics.
+            We use simple, task-specific evaluation metrics tailored to each
+            category. For Waiting Line and Puzzles, we measure exact match
+            accuracy. For Text Writing, we use grammar scoring combined with
+            task-appropriate metrics.
           </p>
           <div class="mt-12 grid gap-8 lg:grid-cols-3">
             <div
@@ -457,21 +458,21 @@ as CSV.</pre
                 Waiting Line & Puzzles
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                <strong>Accuracy:</strong> Binary score indicating whether the generated
-                output exactly matches one of the valid solutions. For structured tasks like
-                queue management and logic puzzles, exact correctness is essential.
+                <strong>Accuracy:</strong> Binary score indicating whether the
+                generated output exactly matches one of the valid solutions. For
+                structured tasks like queue management and logic puzzles, exact
+                correctness is essential.
               </p>
             </div>
             <div
               class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
             >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Text Writing
-              </h3>
+              <h3 class="text-lg font-semibold text-slateInk">Text Writing</h3>
               <p class="mt-3 text-sm text-slate-600">
-                <strong>Grammar Score:</strong> Evaluated using LanguageTool—outputs receive
-                1 if grammatically correct, 0 otherwise. Additional task-specific metrics include
-                ROUGE-L for summarization, BERTScore and (1 - BLEU) for paraphrasing, and
+                <strong>Grammar Score:</strong> Evaluated using
+                LanguageTool—outputs receive 1 if grammatically correct, 0
+                otherwise. Additional task-specific metrics include ROUGE-L for
+                summarization, BERTScore and (1 - BLEU) for paraphrasing, and
                 word inclusion accuracy for Words-to-Sentence tasks.
               </p>
             </div>
@@ -482,9 +483,10 @@ as CSV.</pre
                 Decoding Setup
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                All models use greedy decoding, except for infilling tasks which use
-                temperature sampling (τ = 1.0). Maximum generation length is set to 32
-                tokens for Waiting Line and 64 tokens for both Puzzle and Text Writing tasks.
+                All models use greedy decoding, except for infilling tasks which
+                use temperature sampling (τ = 1.0). Maximum generation length is
+                set to 32 tokens for Waiting Line and 64 tokens for both Puzzle
+                and Text Writing tasks.
               </p>
             </div>
           </div>
