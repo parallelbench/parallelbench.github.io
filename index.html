@@ -323,7 +323,9 @@
             </div>
           </div>
         </div>
-        <div class="mx-auto max-w-6xl px-6 lg:px-0 pt-32">
+      </section>
+      <section id="details" class="bg-white pt-20 pb-10">
+        <div class="mx-auto max-w-6xl px-6 lg:px-0">
           <h2 class="text-center text-3xl font-semibold text-slateInk">
             Benchmark Categories
           </h2>
@@ -404,13 +406,15 @@
               Sample Prompt: Waiting Line (Shuffle)
             </h3>
             <pre
-              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
+              class="mt-4 wrap-normal rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
             >
-You are managing a waiting line at a customer service desk. The waiting line should be
-randomly shuffled to ensure fair service distribution: ["Thomas Holmes", "Keith Ramos",
-"Victoria Collins", "Roger Hughes", "Austin Dunn"]. Please randomly shuffle the list.
-Ensure the sequence is different from the original. Think step by step and give your
-final answer.</pre
+You are managing a waiting line at a customer service desk.
+The waiting line should be randomly shuffled to ensure fair service distribution:
+
+["Thomas Holmes", "Keith Ramos", "Victoria Collins", "Roger Hughes", "Austin Dunn"].
+
+Please randomly shuffle the list and provide only the final list.
+Ensure the sequence is different from the original.</pre
             >
             <h3 class="mt-6 text-lg font-semibold text-slateInk">
               Sample Prompt: Text Writing (Words-to-Sentence)
@@ -426,8 +430,7 @@ Construct a single, coherent sentence using the words algorithm, river, symphony
             <pre
               class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
             >
-Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result
-as CSV.</pre
+Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result as CSV.</pre
             >
           </div>
         </div>
