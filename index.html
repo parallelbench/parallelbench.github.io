@@ -936,21 +936,41 @@
                           d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
                         />
                       </svg>
-                      Sample Prompt: Waiting Line (Shuffle)
+                      Sample Prompt: Waiting Line
                     </h3>
                   </div>
-                  <div class="p-6">
-                    <pre
-                      class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700"
-                    >
+                  <div class="p-6 space-y-6">
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Shuffle
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
 You are managing a waiting line at a customer service desk.
 The waiting line should be randomly shuffled to ensure fair service distribution:
 
-["Thomas Holmes", "Keith Ramos", "Victoria Collins", "Roger Hughes", "Austin Dunn"].
+["Paul Payne", "Robert Riley", "Peter Stone"].
 
 Please randomly shuffle the list and provide only the final list.
 Ensure the sequence is different from the original.</pre
-                    >
+                      >
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Replace
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
+You are managing a waiting line at a customer service desk.
+The person at position 0 must be replaced with "Henry Warren":
+
+["Patrick Morgan", "Eric King", "Joe Reed"].
+
+Please replace the person at the specified position with "Henry Warren" and provide only the final list.</pre
+                      >
+                    </div>
                   </div>
                 </div>
 
@@ -978,15 +998,61 @@ Ensure the sequence is different from the original.</pre
                           d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
                         />
                       </svg>
-                      Sample Prompt: Text Writing (Words-to-Sentence)
+                      Sample Prompt: Text Writing
                     </h3>
                   </div>
-                  <div class="p-6">
-                    <pre
-                      class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700"
-                    >
+                  <div class="p-6 space-y-6">
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Summary
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
+Summarize the following conversation. Only output the final result.
+
+Steve: Bought the new Dream Theater album 5 minutes ago. I hope it’s good.
+Rob: I have it here on my desk, ready for the first listening.
+Steve: Ok, I’ll tell you later what I think about it.
+Rob: Same here. See you later!
+
+Summary:</pre
+                      >
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Paraphrase
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
+Paraphrase the following sentence. Only output the final result.
+
+Sentence: Any idea of what sweater this is?
+
+Paraphrase:</pre
+                      >
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Words-to-Sentence (easy)
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
+Construct a single, coherent sentence using the words dog, park, ball, and throw.</pre
+                      >
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Words-to-Sentence (hard)
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
 Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.</pre
-                    >
+                      >
+                    </div>
                   </div>
                 </div>
 
@@ -1014,15 +1080,37 @@ Construct a single, coherent sentence using the words algorithm, river, symphony
                           d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
                         />
                       </svg>
-                      Sample Prompt: Puzzles (Latin Square)
+                      Sample Prompt: Puzzles
                     </h3>
                   </div>
-                  <div class="p-6">
-                    <pre
-                      class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700"
-                    >
+                  <div class="p-6 space-y-6">
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Sudoku
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
+Fill the positions where the values are 0 in a 4x4 grid with digits 1-4 so that each column, each row, and each of the four 2x2 subgrids that compose the grid contains all of the digits from 1 to 4.
+
+Input:
+0042
+2031
+4023
+3214
+Output:</pre
+                      >
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-700 mb-2">
+                        Latin Square
+                      </h4>
+                      <pre
+                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
+                      >
 Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result as CSV.</pre
-                    >
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
