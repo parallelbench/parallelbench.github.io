@@ -2134,6 +2134,8 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
       }
 
       // Set initial active state
+      let autoRotateInterval = null;
+
       document.addEventListener('DOMContentLoaded', () => {
         showExample('waitingLine');
 
@@ -2141,10 +2143,21 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
         const examples = ['waitingLine', 'textWriting', 'puzzles'];
         let currentIndex = 0;
 
-        setInterval(() => {
+        autoRotateInterval = setInterval(() => {
           currentIndex = (currentIndex + 1) % examples.length;
           showExample(examples[currentIndex]);
         }, 10000);
+
+        // Stop auto-rotation when user manually clicks a tab
+        const taskButtons = document.querySelectorAll('.task-button');
+        taskButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            if (autoRotateInterval) {
+              clearInterval(autoRotateInterval);
+              autoRotateInterval = null;
+            }
+          });
+        });
       });
 
       // Copy citation to clipboard
