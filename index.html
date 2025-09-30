@@ -129,13 +129,13 @@
             Diffusion LLMs
           </h1>
           <p class="mx-auto mt-6 max-w-3xl text-lg text-slate-600">
-            While most autoregressive LLMs are constrained to one-by-one
-            decoding, diffusion LLMs (dLLMs) have attracted growing interest for
-            their potential to dramatically accelerate inference through
-            parallel decoding. We introduce ParallelBench, the first benchmark
-            specifically designed for dLLMs, featuring realistic tasks that are
-            trivial for humans and autoregressive LLMs yet exceptionally
-            challenging for dLLMs under parallel decoding.
+            Diffusion LLMs (dLLMs) promise massive speedups via parallel
+            decoding, but their conditional-independence assumption breaks when
+            tokens must coordinate. ParallelBench is the first benchmark
+            tailored to this failure mode. It pairs tractable theory with
+            realistic tasks that humans and AR LLMs solve easily—but where dLLMs
+            collapse as parallelism grows—making the speed–quality trade-off
+            measurable and comparable across models and decoding strategies.
           </p>
           <div class="mt-8 space-y-4 text-sm text-slate-600">
             <p class="mx-auto text-center max-w-2xl">
@@ -214,13 +214,12 @@
           <p
             class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
           >
-            Despite the promise of parallel decoding, the conditional
-            independence assumption in dLLMs causes quality degradation when
-            token dependencies are strong. However, existing works largely
-            overlook these challenges, and standard benchmarks (e.g., math and
-            coding) fail to capture this degradation. ParallelBench bridges
-            theory and practice with both information-theoretic analysis and
-            realistic tasks designed to expose these failures.
+            Parallel decoding is fast, but not free. When outputs require
+            token-to-token coordination, factorized predictions ignore
+            dependencies and quality drops. Existing math/coding benchmarks
+            rarely expose this. ParallelBench closes the gap with
+            information-theoretic analysis and tasks explicitly designed to
+            stress dependency handling.
           </p>
           <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div
@@ -278,27 +277,23 @@
             <div class="space-y-6 text-base text-slate-600">
               <p>
                 ParallelBench couples synthetic and realistic workloads to
-                isolate where parallel decoding collapses. Each task family
-                includes rubric-aligned solutions, baseline outputs, and
-                instrumentation for measuring latency, perplexity, and
-                dependency violations.
+                isolate where parallel decoding fails. Each family ships gold
+                solutions, baselines, and instrumentation to measure latency,
+                accuracy, and dependency violations under different unmasking
+                policies.
               </p>
               <ul class="space-y-3 text-sm">
                 <li>
-                  • 17 tasks across 3 categories: Waiting Line (10 tasks), Text
-                  Writing (5 tasks), and Puzzles (2 tasks).
+                  • 17 tasks, 3 families: Waiting Line (10), Text Writing (5),
+                  Puzzles (2).
                 </li>
                 <li>
-                  • Tasks with adjustable difficulty levels to test
-                  parallelizability and adaptive decoding strategies.
+                  • Knobbed difficulty to test parallelizability and adaptive
+                  controllers.
                 </li>
+                <li>• Reference implementations for dLLMs and AR baselines.</li>
                 <li>
-                  • Reference implementations for diffusion LLMs and
-                  autoregressive baselines.
-                </li>
-                <li>
-                  • Evaluation harness capturing both quality and realized
-                  parallel speedup.
+                  • Evaluation harness for both quality and realized speedup.
                 </li>
               </ul>
             </div>
@@ -604,9 +599,9 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
                 ⚠️ Quality Collapse Under Independence
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                dLLMs incur catastrophic accuracy drops (20-40 points) when
-                token dependencies extend beyond their parallel decoding
-                horizon, even on tasks solvable analytically.
+                When token dependencies exceed the parallel decoding horizon,
+                accuracy can drop by 20–40 points—even on analytically simple
+                tasks—due to factorization error.
               </p>
             </div>
             <div
@@ -618,9 +613,9 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
                 ⚖️ Speed vs. Quality Trade-off
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Increasing parallelism rarely yields net wins: most strategies
-                plateau at &lt;1.5× throughput while degrading accuracy by
-                &gt;15 points.
+                Static top-k parallelism rarely nets wins: throughput plateaus
+                (&lt;1.5×) while accuracy degrades (&gt;15 pts). Adaptive
+                thresholds help but still leave large headroom.
               </p>
             </div>
             <div
@@ -632,9 +627,9 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
                 🧠 Adaptivity Is Lacking
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Current decoding heuristics fail to dial back parallelism for
-                harder tasks, suggesting the need for dependency-aware
-                controllers.
+                Current heuristics do not dial back parallelism on hard inputs.
+                Dependency-aware controllers are needed to modulate
+                tokens-per-step per sample.
               </p>
             </div>
             <div
@@ -646,8 +641,8 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
                 🛠️ Benchmark as a Guide
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                ParallelBench pinpoints concrete failure modes, enabling the
-                community to prototype hybrid decoding and improved diffusion
+                ParallelBench localizes failure modes, enabling principled
+                research on hybrid/ semi-AR decoding and improved diffusion
                 objectives.
               </p>
             </div>
@@ -707,10 +702,12 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
               />
             </div>
             <p class="mt-4 text-center text-sm text-slate-500">
-              Figure 1: ParallelBench addresses three key aspects—(left)
-              limitations of parallel decoding, (middle) quantitative analysis
-              on list operations, and (right) a comprehensive benchmark to
-              assess speed-quality trade-offs in diffusion LLMs.
+              ParallelBench: (left) Parallel decoding mixes individually likely
+              tokens into invalid pairs when dependencies are ignored (e.g.,
+              “New” + “City”). (middle) Closed-form analyses on list operations
+              quantify accuracy decay as parallelism increases. (right) A
+              realistic benchmark exposes speed–quality trade-offs across dLLMs
+              and decoding strategies.
             </p>
           </div>
         </div>
