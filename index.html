@@ -131,20 +131,22 @@
           <p class="mx-auto mt-6 max-w-3xl text-lg text-slate-600">
             Diffusion LLMs (dLLMs) promise massive speedups via parallel
             decoding, but their conditional-independence assumption breaks when
-            tokens must coordinate. ParallelBench is the first benchmark
-            tailored to this failure mode. It pairs tractable theory with
-            realistic tasks that humans and AR LLMs solve easily—but where dLLMs
-            collapse as parallelism grows—making the speed–quality trade-off
-            measurable and comparable across models and decoding strategies.
+            tokens must coordinate. <b>ParallelBench</b> is the first benchmark
+            designed explicitly for this failure mode. It pairs tractable theory
+            with realistic tasks that humans and AR LLMs solve easily—but where
+            dLLMs collapse as parallelism grows—making the speed–quality
+            trade-off measurable and comparable across models and decoding
+            strategies.
           </p>
           <div class="mt-8 space-y-4 text-sm text-slate-600">
             <p class="mx-auto text-center max-w-2xl">
-              Wonjun Kang*<sup>15</sup>, Kevin Galim*<sup>1</sup>, Seunghyuk
-              Oh*<sup>1</sup>, Minjae Lee<sup>1</sup>, Yuchen Zeng<sup>2</sup
-              ><sup>3</sup>, Shuibai Zhang<sup>2</sup>, Coleman Richard Charles
-              Hooper<sup>4</sup>, Yuezhou Hu<sup>4</sup>, Hyung Il
-              Koo<sup>1</sup>, Nam Ik Cho<sup>5</sup>, Kangwook Lee<sup>2</sup
-              ><sup>6</sup>
+              Wonjun Kang*<sup>1,5</sup>, Kevin Galim*<sup>1</sup>, Seunghyuk
+              Oh*<sup>1</sup>, Minjae Lee<sup>1</sup>, Yuchen
+              Zeng<sup>2,3</sup>, Shuibai Zhang<sup>2</sup>, Coleman Richard
+              Charles Hooper<sup>4</sup>, Yuezhou Hu<sup>4</sup>, Hyung Il
+              Koo<sup>1</sup>, Nam Ik Cho<sup>5</sup>, Kangwook Lee<sup
+                >2,6</sup
+              >
             </p>
             <div
               class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500"
@@ -216,10 +218,11 @@
           >
             Parallel decoding is fast, but not free. When outputs require
             token-to-token coordination, factorized predictions ignore
-            dependencies and quality drops. Existing math/coding benchmarks
-            rarely expose this. ParallelBench closes the gap with
-            information-theoretic analysis and tasks explicitly designed to
-            stress dependency handling.
+            dependencies, resulting in a drop in quality. Existing
+            <i>math/coding</i> benchmarks rarely expose this.
+            <b>ParallelBench</b> closes the gap with information-theoretic
+            analysis and tasks explicitly designed to stress dependency
+            handling.
           </p>
           <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div
@@ -229,10 +232,11 @@
                 Information-Theoretic Analysis
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Proves that parallel decoding has fundamental error bounds when
-                tokens depend on each other, showing even perfect models
-                struggle as we increase parallelism on tasks requiring strong
-                token coordination.
+                <u
+                  >Proves that parallel decoding has fundamental error bounds
+                  when tokens depend on each other</u
+                >, showing even perfect models struggle as we increase
+                parallelism on tasks requiring strong token coordination.
               </p>
             </div>
             <div
@@ -242,10 +246,14 @@
                 Quantitative Case Studies
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Analytically tractable synthetic list operations (Copy, Replace,
-                Shuffle) with closed-form accuracy formulas demonstrate
-                fundamental limitations: certain tasks show inevitable quality
-                degradation under parallel decoding.
+                Analytically tractable synthetic list operations (<i
+                  >Copy, Replace, Shuffle</i
+                >) with closed-form accuracy formulas demonstrate fundamental
+                limitations:
+                <u
+                  >specific tasks show inevitable quality degradation under
+                  parallel decoding</u
+                >.
               </p>
             </div>
             <div
@@ -255,10 +263,11 @@
                 Realistic Benchmark Tasks
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                17 tasks across Waiting Line, Text Writing, and Puzzles—all
-                trivial for humans and autoregressive LLMs—reveal severe quality
-                degradation in dLLMs under parallel decoding in real-world
-                scenarios.
+                Seventeen tasks across
+                <i>Waiting Line, Text Writing, and Puzzles</i>—<b
+                  >all trivial for humans and autoregressive LLMs</b
+                >—reveal severe quality degradation in dLLMs under parallel
+                decoding in real-world scenarios.
               </p>
             </div>
           </div>
@@ -276,8 +285,8 @@
           <div class="mt-10 grid gap-8 lg:grid-cols-[1.4fr,1fr]">
             <div class="space-y-6 text-base text-slate-600">
               <p>
-                ParallelBench couples synthetic and realistic workloads to
-                isolate where parallel decoding fails. Each family ships gold
+                <b>ParallelBench</b> couples synthetic and realistic workloads
+                to isolate where parallel decoding fails. Each family ships gold
                 solutions, baselines, and instrumentation to measure latency,
                 accuracy, and dependency violations under different unmasking
                 policies.
