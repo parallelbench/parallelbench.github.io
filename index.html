@@ -785,335 +785,225 @@
               interdependencies.
             </p>
           </div>
-          <div class="mt-12 grid gap-8 lg:grid-cols-[400px_1fr]">
-            <!-- Left side: Task descriptions with icon -->
-            <div class="space-y-3">
-              <button
-                onclick="showExample('waitingLine')"
-                class="group w-full text-left rounded-2xl border-2 border-primary bg-gradient-to-br from-primary/10 to-primary/5 p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:scale-[1.02] task-button"
-                data-task="waitingLine"
+          <!-- Task Cards -->
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            <!-- Waiting Line Card -->
+            <div
+              onclick="openModal('waitingLine')"
+              class="card-hover group cursor-pointer rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/40 transition-all duration-300"
+            >
+              <div
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80"
               >
-                <div class="flex items-start gap-3">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="flex-1">
-                    <h3
-                      class="text-base font-bold text-slateInk flex items-center gap-2"
-                    >
-                      Waiting Line
-                      <span
-                        class="text-xs font-medium text-primary bg-primary/20 px-2 py-0.5 rounded-full"
-                        >10 tasks</span
-                      >
-                    </h3>
-                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-                      Customer service queue management with
-                      <i>Copy, Sort, Reverse, Shuffle, Index</i> operations to
-                      expose token dependency failures.
-                    </p>
-                  </div>
-                </div>
-              </button>
-
-              <button
-                onclick="showExample('textWriting')"
-                class="group w-full text-left rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-primary/30 hover:scale-[1.02] task-button"
-                data-task="textWriting"
+                <svg
+                  class="h-8 w-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Ten tasks where participants manage ordered lists (people,
+                animals, food items). Operations range from independent to
+                highly sequential.
+              </p>
+              <div
+                class="flex items-center gap-2 text-primary font-semibold text-sm"
               >
-                <div class="flex items-start gap-3">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="flex-1">
-                    <h3
-                      class="text-base font-bold text-slateInk flex items-center gap-2"
-                    >
-                      Text Writing
-                      <span
-                        class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full"
-                        >5 tasks</span
-                      >
-                    </h3>
-                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-                      Summarization, paraphrasing, and sentence generation tasks
-                      exposing quality degradation through grammar and
-                      dependencies.
-                    </p>
-                  </div>
-                </div>
-              </button>
-
-              <button
-                onclick="showExample('puzzles')"
-                class="group w-full text-left rounded-2xl border-2 border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-primary/30 hover:scale-[1.02] task-button"
-                data-task="puzzles"
-              >
-                <div class="flex items-start gap-3">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="w-6 h-6 text-slate-400 group-hover:text-primary transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="flex-1">
-                    <h3
-                      class="text-base font-bold text-slateInk flex items-center gap-2"
-                    >
-                      Puzzles
-                      <span
-                        class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full"
-                        >2 tasks</span
-                      >
-                    </h3>
-                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-                      <i>Sudoku (4×4)</i> and
-                      <i>Latin Square (4×4)</i> comparing solution spaces to
-                      demonstrate token dependency effects.
-                    </p>
-                  </div>
-                </div>
-              </button>
+                <span>View Examples</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+              <div class="mt-4 text-xs text-slate-500 font-semibold">
+                <span class="inline-block bg-primary/10 px-3 py-1 rounded-full"
+                  >10 tasks</span
+                >
+              </div>
             </div>
 
-            <!-- Right side: Examples with smooth transitions -->
-            <div class="relative w-full">
-              <div class="sticky top-24 w-full max-w-3xl" style="min-height: 600px;">
-                <!-- Waiting Line Example -->
-                <div
-                  id="waitingLine"
-                  class="example-content rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
+            <!-- Text Writing Card -->
+            <div
+              onclick="openModal('textWriting')"
+              class="card-hover group cursor-pointer rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
+            >
+              <div
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-500 to-slate-600"
+              >
+                <svg
+                  class="h-8 w-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <div
-                    class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
-                  >
-                    <h3
-                      class="text-base font-bold text-white flex items-center gap-2"
-                    >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Five NLP sub-tasks—summary, paraphrase, words-to-sentence
+                generation—where fluency depends on coordinating tokens.
+              </p>
+              <div
+                class="flex items-center gap-2 text-primary font-semibold text-sm"
+              >
+                <span>View Examples</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+              <div class="mt-4 text-xs text-slate-500 font-semibold">
+                <span class="inline-block bg-slate-100 px-3 py-1 rounded-full"
+                  >5 tasks</span
+                >
+              </div>
+            </div>
+
+            <!-- Puzzles Card -->
+            <div
+              onclick="openModal('puzzles')"
+              class="card-hover group cursor-pointer rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
+            >
+              <div
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600"
+              >
+                <svg
+                  class="h-8 w-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slateInk mb-2">Puzzles</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                <i>Sudoku (4×4)</i> and <i>Latin Square (4×4)</i> comparing
+                solution spaces to demonstrate token dependency effects.
+              </p>
+              <div
+                class="flex items-center gap-2 text-primary font-semibold text-sm"
+              >
+                <span>View Examples</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+              <div class="mt-4 text-xs text-slate-500 font-semibold">
+                <span class="inline-block bg-slate-100 px-3 py-1 rounded-full"
+                  >2 tasks</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div
+            id="taskModal"
+            class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4"
+            onclick="closeModal(event)"
+          >
+            <div
+              class="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 opacity-0 scale-95"
+              onclick="event.stopPropagation()"
+            >
+              <!-- Modal Header -->
+              <div
+                class="sticky top-0 z-10 bg-white border-b border-slate-200 px-6 py-5"
+              >
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-xl bg-slate-100">
                       <svg
-                        class="w-5 h-5"
+                        id="modalIcon"
+                        class="w-6 h-6 text-primary"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                        />
-                      </svg>
-                      Sample Prompt: Waiting Line
-                    </h3>
-                  </div>
-                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Shuffle
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-You are managing a waiting line at a customer service desk.
-The waiting line should be randomly shuffled to ensure fair service distribution:
-
-["Paul Payne", "Robert Riley", "Peter Stone"].
-
-Please randomly shuffle the list and provide only the final list.
-Ensure the sequence is different from the original.</pre
-                      >
+                      ></svg>
                     </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Replace
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-You are managing a waiting line at a customer service desk.
-The person at position 0 must be replaced with "Henry Warren":
-
-["Patrick Morgan", "Eric King", "Joe Reed"].
-
-Please replace the person at the specified position with "Henry Warren" and provide only the final list.</pre
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Text Writing Example -->
-                <div
-                  id="textWriting"
-                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
-                >
-                  <div
-                    class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
-                  >
                     <h3
-                      class="text-base font-bold text-white flex items-center gap-2"
+                      id="modalTitle"
+                      class="text-xl font-bold text-slate-900"
                     >
-                      <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                        />
-                      </svg>
-                      Sample Prompt: Text Writing
+                      <span></span>
                     </h3>
                   </div>
-                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Summary
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Summarize the following conversation. Only output the final result.
-
-Steve: Bought the new Dream Theater album 5 minutes ago. I hope it’s good.
-Rob: I have it here on my desk, ready for the first listening.
-Steve: Ok, I’ll tell you later what I think about it.
-Rob: Same here. See you later!
-
-Summary:</pre
-                      >
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Paraphrase
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Paraphrase the following sentence. Only output the final result.
-
-Sentence: Any idea of what sweater this is?
-
-Paraphrase:</pre
-                      >
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Words-to-Sentence (easy)
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Construct a single, coherent sentence using the words dog, park, ball, and throw.</pre
-                      >
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Words-to-Sentence (hard)
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.</pre
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Puzzles Example -->
-                <div
-                  id="puzzles"
-                  class="example-content hidden rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden transition-all duration-300 absolute inset-0"
-                >
-                  <div
-                    class="bg-gradient-to-r from-primary to-primary/80 px-6 py-4"
+                  <button
+                    onclick="closeModal()"
+                    class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all"
                   >
-                    <h3
-                      class="text-base font-bold text-white flex items-center gap-2"
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                        />
-                      </svg>
-                      Sample Prompt: Puzzles
-                    </h3>
-                  </div>
-                  <div class="p-6 space-y-6 overflow-y-auto" style="max-height: calc(600px - 80px);">
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Sudoku
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Fill the positions where the values are 0 in a 4x4 grid with digits 1-4 so that each column, each row, and each of the four 2x2 subgrids that compose the grid contains all of the digits from 1 to 4.
-
-Input:
-0042
-2031
-4023
-3214
-Output:</pre
-                      >
-                    </div>
-                    <div>
-                      <h4 class="text-sm font-bold text-slate-700 mb-2">
-                        Latin Square
-                      </h4>
-                      <pre
-                        class="overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-slate-100 leading-relaxed border border-slate-700 whitespace-pre-wrap"
-                      >
-Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result as CSV.</pre
-                      >
-                    </div>
-                  </div>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
+
+              <!-- Modal Content -->
+              <div
+                id="modalContent"
+                class="overflow-y-auto px-6 py-6 space-y-8 bg-slate-50"
+                style="max-height: calc(90vh - 84px)"
+              ></div>
             </div>
           </div>
         </div>
@@ -2049,115 +1939,174 @@ Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the fi
         }
       });
 
-      // Example switching functionality with smooth animations
-      function showExample(taskId) {
-        // Hide all examples with fade out
-        const allExamples = document.querySelectorAll('.example-content');
-        allExamples.forEach((example) => {
-          example.style.opacity = '0';
-          example.style.transform = 'translateX(10px)';
-          setTimeout(() => {
-            example.classList.add('hidden');
-          }, 200);
-        });
+      // Modal functionality
+      const taskData = {
+        waitingLine: {
+          title: 'Waiting Line',
+          description:
+            'Ten tasks where participants manage ordered lists (people, animals, food items). Operations range from independent (e.g., shuffle all items) to highly sequential (e.g., replace the person at index i with token w).',
+          icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+          examples: [
+            {
+              title: 'Shuffle',
+              content: `You are managing a waiting line at a customer service desk.
+The waiting line should be randomly shuffled to ensure fair service distribution:
 
-        // Show selected example with fade in
+["Paul Payne", "Robert Riley", "Peter Stone"]
+
+Please randomly shuffle the list and provide only the final list.
+Ensure the sequence is different from the original.`,
+            },
+            {
+              title: 'Replace Index',
+              content: `You are managing a waiting line at a customer service desk.
+The person at position 0 must be replaced with "Henry Warren":
+
+["Patrick Morgan", "Eric King", "Joe Reed"]
+
+Please replace the person at the specified position with "Henry Warren" and provide only the final list.`,
+            },
+            {
+              title: 'Replace Random',
+              content: `You are managing a waiting line at a customer service desk.
+One person in the waiting line must be replaced with "Juan Torres":
+
+["David Owens", "Kelly Payne", "Aaron Freeman"]
+
+Please replace one random person with "Juan Torres" and provide only the final list.`,
+            },
+          ],
+        },
+        textWriting: {
+          title: 'Text Writing',
+          description:
+            'Five NLP sub-tasks—summary, paraphrase, words-to-sentence generation—where fluency and coherence depend on coordinating tokens within a context window.',
+          icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z',
+          examples: [
+            {
+              title: 'Summary',
+              content: `Summarize the following conversation. Only output the final result.
+
+Steve: Bought the new Dream Theater album 5 minutes ago. I hope it's good.
+Rob: I have it here on my desk, ready for the first listening.
+Steve: Ok, I'll tell you later what I think about it.
+Rob: Same here. See you later!
+
+Summary:`,
+            },
+            {
+              title: 'Paraphrase',
+              content: `Paraphrase the following sentence. Only output the final result.
+
+Sentence: Any idea of what sweater this is?
+
+Paraphrase:`,
+            },
+            {
+              title: 'Words-to-Sentence (easy)',
+              content: `Construct a single, coherent sentence using the words dog, park, ball, and throw.`,
+            },
+            {
+              title: 'Words-to-Sentence (hard)',
+              content: `Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.`,
+            },
+          ],
+        },
+        puzzles: {
+          title: 'Puzzles',
+          description:
+            'Sudoku (4×4) and Latin Square (4×4) comparing solution spaces to demonstrate token dependency effects.',
+          icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
+          examples: [
+            {
+              title: 'Sudoku',
+              content: `Fill the positions where the values are 0 in a 4x4 grid with digits 1-4 so that each column, each row, and each of the four 2x2 subgrids that compose the grid contains all of the digits from 1 to 4.
+
+Input:
+0042
+2031
+4023
+3214
+Output:`,
+            },
+            {
+              title: 'Latin Square',
+              content: `Generate a Latin square of size 4 with the symbols [H, 4, C, A]. Only output the final result as CSV.`,
+            },
+          ],
+        },
+      };
+
+      function openModal(taskId) {
+        const modal = document.getElementById('taskModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalContent = document.getElementById('modalContent');
+        const task = taskData[taskId];
+
+        if (!task) return;
+
+        // Set title and icon
+        modalTitle.querySelector('span').textContent = task.title;
+        modalIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${task.icon}"/>`;
+
+        // Set content
+        modalContent.innerHTML = `
+          <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <p class="text-sm text-slate-600 leading-relaxed">${
+              task.description
+            }</p>
+          </div>
+          ${task.examples
+            .map(
+              (example) => `
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="px-5 py-3 bg-slate-100 border-b border-slate-200">
+                <h4 class="text-sm font-semibold text-slate-900">${example.title}</h4>
+              </div>
+              <div class="p-0">
+                <pre class="text-sm text-slate-100 leading-relaxed whitespace-pre-wrap font-mono bg-slate-900 p-5 m-0">${example.content}</pre>
+              </div>
+            </div>
+          `,
+            )
+            .join('')}
+        `;
+
+        // Show modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        // Animate modal in
         setTimeout(() => {
-          const selectedExample = document.getElementById(taskId);
-          if (selectedExample) {
-            selectedExample.classList.remove('hidden');
-            setTimeout(() => {
-              selectedExample.style.opacity = '1';
-              selectedExample.style.transform = 'translateX(0)';
-            }, 10);
-          }
-        }, 200);
-
-        // Update button styles
-        const allButtons = document.querySelectorAll('.task-button');
-        allButtons.forEach((button) => {
-          button.classList.remove(
-            'border-primary',
-            'bg-gradient-to-br',
-            'from-primary/10',
-            'to-primary/5',
-          );
-          button.classList.add('border-slate-200', 'bg-white');
-
-          // Update icon color
-          const icon = button.querySelector('svg');
-          if (icon) {
-            icon.classList.remove('text-primary');
-            icon.classList.add(
-              'text-slate-400',
-              'group-hover:text-primary',
-              'transition-colors',
-            );
-          }
-
-          // Update badge color
-          const badge = button.querySelector('span');
-          if (badge) {
-            badge.classList.remove('text-primary', 'bg-primary/20');
-            badge.classList.add('text-slate-500', 'bg-slate-100');
-          }
-        });
-
-        const activeButton = document.querySelector(`[data-task="${taskId}"]`);
-        if (activeButton) {
-          activeButton.classList.remove('border-slate-200', 'bg-white');
-          activeButton.classList.add(
-            'border-primary',
-            'bg-gradient-to-br',
-            'from-primary/10',
-            'to-primary/5',
-          );
-
-          // Update icon color
-          const icon = activeButton.querySelector('svg');
-          if (icon) {
-            icon.classList.remove(
-              'text-slate-400',
-              'group-hover:text-primary',
-              'transition-colors',
-            );
-            icon.classList.add('text-primary');
-          }
-
-          // Update badge color
-          const badge = activeButton.querySelector('span');
-          if (badge) {
-            badge.classList.remove('text-slate-500', 'bg-slate-100');
-            badge.classList.add('text-primary', 'bg-primary/20');
-          }
-        }
+          modal.querySelector('.relative').style.opacity = '1';
+          modal.querySelector('.relative').style.transform = 'scale(1)';
+        }, 10);
       }
 
-      // Set initial active state
-      let autoRotateInterval = null;
+      function closeModal(event) {
+        if (event && event.target.id !== 'taskModal') return;
 
-      document.addEventListener('DOMContentLoaded', () => {
-        showExample('waitingLine');
+        const modal = document.getElementById('taskModal');
+        const modalBox = modal.querySelector('.relative');
 
-        // Auto-rotate through examples every 10 seconds
-        const examples = ['waitingLine', 'textWriting', 'puzzles'];
-        let currentIndex = 0;
+        // Animate out
+        modalBox.style.opacity = '0';
+        modalBox.style.transform = 'scale(0.95)';
 
-        autoRotateInterval = setInterval(() => {
-          currentIndex = (currentIndex + 1) % examples.length;
-          showExample(examples[currentIndex]);
-        }, 10000);
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = '';
+        }, 200);
+      }
 
-        // Stop auto-rotation when user manually clicks a tab
-        const taskButtons = document.querySelectorAll('.task-button');
-        taskButtons.forEach((button) => {
-          button.addEventListener('click', () => {
-            if (autoRotateInterval) {
-              clearInterval(autoRotateInterval);
-              autoRotateInterval = null;
-            }
-          });
-        });
+      // Close modal on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal({ target: { id: 'taskModal' } });
+        }
       });
 
       // Copy citation to clipboard
