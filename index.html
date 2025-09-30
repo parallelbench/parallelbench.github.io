@@ -135,6 +135,19 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
+
+      /* Fix for iOS Safari modal background */
+      @supports (-webkit-touch-callout: none) {
+        .fixed.inset-0 {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          height: 100vh;
+          height: 100dvh; /* Dynamic viewport height for iOS Safari */
+        }
+      }
     </style>
   </head>
   <body class="bg-white text-slate-900 antialiased">
