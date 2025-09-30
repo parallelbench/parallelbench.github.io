@@ -1,1 +1,1 @@
-# parallel-bench.github.io
+# [ParallelBench Project Page](https://parallel-bench.github.io)

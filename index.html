@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs</title>
+    <title>
+      ParallelBench: Understanding the Trade-offs of Parallel Decoding in
+      Diffusion LLMs
+    </title>
     <meta
       name="description"
-      content="StructEval is a comprehensive benchmark for evaluating large language models on structured output generation, spanning 18 formats and 44 task types."
+      content="ParallelBench analyzes diffusion LLMs under parallel decoding, revealing the speed-quality trade-offs and benchmark tracks that surface token dependency failures."
     />
-    <link rel="icon" href="https://tiger-ai-lab.github.io/StructEval/static/images/imgs/logo.png" />
+    <link rel="icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,11 +27,11 @@
               sans: ['Inter', 'ui-sans-serif', 'system-ui'],
             },
             colors: {
-              primary: '#2563eb',
-              slateInk: '#0f172a',
+              primary: '#1f6feb',
+              slateInk: '#0b192f',
             },
             boxShadow: {
-              card: '0 20px 45px -30px rgba(15, 23, 42, 0.25)',
+              card: '0 24px 48px -32px rgba(15, 23, 42, 0.35)',
             },
           },
         },
@@ -36,16 +39,28 @@
     </script>
     <style>
       body {
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', sans-serif;
       }
     </style>
   </head>
   <body class="bg-white text-slate-900 antialiased">
-    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 lg:px-12">
-        <a href="#top" class="flex items-center gap-2 text-base font-semibold text-slate-800">
-          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">S</span>
-          <span>StructEval</span>
+    <header
+      class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur"
+    >
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 lg:px-12"
+      >
+        <a
+          href="#top"
+          class="flex items-center gap-3 text-base font-semibold text-slate-800"
+        >
+          <img
+            src="assets/images/logo.png"
+            alt="ParallelBench logo"
+            class="h-10 w-10 border border-slate-200 bg-white object-cover rounded-full"
+          />
+          <span>ParallelBench</span>
         </a>
         <button
           type="button"
@@ -54,531 +69,512 @@
         >
           Menu
         </button>
-        <nav id="main-nav" class="hidden items-center gap-6 text-sm font-medium text-slate-600 lg:flex">
-          <a href="#abstract" class="transition hover:text-primary">Abstract</a>
-          <a href="#dataset" class="transition hover:text-primary">Dataset</a>
-          <a href="#examples" class="transition hover:text-primary">Examples</a>
-          <a href="#evaluation" class="transition hover:text-primary">Evaluation</a>
-          <a href="#leaderboard" class="transition hover:text-primary">Leaderboard</a>
-          <a href="#analysis" class="transition hover:text-primary">Analysis</a>
+        <nav
+          id="main-nav"
+          class="hidden items-center gap-6 text-sm font-medium text-slate-600 lg:flex"
+        >
+          <a href="#overview" class="transition hover:text-primary">Overview</a>
+          <a href="#benchmark" class="transition hover:text-primary"
+            >Benchmark</a
+          >
+          <a href="#tracks" class="transition hover:text-primary">Tracks</a>
+          <a href="#evaluation" class="transition hover:text-primary"
+            >Evaluation</a
+          >
+          <a href="#findings" class="transition hover:text-primary">Findings</a>
           <a href="#citation" class="transition hover:text-primary">Citation</a>
         </nav>
       </div>
-      <div id="mobile-nav" class="hidden border-t border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-600 lg:hidden">
+      <div
+        id="mobile-nav"
+        class="hidden border-t border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-600 lg:hidden"
+      >
         <div class="flex flex-col gap-3">
-          <a href="#abstract" class="transition hover:text-primary">Abstract</a>
-          <a href="#dataset" class="transition hover:text-primary">Dataset</a>
-          <a href="#examples" class="transition hover:text-primary">Examples</a>
-          <a href="#evaluation" class="transition hover:text-primary">Evaluation</a>
-          <a href="#leaderboard" class="transition hover:text-primary">Leaderboard</a>
-          <a href="#analysis" class="transition hover:text-primary">Analysis</a>
+          <a href="#overview" class="transition hover:text-primary">Overview</a>
+          <a href="#benchmark" class="transition hover:text-primary"
+            >Benchmark</a
+          >
+          <a href="#tracks" class="transition hover:text-primary">Tracks</a>
+          <a href="#evaluation" class="transition hover:text-primary"
+            >Evaluation</a
+          >
+          <a href="#findings" class="transition hover:text-primary">Findings</a>
           <a href="#citation" class="transition hover:text-primary">Citation</a>
         </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-white">
-        <div class="absolute -top-10 right-12 h-60 w-60 rounded-full bg-primary/10 blur-3xl"></div>
-        <div class="absolute bottom-24 left-20 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl"></div>
-        <div class="relative mx-auto max-w-5xl px-6 pb-24 pt-16 text-center lg:px-12 lg:pb-28 lg:pt-20">
+      <section
+        class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-white"
+      >
+        <div
+          class="absolute -top-10 right-12 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-24 left-12 h-80 w-80 rounded-full bg-slate-200/50 blur-3xl"
+        ></div>
+        <div
+          class="relative mx-auto max-w-5xl px-6 pb-24 pt-16 text-center lg:px-12 lg:pb-28 lg:pt-20"
+        >
           <div class="mx-auto flex w-full max-w-md flex-col items-center gap-4">
             <img
-              src="https://tiger-ai-lab.github.io/StructEval/static/images/imgs/logo.png"
-              alt="StructEval logo"
-              class="h-24 w-24"
+              src="assets/images/logo.png"
+              alt="ParallelBench logo"
+              class="h-28 bg-white object-cover"
             />
           </div>
-          <h1 class="mt-8 text-4xl font-bold text-slateInk sm:text-5xl">
-            StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs
+          <h1
+            class="mt-8 text-4xl font-bold leading-tight text-slateInk sm:text-5xl"
+          >
+            ParallelBench: Understanding the Trade-offs of Parallel Decoding in
+            Diffusion LLMs
           </h1>
           <p class="mx-auto mt-6 max-w-3xl text-lg text-slate-600">
-            StructEval is a comprehensive benchmark that assesses large language models on producing structured outputs across
-            text-only and visually rendered formats. We evaluate 18 formats and 44 task types spanning generation and conversion
-            scenarios.
+            While most autoregressive LLMs are constrained to one-by-one
+            decoding, diffusion LLMs (dLLMs) have attracted growing interest for
+            their potential to dramatically accelerate inference through
+            parallel decoding. We introduce ParallelBench, the first benchmark
+            specifically designed for dLLMs, featuring realistic tasks that are
+            trivial for humans and autoregressive LLMs yet exceptionally
+            challenging for dLLMs under parallel decoding.
           </p>
           <div class="mt-8 space-y-4 text-sm text-slate-600">
             <p>
-              Jialin Yang*†, Dongfu Jiang*†, Lipeng He, Sherman Siu, Yuxuan Zhang<sup>1</sup>, Disen Liao, Zhuofeng Li<sup>3</sup>,
-              Huaye Zeng, Yiming Jia<sup>1</sup>, Haozhe Wang<sup>2</sup>, Benjamin Schneider, Chi Ruan<sup>4</sup>, Wentao Ma,
-              Zhiheng Lyu, Yifei Wang, Yi Lu<sup>1</sup>, Quy Duc Do, Ziyan Jiang, Ping Nie<sup>4</sup>, Wenhu Chen<sup>5</sup>†
+              Wonjun Kang*<sup>1</sup>, Kevin Galim*<sup>1</sup>, Seunghyuk
+              Oh*<sup>1</sup>, Minjae Lee<sup>1</sup>, Yuchen Zeng<sup>2</sup
+              ><sup>3</sup>, Shuibai Zhang<sup>2</sup>, Coleman Richard Charles
+              Hooper<sup>4</sup>, Yuezhou Hu<sup>4</sup>, Hyung Il
+              Koo<sup>1</sup>, Nam Ik Cho<sup>5</sup>, Kangwook Lee<sup>2</sup>
             </p>
-            <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
-              <span><strong>University of Waterloo</strong></span>
-              <span><strong><sup>1</sup> University of Toronto</strong></span>
-              <span><strong><sup>2</sup> HKUST</strong></span>
-              <span><strong><sup>3</sup> Shanghai University</strong></span>
-              <span><strong><sup>4</sup> Independent Contributor</strong></span>
-              <span><strong><sup>5</sup> Vector Institute</strong></span>
+            <div
+              class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500"
+            >
+              <span
+                ><strong><sup>1</sup> FuriosaAI</strong></span
+              >
+              <span
+                ><strong><sup>2</sup> UW-Madison</strong></span
+              >
+              <span
+                ><strong><sup>3</sup> Microsoft Research</strong></span
+              >
+              <span
+                ><strong><sup>4</sup> UC Berkeley</strong></span
+              >
+              <span
+                ><strong><sup>5</sup> Seoul National University</strong></span
+              >
             </div>
             <div class="text-xs text-slate-500">
-              <p>*Equal Contribution &nbsp;&nbsp; †Correspondence: <a href="mailto:j586yang@uwaterloo.ca" class="text-primary hover:underline">j586yang@uwaterloo.ca</a>, <a href="mailto:dongfu.jiang@uwaterloo.ca" class="text-primary hover:underline">dongfu.jiang@uwaterloo.ca</a>, <a href="mailto:wenhuchen@uwaterloo.ca" class="text-primary hover:underline">wenhuchen@uwaterloo.ca</a></p>
+              <p>*Equal Contribution</p>
             </div>
           </div>
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="https://arxiv.org/abs/2505.20139" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-card transition hover:border-primary/40 hover:text-primary">
+            <a
+              href="https://github.com/furiosa-ai/ParallelBench"
+              class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-card transition hover:border-primary/40 hover:text-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>GitHub Repository</span>
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="#abstract"
+              class="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/20"
+            >
               <span>📄</span>
-              <span>Paper (PDF)</span>
-            </a>
-            <a href="https://github.com/TIGER-AI-Lab/StructEval" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-card transition hover:border-primary/40 hover:text-primary">
-              <span>💻</span>
-              <span>Code (GitHub)</span>
-            </a>
-            <a href="#leaderboard" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-card transition hover:border-primary/40 hover:text-primary">
-              <span>🏆</span>
-              <span>Leaderboard</span>
-            </a>
-            <a href="https://huggingface.co/datasets/TIGER-Lab/StructEval" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-card transition hover:border-primary/40 hover:text-primary">
-              <span>🤗</span>
-              <span>Hugging Face</span>
+              <span>Read the full Abstract</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="bg-white py-16">
-        <div class="mx-auto max-w-4xl px-6 text-center lg:px-0">
-          <img
-            src="https://tiger-ai-lab.github.io/StructEval/static/images/imgs/intro.png"
-            alt="StructEval overview"
-            class="mx-auto w-full max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 shadow-card"
-          />
-          <p class="mx-auto mt-6 max-w-3xl text-base text-slate-600">
-            Our benchmark encompasses 18 distinct formats and 44 task types organized into two complementary subsets:
-            <em>StructEval-T</em>, which assesses text-only structures such as JSON and TOML, and <em>StructEval-V</em>, which evaluates
-            visually rendered outputs generated from code such as HTML and SVG.
+      <section id="overview" class="bg-white pt-10 pb-20">
+        <div class="mx-auto max-w-5xl px-6 lg:px-0">
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Why ParallelBench?
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
+          >
+            Despite the promise of parallel decoding, the conditional
+            independence assumption in dLLMs causes quality degradation when
+            token dependencies are strong. However, existing works largely
+            overlook these challenges, and standard benchmarks (e.g., math and
+            coding) fail to capture this degradation. ParallelBench bridges
+            theory and practice with both information-theoretic analysis and
+            realistic tasks designed to expose these failures.
           </p>
-        </div>
-      </section>
-
-      <section id="abstract" class="border-t border-slate-200 bg-white py-20">
-        <div class="mx-auto max-w-4xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Abstract</h2>
-          <div class="mt-8 space-y-6 text-justify text-base leading-7 text-slate-600">
-            <p>
-              As Large Language Models (LLMs) become integral to software development workflows, their ability to generate
-              structured outputs has become critically important. We introduce <strong>StructEval</strong>, a comprehensive benchmark
-              for evaluating LLMs' capabilities in producing both non-renderable (JSON, YAML, CSV) and renderable (HTML, React, SVG)
-              structured formats. Unlike prior benchmarks, StructEval systematically evaluates structural fidelity across diverse
-              formats through two paradigms: (1) generation tasks, producing structured output from natural language prompts, and (2)
-              conversion tasks, translating between structured formats.
-            </p>
-            <p>
-              Our benchmark encompasses 18 formats and 44 types of tasks, with novel metrics for format adherence and structural
-              correctness. Results reveal significant performance gaps—even state-of-the-art models like o1-mini achieve only 75.58%
-              average score, with open-source alternatives lagging approximately 10 points behind. We find generation tasks more
-              challenging than conversion tasks, and producing correct visual content more difficult than generating text-only
-              structures.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="dataset" class="border-t border-slate-200 bg-slate-50 py-20">
-        <div class="mx-auto max-w-5xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Dataset Overview</h2>
-          <div class="mt-8 space-y-6 text-base text-slate-600">
-            <p class="text-justify">
-              <strong>StructEval</strong> comprises <strong>2,035 examples</strong> covering <strong>44 unique structure generation tasks</strong> across
-              <strong>18 structured output formats</strong>. The dataset is organized into two main subsets outlined below.
-            </p>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 class="text-center text-xl font-semibold text-slateInk">All 18 Supported Formats</h3>
-              <div class="mt-6 grid gap-px rounded-2xl border border-slate-200 bg-slate-200 text-sm text-slate-600 sm:grid-cols-3 lg:grid-cols-6">
-                <div class="bg-white p-4 text-center">JSON</div>
-                <div class="bg-white p-4 text-center">CSV</div>
-                <div class="bg-white p-4 text-center">XML</div>
-                <div class="bg-white p-4 text-center">YAML</div>
-                <div class="bg-white p-4 text-center">TOML</div>
-                <div class="bg-white p-4 text-center">HTML</div>
-                <div class="bg-white p-4 text-center">React</div>
-                <div class="bg-white p-4 text-center">Vue</div>
-                <div class="bg-white p-4 text-center">Angular</div>
-                <div class="bg-white p-4 text-center">SVG</div>
-                <div class="bg-white p-4 text-center">LaTeX</div>
-                <div class="bg-white p-4 text-center">Markdown</div>
-                <div class="bg-white p-4 text-center">Mermaid</div>
-                <div class="bg-white p-4 text-center">TikZ</div>
-                <div class="bg-white p-4 text-center">Matplotlib</div>
-                <div class="bg-white p-4 text-center">Canvas</div>
-                <div class="bg-white p-4 text-center">Vega</div>
-                <div class="bg-white p-4 text-center">Typst</div>
-              </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Information-Theoretic Analysis
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                Proves that parallel decoding has fundamental error bounds when
+                tokens depend on each other, showing even perfect models
+                struggle as we increase parallelism on tasks requiring strong
+                token coordination.
+              </p>
             </div>
-            <div class="mt-10 grid gap-8 lg:grid-cols-2">
-              <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-                <h3 class="text-lg font-semibold text-slateInk">📝 StructEval-T</h3>
-                <p class="mt-2 text-slate-600">Evaluates text-only structured outputs.</p>
-                <hr class="my-4 border-slate-200" />
-                <ul class="space-y-2 text-sm text-slate-600">
-                  <li><strong>Formats:</strong> JSON, XML, YAML, CSV, TOML</li>
-                  <li><strong>Tasks:</strong> 19 (5 generation, 14 conversion)</li>
-                  <li><strong>Examples:</strong> 950</li>
-                  <li><strong>Focus:</strong> Syntactic validity &amp; structural correctness</li>
-                </ul>
-              </div>
-              <div class="rounded-3xl border border-primary/30 bg-primary/5 p-8 shadow-sm">
-                <h3 class="text-lg font-semibold text-primary">🎨 StructEval-V</h3>
-                <p class="mt-2 text-slate-600">Evaluates visually rendered outputs.</p>
-                <hr class="my-4 border-primary/20" />
-                <ul class="space-y-2 text-sm text-slate-600">
-                  <li><strong>Formats:</strong> HTML, React, SVG, LaTeX, Mermaid, etc.</li>
-                  <li><strong>Tasks:</strong> 25 (13 generation, 12 conversion)</li>
-                  <li><strong>Examples:</strong> 1,085</li>
-                  <li><strong>Focus:</strong> Visual correctness via VQA evaluation</li>
-                </ul>
-              </div>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Quantitative Case Studies
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                Analytically tractable synthetic list operations (Copy, Replace,
+                Shuffle) with closed-form accuracy formulas demonstrate
+                fundamental limitations: certain tasks show inevitable quality
+                degradation under parallel decoding.
+              </p>
+            </div>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Realistic Benchmark Tasks
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                17 tasks across Waiting Line, Text Writing, and Puzzles—all
+                trivial for humans and autoregressive LLMs—reveal severe quality
+                degradation in dLLMs under parallel decoding in real-world
+                scenarios.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="examples" class="border-t border-slate-200 bg-white py-20">
-        <div class="mx-auto max-w-5xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Example Tasks</h2>
-          <div class="mt-10">
-            <div class="flex flex-wrap justify-center gap-3">
-              <button
-                type="button"
-                data-target="generation"
-                class="example-tab active rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-sm font-semibold text-primary transition"
-              >
-                Generation Tasks
-              </button>
-              <button
-                type="button"
-                data-target="conversion"
-                class="example-tab rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-600 transition hover:border-primary/30 hover:text-primary"
-              >
-                Conversion Tasks
-              </button>
-              <button
-                type="button"
-                data-target="rendered"
-                class="example-tab rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-600 transition hover:border-primary/30 hover:text-primary"
-              >
-                Rendered Outputs
-              </button>
-            </div>
-
-            <div id="generation" class="example-panel mt-10 space-y-8">
-              <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 class="text-lg font-semibold text-slateInk">📝 StructEval-T Generation Example</h3>
-                <div class="mt-6 grid gap-6 lg:grid-cols-2">
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Task Prompt</h4>
-                    <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">Please output JSON code.
-
-Task:
-Summarize metadata about a fictional 
-scientific article.
-
-Feature Requirements:
-1. Top-level field "title" is a string
-2. Field "authors" is a list of exactly two items
-3. Each author has "name" and "affiliation"
-4. Field "publication.year" is an integer
-5. Field "keywords" is a list of strings</pre>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Expected Keywords</h4>
-                    <ul class="mt-3 space-y-2 text-sm text-slate-600">
-                      <li><code class="rounded bg-slate-100 px-2 py-1">title</code></li>
-                      <li><code class="rounded bg-slate-100 px-2 py-1">authors[0].name</code></li>
-                      <li><code class="rounded bg-slate-100 px-2 py-1">authors[1].affiliation</code></li>
-                      <li><code class="rounded bg-slate-100 px-2 py-1">publication.year</code></li>
-                      <li><code class="rounded bg-slate-100 px-2 py-1">keywords[2]</code></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 class="text-lg font-semibold text-slateInk">🎨 StructEval-V Generation Example</h3>
-                <div class="mt-6 grid gap-6 lg:grid-cols-2">
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Task Prompt</h4>
-                    <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">Please output HTML code.
-
-Task:
-Design a webpage for a travel itinerary.
-
-Feature Requirements:
-• Centered &lt;h1&gt; with "Trip Summary"
-• Use a &lt;table&gt; with 3 rows and 2 columns
-• Apply class "highlight" to second row
-• Add &lt;button&gt; labeled "Export PDF"</pre>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">VQA Evaluation</h4>
-                    <ul class="mt-3 space-y-3 text-sm text-slate-600">
-                      <li><strong>Q:</strong> What text is in the h1 header?<br /><strong>A:</strong> Trip Summary</li>
-                      <li><strong>Q:</strong> How many rows are in the table?<br /><strong>A:</strong> 3</li>
-                      <li><strong>Q:</strong> What class is on the second row?<br /><strong>A:</strong> highlight</li>
-                      <li><strong>Q:</strong> What text is on the button?<br /><strong>A:</strong> Export PDF</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="conversion" class="example-panel mt-10 hidden">
-              <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 class="text-lg font-semibold text-slateInk">Format Conversion Example</h3>
-                <div class="mt-6 grid gap-6 lg:grid-cols-2">
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">JSON → YAML</h4>
-                    <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">{
-  "name": "StructEval",
-  "version": "1.0",
-  "tasks": ["generation", "conversion"],
-  "formats": {
-    "text": ["JSON", "YAML", "XML"],
-    "visual": ["HTML", "React", "SVG"]
-  }
-}</pre>
-                  </div>
-                  <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Expected YAML Output</h4>
-                    <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">name: StructEval
-version: "1.0"
-tasks:
-  - generation
-  - conversion
-formats:
-  text:
-    - JSON
-    - YAML
-    - XML
-  visual:
-    - HTML
-    - React
-    - SVG</pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="rendered" class="example-panel mt-10 hidden">
-              <h3 class="text-center text-lg font-semibold text-slateInk">Example Rendered Outputs</h3>
-              <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/000107.png" alt="Angular" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">Angular</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/000829.png" alt="Matplotlib" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">Matplotlib</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/000936.png" alt="Mermaid" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">Mermaid</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/001126.png" alt="React" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">React</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/001210.png" alt="SVG" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">SVG</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/001312.png" alt="TikZ" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">TikZ</figcaption>
-                </figure>
-                <figure class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <img src="https://tiger-ai-lab.github.io/StructEval/static/images/examples/001509.png" alt="Vega" class="w-full rounded-2xl border border-slate-100" />
-                  <figcaption class="mt-3 text-center text-sm font-semibold text-slate-600">Vega</figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="evaluation" class="border-t border-slate-200 bg-slate-50 py-20">
-        <div class="mx-auto max-w-5xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Evaluation Framework</h2>
-          <div class="mt-12 space-y-12">
-            <div class="flex justify-center">
-              <img
-                src="https://tiger-ai-lab.github.io/StructEval/static/images/imgs/annotation_pipeline.png"
-                alt="Evaluation pipeline"
-                class="w-full max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 shadow-card"
-              />
-            </div>
-            <div>
-              <p class="text-center text-base text-slate-600">Our evaluation framework employs four core metrics:</p>
-              <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 class="text-base font-semibold text-slateInk">🔧 Render Score (T/V)</h3>
-                  <p class="mt-3 text-sm text-slate-600">
-                    Binary metric (0 or 1) indicating whether the generated code can be successfully loaded or rendered without syntax errors.
-                  </p>
-                </div>
-                <div class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 class="text-base font-semibold text-slateInk">✓ Syntax Score (T)</h3>
-                  <p class="mt-3 text-sm text-slate-600">
-                    Verifies structural correctness using dot-path rules and calculates the percentage of satisfied constraints.
-                  </p>
-                </div>
-                <div class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 class="text-base font-semibold text-slateInk">🔍 Keyword Matching (V)</h3>
-                  <p class="mt-3 text-sm text-slate-600">
-                    Evaluates the presence of desired keywords using exact string matching on raw generated output code.
-                  </p>
-                </div>
-                <div class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 class="text-base font-semibold text-slateInk">👁️ VQA Score (V)</h3>
-                  <p class="mt-3 text-sm text-slate-600">
-                    Assesses visual correctness of rendered content through question-answer pairs about the generated output.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-center text-xl font-semibold text-slateInk">Score Aggregation Methods</h3>
-              <div class="mt-8 grid gap-6 lg:grid-cols-2">
-                <div class="rounded-3xl border border-primary/30 bg-primary/5 p-6 shadow-sm">
-                  <h4 class="text-lg font-semibold text-primary">🎨 Renderable Formats</h4>
-                  <p class="mt-2 text-sm text-slate-600"><em>HTML, React, SVG, LaTeX, Mermaid, etc.</em></p>
-                  <pre class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">Final Score = (0.2 × Render Score) +
-             (0.1 × Keyword Matching) +
-             (0.7 × VQA Score)</pre>
-                </div>
-                <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h4 class="text-lg font-semibold text-slateInk">📝 Non-Renderable Formats</h4>
-                  <p class="mt-2 text-sm text-slate-600"><em>JSON, XML, YAML, CSV, TOML</em></p>
-                  <pre class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100">Final Score = (0.2 × Render Score) +
-             (0.8 × Syntax Score)</pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="leaderboard" class="border-t border-slate-200 bg-white py-20">
+      <section
+        id="benchmark"
+        class="border-t border-slate-200 bg-slate-50 py-20"
+      >
         <div class="mx-auto max-w-6xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Leaderboard</h2>
-          <p class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600">
-            We evaluate various state-of-the-art LLMs in a zero-shot setting. The table below shows the performance breakdown
-            across our four task categories.
-          </p>
-          <div class="mt-6 flex justify-center gap-4 text-xs font-semibold">
-            <span class="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">Open-Source</span>
-            <span class="rounded-full bg-amber-100 px-3 py-1 text-amber-700">Closed-Source</span>
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Benchmark Highlights
+          </h2>
+          <div class="mt-10 grid gap-8 lg:grid-cols-[1.4fr,1fr]">
+            <div class="space-y-6 text-base text-slate-600">
+              <p>
+                ParallelBench couples synthetic and realistic workloads to
+                isolate where parallel decoding collapses. Each task family
+                includes rubric-aligned solutions, baseline outputs, and
+                instrumentation for measuring latency, perplexity, and
+                dependency violations.
+              </p>
+              <ul class="space-y-3 text-sm">
+                <li>
+                  • 17 tasks across 3 categories: Waiting Line (10 tasks), Text
+                  Writing (5 tasks), and Puzzles (2 tasks).
+                </li>
+                <li>
+                  • Tasks with adjustable difficulty levels to test
+                  parallelizability and adaptive decoding strategies.
+                </li>
+                <li>
+                  • Reference implementations for diffusion LLMs and
+                  autoregressive baselines.
+                </li>
+                <li>
+                  • Evaluation harness capturing both quality and realized
+                  parallel speedup.
+                </li>
+              </ul>
+            </div>
+            <div
+              class="rounded-3xl border border-primary/30 bg-primary/5 p-8 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-primary">What You Get</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>
+                  <strong>Datasets:</strong> JSON/CSV payloads with gold outputs
+                  and scoring scripts.
+                </li>
+                <li>
+                  <strong>Tracing Tools:</strong> Hooks to log per-step token
+                  dependencies and failure reasons.
+                </li>
+                <li>
+                  <strong>Reports:</strong> Ready-made notebooks summarizing
+                  baseline speed-quality curves.
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-card">
+        </div>
+      </section>
+
+      <section id="tracks" class="bg-white py-20">
+        <div class="mx-auto max-w-6xl px-6 lg:px-0">
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Benchmark Categories
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
+          >
+            ParallelBench consists of 17 tasks across three categories. Together
+            they reveal how parallel decoding struggles when tokens need to
+            coordinate with each other, ranging from tasks where each token is
+            independent to those requiring strong interdependencies.
+          </p>
+          <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Waiting Line (10 tasks)
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                Realistic customer service queue management tasks extending
+                synthetic list operations (Copy, Sort, Reverse, Shuffle,
+                Insert/Remove/Replace Index/Random) to expose where parallel
+                decoding fails to maintain token dependencies.
+              </p>
+              <ul class="mt-6 space-y-2 text-sm text-slate-500">
+                <li>• Adjustable queue length (n = 3-20)</li>
+                <li>• Independent tokens vs. interdependent tokens</li>
+                <li>• Accuracy-based evaluation</li>
+              </ul>
+            </div>
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Text Writing (5 tasks)
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                Summarization, paraphrasing, and Words-to-Sentence generation
+                tasks at varying difficulty levels that expose quality
+                degradation through grammar scores and token-level dependencies.
+              </p>
+              <ul class="mt-6 space-y-2 text-sm text-slate-500">
+                <li>• Grammar score evaluation</li>
+                <li>• Three difficulty levels for W2S</li>
+                <li>• Standard datasets (SAMSum, ChatGPT-Paraphrases)</li>
+              </ul>
+            </div>
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Puzzles (2 tasks)
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                Sudoku (4x4) and Latin Square (3x3) tasks that compare
+                structurally similar puzzles with different solution spaces to
+                demonstrate how token dependencies affect parallel decoding
+                performance.
+              </p>
+              <ul class="mt-6 space-y-2 text-sm text-slate-500">
+                <li>• Sudoku: unique solution (fully constrained)</li>
+                <li>
+                  • Latin Square: multiple solutions (loosely constrained)
+                </li>
+                <li>• Planning capability assessment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="examples" class="bg-white pt-5 pb-20">
+        <div class="mx-auto max-w-5xl px-6 lg:px-0">
+          <div
+            class="rounded-3xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600 shadow-sm"
+          >
+            <h3 class="text-lg font-semibold text-slateInk">
+              Sample Prompt: Waiting Line (Shuffle)
+            </h3>
+            <pre
+              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
+            >
+You are managing a waiting line at a customer service desk. The waiting line should be
+randomly shuffled to ensure fair service distribution: ["Thomas Holmes", "Keith Ramos",
+"Victoria Collins", "Roger Hughes", "Austin Dunn"]. Please randomly shuffle the list.
+Ensure the sequence is different from the original. Think step by step and give your
+final answer.</pre
+            >
+            <h3 class="mt-6 text-lg font-semibold text-slateInk">
+              Sample Prompt: Text Writing (Words-to-Sentence)
+            </h3>
+            <pre
+              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
+            >
+Construct a single, coherent sentence using the words algorithm, river, symphony, and moss.</pre
+            >
+            <h3 class="mt-6 text-lg font-semibold text-slateInk">
+              Sample Prompt: Puzzles (Latin Square)
+            </h3>
+            <pre
+              class="mt-4 overflow-x-auto rounded-2xl bg-slate-900/95 p-4 text-sm text-slate-100"
+            >
+Generate a Latin square of size 3 with the symbols [A, W, M]. Only output the final result
+as CSV.</pre
+            >
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="evaluation"
+        class="border-t border-slate-200 bg-slate-50 py-20"
+      >
+        <div class="mx-auto max-w-6xl px-6 lg:px-0">
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Evaluation Framework
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
+          >
+            We use simple, task-specific evaluation metrics tailored to each category.
+            For Waiting Line and Puzzles, we measure exact match accuracy. For Text Writing,
+            we use grammar scoring combined with task-appropriate metrics.
+          </p>
+          <div class="mt-12 grid gap-8 lg:grid-cols-3">
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Waiting Line & Puzzles
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                <strong>Accuracy:</strong> Binary score indicating whether the generated
+                output exactly matches one of the valid solutions. For structured tasks like
+                queue management and logic puzzles, exact correctness is essential.
+              </p>
+            </div>
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Text Writing
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                <strong>Grammar Score:</strong> Evaluated using LanguageTool—outputs receive
+                1 if grammatically correct, 0 otherwise. Additional task-specific metrics include
+                ROUGE-L for summarization, BERTScore and (1 - BLEU) for paraphrasing, and
+                word inclusion accuracy for Words-to-Sentence tasks.
+              </p>
+            </div>
+            <div
+              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-slateInk">
+                Decoding Setup
+              </h3>
+              <p class="mt-3 text-sm text-slate-600">
+                All models use greedy decoding, except for infilling tasks which use
+                temperature sampling (τ = 1.0). Maximum generation length is set to 32
+                tokens for Waiting Line and 64 tokens for both Puzzle and Text Writing tasks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaderboard" class="bg-white py-20">
+        <div class="mx-auto max-w-6xl px-6 lg:px-0">
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Baseline Snapshot
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
+          >
+            Autoregressive LLMs maintain high quality, while diffusion LLMs with
+            parallel decoding (k=2) struggle with tasks requiring strong token
+            dependencies. Results show average scores across Waiting Line tasks
+            with n=3-6.
+          </p>
+          <div
+            class="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-card"
+          >
             <table class="min-w-full divide-y divide-slate-200 text-sm">
-              <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <thead
+                class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-600"
+              >
                 <tr>
                   <th class="px-4 py-3 text-left">Model</th>
                   <th class="px-4 py-3 text-left">Type</th>
-                  <th class="px-4 py-3 text-center" colspan="2">StructEval-T</th>
-                  <th class="px-4 py-3 text-center" colspan="2">StructEval-V</th>
-                  <th class="px-4 py-3 text-right">Average</th>
-                </tr>
-                <tr class="text-[11px] uppercase tracking-wide">
-                  <th></th>
-                  <th></th>
-                  <th class="px-4 py-2 text-center">Generation</th>
-                  <th class="px-4 py-2 text-center">Conversion</th>
-                  <th class="px-4 py-2 text-center">Generation</th>
-                  <th class="px-4 py-2 text-center">Conversion</th>
-                  <th></th>
+                  <th class="px-4 py-3 text-center">Copy</th>
+                  <th class="px-4 py-3 text-center">Reverse</th>
+                  <th class="px-4 py-3 text-center">Shuffle</th>
+                  <th class="px-4 py-3 text-center">Replace Idx</th>
+                  <th class="px-4 py-3 text-center">Replace Rand</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 text-slate-700">
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Llama-3.1-8B-Instruct</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">60.22</td>
-                  <td class="px-4 py-3 text-center">71.26</td>
-                  <td class="px-4 py-3 text-center">54.44</td>
-                  <td class="px-4 py-3 text-center">61.15</td>
-                  <td class="px-4 py-3 text-right font-semibold">61.77</td>
+                <tr class="bg-blue-50/40">
+                  <td class="px-4 py-3 font-semibold">Llama 3.1 8B</td>
+                  <td class="px-4 py-3">Autoregressive</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">96</td>
+                  <td class="px-4 py-3 text-center">23</td>
+                  <td class="px-4 py-3 text-center">88</td>
                 </tr>
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Meta-Llama-3-8B-Instruct</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">49.18</td>
-                  <td class="px-4 py-3 text-center">53.65</td>
-                  <td class="px-4 py-3 text-center">46.61</td>
-                  <td class="px-4 py-3 text-center">56.91</td>
-                  <td class="px-4 py-3 text-right font-semibold">51.59</td>
+                <tr class="bg-blue-50/40">
+                  <td class="px-4 py-3 font-semibold">Qwen3 4B</td>
+                  <td class="px-4 py-3">Autoregressive</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">75</td>
+                  <td class="px-4 py-3 text-center">97</td>
+                  <td class="px-4 py-3 text-center">67</td>
+                  <td class="px-4 py-3 text-center">92</td>
                 </tr>
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Phi-3-mini-128k-instruct</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">47.39</td>
-                  <td class="px-4 py-3 text-center">29.78</td>
-                  <td class="px-4 py-3 text-center">44.77</td>
-                  <td class="px-4 py-3 text-center">41.23</td>
-                  <td class="px-4 py-3 text-right font-semibold">40.79</td>
-                </tr>
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Phi-4-mini-instruct</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">51.38</td>
-                  <td class="px-4 py-3 text-center">72.39</td>
-                  <td class="px-4 py-3 text-center">51.62</td>
-                  <td class="px-4 py-3 text-center">52.48</td>
-                  <td class="px-4 py-3 text-right font-semibold">56.97</td>
-                </tr>
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Qwen2.5-7B-Instruct</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">59.21</td>
-                  <td class="px-4 py-3 text-center">62.18</td>
-                  <td class="px-4 py-3 text-center">53.28</td>
-                  <td class="px-4 py-3 text-center">61.43</td>
-                  <td class="px-4 py-3 text-right font-semibold">59.03</td>
-                </tr>
-                <tr class="bg-emerald-50/40">
-                  <td class="px-4 py-3 font-semibold">Qwen3-4B</td>
-                  <td class="px-4 py-3">Open</td>
-                  <td class="px-4 py-3 text-center">64.95</td>
-                  <td class="px-4 py-3 text-center">81.13</td>
-                  <td class="px-4 py-3 text-center">57.00</td>
-                  <td class="px-4 py-3 text-center">65.08</td>
-                  <td class="px-4 py-3 text-right font-semibold">67.04</td>
+                <tr class="bg-purple-50/40">
+                  <td class="px-4 py-3 font-semibold">Claude Haiku 3.5</td>
+                  <td class="px-4 py-3">Closed (AR)</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">32</td>
+                  <td class="px-4 py-3 text-center">100</td>
                 </tr>
                 <tr class="bg-amber-50/60">
-                  <td class="px-4 py-3 font-semibold">Gemini-1.5-pro</td>
-                  <td class="px-4 py-3">Closed</td>
-                  <td class="px-4 py-3 text-center">88.07</td>
-                  <td class="px-4 py-3 text-center">74.24</td>
-                  <td class="px-4 py-3 text-center">58.11</td>
-                  <td class="px-4 py-3 text-center">66.59</td>
-                  <td class="px-4 py-3 text-right font-semibold">71.75</td>
+                  <td class="px-4 py-3 font-semibold">LLaDA 1.5</td>
+                  <td class="px-4 py-3">Diffusion (k=2)</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">99</td>
+                  <td class="px-4 py-3 text-center">18</td>
+                  <td class="px-4 py-3 text-center">15</td>
+                  <td class="px-4 py-3 text-center">70</td>
                 </tr>
                 <tr class="bg-amber-50/60">
-                  <td class="px-4 py-3 font-semibold">Gemini-2.0-flash</td>
-                  <td class="px-4 py-3">Closed</td>
-                  <td class="px-4 py-3 text-center">72.42</td>
-                  <td class="px-4 py-3 text-center">72.20</td>
-                  <td class="px-4 py-3 text-center">53.62</td>
-                  <td class="px-4 py-3 text-center">51.97</td>
-                  <td class="px-4 py-3 text-right font-semibold">62.55</td>
+                  <td class="px-4 py-3 font-semibold">Dream 7B</td>
+                  <td class="px-4 py-3">Diffusion (k=2)</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">91</td>
+                  <td class="px-4 py-3 text-center">87</td>
+                  <td class="px-4 py-3 text-center">27</td>
+                  <td class="px-4 py-3 text-center">99</td>
                 </tr>
                 <tr class="bg-amber-50/60">
-                  <td class="px-4 py-3 font-semibold">GPT-4.1-mini</td>
-                  <td class="px-4 py-3">Closed</td>
-                  <td class="px-4 py-3 text-center">92.57</td>
-                  <td class="px-4 py-3 text-center">75.63</td>
-                  <td class="px-4 py-3 text-center">64.30</td>
-                  <td class="px-4 py-3 text-center">70.04</td>
-                  <td class="px-4 py-3 text-right font-semibold">75.64</td>
-                </tr>
-                <tr class="bg-amber-50/60">
-                  <td class="px-4 py-3 font-semibold">GPT-4o</td>
-                  <td class="px-4 py-3">Closed</td>
-                  <td class="px-4 py-3 text-center">92.87</td>
-                  <td class="px-4 py-3 text-center">78.06</td>
-                  <td class="px-4 py-3 text-center">65.82</td>
-                  <td class="px-4 py-3 text-center">67.33</td>
-                  <td class="px-4 py-3 text-right font-semibold">76.02</td>
+                  <td class="px-4 py-3 font-semibold">Mercury</td>
+                  <td class="px-4 py-3">Closed (Diffusion)</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">100</td>
+                  <td class="px-4 py-3 text-center">92</td>
+                  <td class="px-4 py-3 text-center">28</td>
+                  <td class="px-4 py-3 text-center">98</td>
                 </tr>
               </tbody>
             </table>
@@ -586,92 +582,171 @@ formats:
         </div>
       </section>
 
-      <section id="analysis" class="border-t border-slate-200 bg-slate-50 py-20">
+      <section
+        id="findings"
+        class="border-t border-slate-200 bg-slate-50 py-20"
+      >
         <div class="mx-auto max-w-6xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Performance Analysis</h2>
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Key Findings
+          </h2>
           <div class="mt-12 grid gap-8 lg:grid-cols-2">
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-slateInk">Performance by Task Type</h3>
-              <p class="mt-3 text-sm text-slate-600">
-                StructEval-V generation tasks remain the most challenging category, with even the strongest proprietary models
-                achieving less than 70% accuracy. Conversion tasks in StructEval-T exhibit comparatively higher stability, yet still
-                reveal gaps in syntactic adherence among mid-sized open models.
-              </p>
-            </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-slateInk">Challenging Formats (Average &lt; 50%)</h3>
-              <p class="mt-3 text-sm text-slate-600">
-                TikZ, Typst, and Canvas-based graphics frequently fall below the 50% threshold due to brittle rendering pipelines and
-                precise spatial requirements. Benchmark difficulty highlights the need for robust visual reasoning and code generation
-                competencies.
-              </p>
-            </div>
-          </div>
-          <div class="mt-14 grid gap-8 lg:grid-cols-2">
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="flex items-center gap-2 text-lg font-semibold text-slateInk">
-                <span>📉 Performance Gap</span>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3
+                class="flex items-center gap-2 text-lg font-semibold text-slateInk"
+              >
+                ⚠️ Quality Collapse Under Independence
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Even state-of-the-art models struggle with structured output generation. GPT-4o attains only <strong>76.02%</strong>
-                average score, while the top open-source model (Qwen3-4B) trails at <strong>67.04%</strong>.
+                dLLMs incur catastrophic accuracy drops (20-40 points) when
+                token dependencies extend beyond their parallel decoding
+                horizon, even on tasks solvable analytically.
               </p>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="flex items-center gap-2 text-lg font-semibold text-slateInk">
-                <span>⚖️ Task Difficulty</span>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3
+                class="flex items-center gap-2 text-lg font-semibold text-slateInk"
+              >
+                ⚖️ Speed vs. Quality Trade-off
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Generation tasks are broadly <strong>more challenging</strong> than conversion tasks. Visual rendering (StructEval-V)
-                proves consistently <strong>harder</strong> than text-only structures (StructEval-T).
+                Increasing parallelism rarely yields net wins: most strategies
+                plateau at &lt;1.5× throughput while degrading accuracy by
+                &gt;15 points.
               </p>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="flex items-center gap-2 text-lg font-semibold text-slateInk">
-                <span>⚠️ Challenging Formats</span>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3
+                class="flex items-center gap-2 text-lg font-semibold text-slateInk"
+              >
+                🧠 Adaptivity Is Lacking
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                Formats involving rich layout specification—such as Mermaid diagrams, Matplotlib charts, and Vega visualizations—drive
-                significant variance across models, underscoring fragile tool-use capabilities.
+                Current decoding heuristics fail to dial back parallelism for
+                harder tasks, suggesting the need for dependency-aware
+                controllers.
               </p>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 class="flex items-center gap-2 text-lg font-semibold text-slateInk">
-                <span>🧪 Evaluation Implications</span>
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3
+                class="flex items-center gap-2 text-lg font-semibold text-slateInk"
+              >
+                🛠️ Benchmark as a Guide
               </h3>
               <p class="mt-3 text-sm text-slate-600">
-                The benchmark motivates new research on tooling-augmented reasoning, ensemble VQA, and robust syntax enforcement to
-                close the gap between closed and open ecosystems.
+                ParallelBench pinpoints concrete failure modes, enabling the
+                community to prototype hybrid decoding and improved diffusion
+                objectives.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="citation" class="border-t border-slate-200 bg-white py-20">
+      <section id="abstract" class="bg-white py-20">
         <div class="mx-auto max-w-4xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">Citation</h2>
-          <pre class="mx-auto mt-8 overflow-x-auto rounded-3xl border border-slate-200 bg-slate-900/95 p-6 text-sm text-slate-100">@misc{yang2025structeval,
-  title={StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs},
-  author={Jialin Yang and Dongfu Jiang and Lipeng He and Sherman Siu and Yuxuan Zhang and Disen Liao and Zhuofeng Li and Huaye Zeng and Yiming Jia and Haozhe Wang and Benjamin Schneider and Chi Ruan and Wentao Ma and Zhiheng Lyu and Yifei Wang and Yi Lu and Quy Duc Do and Ziyan Jiang and Ping Nie and Wenhu Chen},
-  year={2025},
-  eprint={2505.20139},
-  archivePrefix={arXiv},
-  primaryClass={cs.SE},
-  doi={10.48550/arXiv.2505.20139}
-}</pre>
+          <h2 class="text-center text-3xl font-semibold text-slateInk">
+            Abstract
+          </h2>
+          <div
+            class="mt-8 space-y-6 text-justify text-base leading-7 text-slate-600"
+          >
+            <p>
+              While most autoregressive LLMs are constrained to one-by-one
+              decoding, diffusion LLMs (dLLMs) have attracted growing interest
+              for their potential to dramatically accelerate inference through
+              parallel decoding. Despite this promise, the conditional
+              independence assumption in dLLMs causes parallel decoding to
+              ignore token dependencies, inevitably degrading generation quality
+              when these dependencies are strong. However, existing works
+              largely overlook these inherent challenges, and evaluations on
+              standard benchmarks (e.g., math and coding) are not sufficient to
+              capture the quality degradation caused by parallel decoding. To
+              address this gap, we first provide an information-theoretic
+              analysis of parallel decoding. We then conduct case studies on
+              analytically tractable synthetic list operations from both data
+              distribution and decoding strategy perspectives, offering
+              quantitative insights that highlight the fundamental limitations
+              of parallel decoding. Building on these insights, we propose
+              ParallelBench, the first benchmark specifically designed for
+              dLLMs, featuring realistic tasks that are trivial for humans and
+              autoregressive LLMs yet exceptionally challenging for dLLMs under
+              parallel decoding. Using ParallelBench, we systematically analyze
+              both dLLMs and autoregressive LLMs, revealing that: (i) dLLMs
+              under parallel decoding can suffer dramatic quality degradation in
+              real-world scenarios, and (ii) current parallel decoding
+              strategies struggle to adapt their degree of parallelism based on
+              task difficulty, thus failing to achieve meaningful speedup
+              without compromising quality. Our findings underscore the pressing
+              need for innovative decoding methods that can overcome the current
+              speed-quality trade-off. We are releasing our benchmark to help
+              accelerate the development of truly efficient dLLMs.
+            </p>
+          </div>
+          <div class="mx-auto mt-12 max-w-6xl px-6 lg:px-0">
+            <div
+              class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card p-6 lg:p-8"
+            >
+              <img
+                src="assets/images/teaser_figure.png"
+                alt="ParallelBench: Overview of limitations, analysis, and benchmark"
+                class="w-full"
+              />
+            </div>
+            <p class="mt-4 text-center text-sm text-slate-500">
+              Figure 1: ParallelBench addresses three key aspects—(left)
+              limitations of parallel decoding, (middle) quantitative analysis
+              on list operations, and (right) a comprehensive benchmark to
+              assess speed-quality trade-offs in diffusion LLMs.
+            </p>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-slate-200 bg-slate-50 py-8">
-      <div class="mx-auto max-w-4xl px-6 text-center text-sm text-slate-500">
+    <footer id="citation" class="border-t border-slate-200 bg-slate-50 py-12">
+      <div
+        class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 text-center text-sm text-slate-500"
+      >
+        <h3 class="text-base font-semibold text-slateInk">Citation</h3>
+        <pre
+          class="w-full overflow-x-auto rounded-3xl border border-slate-200 bg-slate-900/95 p-6 text-left text-sm text-slate-100"
+        >
+@misc{parallelbench2025,
+  title={ParallelBench: Understanding the Trade-offs of Parallel Decoding in Diffusion LLMs},
+  author={Wonjun Kang and Kevin Galim and Seunghyuk Oh and Minjae Lee and Yuchen Zeng and
+          Shuibai Zhang and Coleman Richard Charles Hooper and Yuezhou Hu and
+          Hyung Il Koo and Nam Ik Cho and Kangwook Lee},
+  year={2025},
+  note={Under review as a conference paper at ICLR 2026},
+  howpublished={\url{https://github.com/furiosa-ai/ParallelBench}}
+}</pre
+        >
         <p>
-          This website is adapted from
-          <a href="https://nerfies.github.io/" class="text-primary hover:underline">Nerfies</a>
-          and
-          <a href="https://mathvista.github.io/" class="text-primary hover:underline">MathVista</a>, licensed under a
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="text-primary hover:underline">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          This webpage is licensed under a
+          <a
+            href="http://creativecommons.org/licenses/by-sa/4.0/"
+            class="text-primary hover:underline"
+            target="_blank"
+            rel="noopener"
+            >Creative Commons Attribution-ShareAlike 4.0 International
+            License</a
+          >. Website design adapted from
+          <a
+            href="https://nerfies.github.io/"
+            class="text-primary hover:underline"
+            target="_blank"
+            rel="noopener"
+            >Nerfies</a
+          >.
         </p>
       </div>
     </footer>
@@ -685,29 +760,6 @@ formats:
           mobileNav.classList.toggle('hidden');
         });
       }
-
-      const tabs = document.querySelectorAll('.example-tab');
-      const panels = document.querySelectorAll('.example-panel');
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const target = tab.getAttribute('data-target');
-
-          tabs.forEach((t) => t.classList.remove('active', 'bg-primary/10', 'border-primary/20', 'text-primary'));
-          tabs.forEach((t) => t.classList.add('border-slate-200', 'bg-white', 'text-slate-600'));
-
-          tab.classList.add('active', 'bg-primary/10', 'border-primary/20', 'text-primary');
-          tab.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
-
-          panels.forEach((panel) => {
-            if (panel.id === target) {
-              panel.classList.remove('hidden');
-            } else {
-              panel.classList.add('hidden');
-            }
-          });
-        });
-      });
     </script>
   </body>
 </html>
