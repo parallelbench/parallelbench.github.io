@@ -568,11 +568,11 @@
                 Information-Theoretic Analysis
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                <u
-                  >Proves that parallel decoding has fundamental error bounds
-                  when tokens depend on each other</u
-                >, showing even perfect models struggle as we increase
-                parallelism on tasks requiring strong token coordination.
+                Proves that
+                <u>parallel decoding has fundamental error bounds</u> when
+                tokens depend on each other, showing even perfect models
+                struggle as we increase parallelism on tasks requiring strong
+                token coordination.
               </p>
             </div>
             <div
@@ -634,10 +634,10 @@
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
                 Seventeen tasks across
-                <i>Waiting Line, Text Writing, and Puzzles</i>—<b
-                  >all trivial for humans and autoregressive LLMs</b
-                >—reveal severe quality degradation in dLLMs under parallel
-                decoding in real-world scenarios.
+                <i>Waiting Line, Text Writing, and Puzzles</i>—all
+                <u>trivial for humans</u> and <u>AR LLMs</u>—reveal severe
+                quality degradation in dLLMs under parallel decoding in
+                real-world scenarios.
               </p>
             </div>
           </div>
@@ -661,114 +661,15 @@
             <p
               class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              Building on information-theoretic analysis, we introduce
-              <b>ParallelBench</b>, a comprehensive benchmark consisting of 17
-              realistic tasks across 3 categories, designed to systematically
-              evaluate the speed-quality trade-offs of dLLMs.
+              We introduce <b>ParallelBench</b>, a comprehensive benchmark
+              consisting of 17 realistic tasks across 3 categories, designed to
+              systematically evaluate the speed-quality trade-offs of dLLMs.
 
               <!-- systematically evaluates the speed-quality
               trade-offs of parallel decoding in dLLMs, capturing quality
               degradation that standard benchmarks fail to expose. -->
             </p>
           </div>
-
-          <!-- Key Features Grid -->
-          <!-- <div class="grid gap-6 md:grid-cols-3 mb-16">
-            <div
-              class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10"
-              >
-                <svg
-                  class="h-6 w-6 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-slateInk mb-2">
-                17 Tasks, 3 Families
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <i>Waiting Line</i> (10), <i>Text Writing</i> (5), and
-                <i>Puzzles</i> (2) covering diverse dependency patterns.
-              </p>
-            </div>
-
-            <div
-              class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10"
-              >
-                <svg
-                  class="h-6 w-6 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-slateInk mb-2">
-                Full Spectrum Coverage
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                From trivial tasks (<i>copy, paraphrase</i>) to highly
-                dependency-bound challenges (<i>shuffle, W2S-hard</i>).
-              </p>
-            </div>
-
-            <div
-              class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10"
-              >
-                <svg
-                  class="h-6 w-6 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-lg font-bold text-slateInk mb-2">
-                Adaptive Difficulty
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                Knobbed parameters (sequence length, word coherence) to test
-                scaling behavior and adaptive strategies.
-              </p>
-            </div>
-          </div> -->
-
-          <!-- Task Categories Section -->
-          <!-- <div class="text-center mb-10">
-            <h3 class="text-2xl font-bold text-slateInk">Task Categories</h3>
-            <p class="mt-3 text-slate-600">
-              Explore detailed examples from each task family
-            </p>
-          </div> -->
 
           <!-- Task Cards -->
           <div class="grid gap-6 md:grid-cols-3">
@@ -800,10 +701,15 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Ten simple list manipulation tasks (e.g., copy, reverse,
-                replace, shuffle) with varying list lengths. These tasks exhibit
+                <i>Waiting Line</i> is a set of list operations (e.g., shuffle,
+                replace) manipulating realistic customer service scenarios. The
+                number of customers <i>n</i> serves as a controlled variable for
+                adjusting difficulty.
+                <!-- Ten simple list manipulation tasks (e.g., copy, reverse,
+                replace, shuffle) with varying list lengths.  -->
+                <!-- These tasks exhibit
                 <u>different levels of token dependency</u>, ranging from
-                independent to highly dependent operations.
+                independent to highly dependent operations. -->
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -858,9 +764,9 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Five text generation tasks:
+                <i>Text Writing</i> consists of five text generation tasks:
                 <i>summarization, paraphrasing, words-to-sentence generation</i
-                >. We introduce a novel <i>Grammar Score</i> metric that imposes
+                >. We introduce a <i>Grammar Score</i> metric that imposes
                 stronger token-level dependencies.
               </p>
               <div
@@ -916,10 +822,11 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Puzzles</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Two classic puzzle tasks: <i>Sudoku</i>, which has a unique
-                solution, and <i>Latin Square</i>, which has multiple valid
-                solutions. This fundamental difference in solution space
-                highlights the distinct failure modes of dLLMs.
+                <i>Puzzles</i> consists of two classic puzzle tasks:
+                <i>Sudoku</i>, which has a unique solution, and
+                <i>Latin Square</i>, which has multiple valid solutions. This
+                fundamental difference in solution space highlights the distinct
+                failure modes of dLLMs.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -1010,66 +917,6 @@
           </div>
         </div>
       </section>
-
-      <!-- <section
-        id="evaluation"
-        class="border-t border-slate-200 bg-slate-50 py-12 sm:py-16 lg:py-20"
-      >
-        <div class="mx-auto max-w-6xl px-6 lg:px-0">
-          <h2 class="text-center text-3xl font-semibold text-slateInk">
-            Evaluation Framework
-          </h2>
-          <p
-            class="mx-auto mt-6 max-w-3xl text-center text-base text-slate-600"
-          >
-            We use simple, task-specific evaluation metrics tailored to each
-            category. For Waiting Line and Puzzles, we measure exact match
-            accuracy. For Text Writing, we use grammar scoring combined with
-            task-appropriate metrics.
-          </p>
-          <div class="mt-12 grid gap-8 lg:grid-cols-3">
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Waiting Line & Puzzles
-              </h3>
-              <p class="mt-3 text-sm text-slate-600">
-                <strong>Accuracy:</strong> Binary score indicating whether the
-                generated output exactly matches one of the valid solutions. For
-                structured tasks like queue management and logic puzzles, exact
-                correctness is essential.
-              </p>
-            </div>
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">Text Writing</h3>
-              <p class="mt-3 text-sm text-slate-600">
-                <strong>Grammar Score:</strong> Evaluated using
-                LanguageTool—outputs receive 1 if grammatically correct, 0
-                otherwise. Additional task-specific metrics include ROUGE-L for
-                summarization, BERTScore and (1 - BLEU) for paraphrasing, and
-                word inclusion accuracy for Words-to-Sentence tasks.
-              </p>
-            </div>
-            <div
-              class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 class="text-lg font-semibold text-slateInk">
-                Decoding Setup
-              </h3>
-              <p class="mt-3 text-sm text-slate-600">
-                All models use greedy decoding, except for infilling tasks which
-                use temperature sampling (τ = 1.0). Maximum generation length is
-                set to 32 tokens for Waiting Line and 64 tokens for both Puzzle
-                and Text Writing tasks.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
       <section id="leaderboard" class="bg-white py-12 sm:py-16 lg:py-24">
         <div class="mx-auto max-w-6xl px-6 lg:px-12">
           <div class="text-center">
@@ -1147,187 +994,6 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
-                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">
-                    Llama 3.1 8B
-                  </td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
-                    >
-                      Autoregressive
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      96
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      88
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      97
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      97
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">Qwen3 4B</td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
-                    >
-                      Autoregressive
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      75
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      97
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      92
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      93
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      97
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                </tr> -->
-                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">
-                    Claude Haiku 3.5
-                  </td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
-                    >
-                      Autoregressive
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                </tr> -->
                 <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-4 py-4 font-bold text-slate-900">LLaDA 1.5</td>
                   <td class="px-4 py-4">
@@ -1564,71 +1230,12 @@
                     </div>
                   </td>
                 </tr>
-                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">Mercury</td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
-                    >
-                      Parallel (k=?)
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      92
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      98
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      93
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                </tr> -->
               </tbody>
             </table>
           </div>
 
           <!-- Key Insight -->
-          <!-- <div
+          <div
             class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6"
           >
             <div class="flex items-start gap-4">
@@ -1652,16 +1259,13 @@
                   💡 Key Insight
                 </h3>
                 <p class="text-sm text-blue-800 leading-relaxed">
-                  All models achieve perfect scores on <i>Copy</i> tasks, but
-                  dLLMs show significant degradation on <i>Shuffle</i> (<span
-                    class="font-bold text-red-600"
-                    >18-92%</span
-                  >) and <i>Replace Rand</i> (<span
-                    class="font-bold text-red-600"
-                    >70-98%</span
-                  >). <i>Text Writing</i> tasks reveal performance degradation
-                  in dLLMs, with scores ranging from 56-93% compared to
-                  near-perfect AR performance.
+                  Both LLaDA and Dream achieve (almost) perfect scores across
+                  the benchmark with <i>One-by-One</i> decoding. However,
+                  <i>Parallel</i> decoding show significant degradation on
+                  <i>Shuffle</i> compared to <i>One-by-One</i> and
+                  <i>Replace Rand</i>. <i>Text Writing</i> tasks reveal
+                  performance degradation in dLLMs, with scores ranging from
+                  56-93% compared to near-perfect AR performance.
                   <a
                     href="https://arxiv.org/abs/asdf"
                     class="underline font-semibold hover:text-blue-600"
@@ -1671,140 +1275,9 @@
                 </p>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </section>
-
-      <!-- <section
-        id="findings"
-        class="bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16 lg:py-24"
-      >
-        <div class="mx-auto max-w-6xl px-6 lg:px-12">
-          <div class="text-center">
-            <span
-              class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
-            >
-              Research Insights
-            </span>
-            <h2 class="mt-6 text-4xl font-bold text-slateInk">Key Findings</h2>
-          </div>
-          <div class="mt-16 grid gap-8 lg:grid-cols-2">
-            <div
-              class="card-static group rounded-3xl border-2 border-red-100 bg-gradient-to-br from-red-50/50 to-white p-8 shadow-lg hover:border-red-200"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-red-600"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk">
-                Quality Collapse Under Independence
-              </h3>
-              <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                The accuracy of parallel decoding is proven to collapse when
-                token dependencies exceed the decoding horizon.
-              </p>
-            </div>
-            <div
-              class="card-static group rounded-3xl border-2 border-amber-100 bg-gradient-to-br from-amber-50/50 to-white p-8 shadow-lg hover:border-amber-200"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk">
-                Speed vs. Quality Trade-off
-              </h3>
-              <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                Using static <i>top-k</i> parallelism results in a sharp drop in
-                quality for a small increase in throughput.
-              </p>
-            </div>
-            <div
-              class="card-static group rounded-3xl border-2 border-purple-100 bg-gradient-to-br from-purple-50/50 to-white p-8 shadow-lg hover:border-purple-200"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk">
-                Adaptivity Is Lacking
-              </h3>
-              <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                Current heuristics are unable to reduce parallelism when
-                dependencies increase.
-              </p>
-            </div>
-            <div
-              class="card-static group rounded-3xl border-2 border-blue-100 bg-gradient-to-br from-blue-50/50 to-white p-8 shadow-lg hover:border-blue-200"
-            >
-              <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600"
-              >
-                <svg
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk">
-                ParallelBench as a Guide
-              </h3>
-              <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                <b>ParallelBench</b> reveals failure modes that are invisible in
-                mathematical and coding benchmarks.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
       <section id="abstract" class="bg-white py-12 sm:py-16 lg:py-24">
         <div class="mx-auto max-w-6xl px-6 lg:px-12">
           <div class="text-center">
@@ -2383,8 +1856,6 @@
       const taskData = {
         waitingLine: {
           title: 'Waiting Line',
-          description:
-            'Ten tasks where participants manage ordered lists (names). Operations range from independent (e.g., shuffle all items) to highly dependent (e.g., replace the person at index i with token w).',
           icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
           examples: [
             {
@@ -2419,8 +1890,6 @@ Please replace one random person with "Juan Torres" and provide only the final l
         },
         textWriting: {
           title: 'Text Writing',
-          description:
-            'Five NLP sub-tasks—summary, paraphrase, words-to-sentence generation—where fluency and coherence depend on coordinating tokens within a context window.',
           icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z',
           examples: [
             {
@@ -2454,8 +1923,6 @@ Paraphrase:`,
         },
         puzzles: {
           title: 'Puzzles',
-          description:
-            'Sudoku and Latin Square comparing solution spaces to demonstrate token dependency effects.',
           icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
           examples: [
             {
