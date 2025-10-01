@@ -661,11 +661,14 @@
             <p
               class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              <b>ParallelBench</b> systematically evaluates the speed-quality
+              Building on information-theoretic analysis, we introduce
+              <b>ParallelBench</b>, a comprehensive benchmark consisting of 17
+              realistic tasks across 3 categories, designed to systematically
+              evaluate the speed-quality trade-offs of dLLMs.
+
+              <!-- systematically evaluates the speed-quality
               trade-offs of parallel decoding in dLLMs, capturing quality
-              degradation that standard benchmarks fail to expose. It provides
-              both synthetic and realistic tasks to stress-test adaptive
-              parallelism and speed–quality trade-offs.
+              degradation that standard benchmarks fail to expose. -->
             </p>
           </div>
 
@@ -797,10 +800,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Ten simple list manipulation tasks (e.g., copy, replace,
-                shuffle) with varying list length. These tasks require
-                <u>different levels of token dependency</u>, from independent to
-                highly dependent.
+                Ten simple list manipulation tasks (e.g., copy, reverse,
+                replace, shuffle) with varying list lengths. These tasks exhibit
+                <u>different levels of token dependency</u>, ranging from
+                independent to highly dependent operations.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -855,10 +858,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Five text generating tasks:
-                <i>summary, paraphrase, words-to-sentence generation</i>. We
-                introduce <i>Grammar Score</i> which imposes stronger
-                token-level dependencies.
+                Five text generation tasks:
+                <i>summarization, paraphrasing, words-to-sentence generation</i
+                >. We introduce a novel <i>Grammar Score</i> metric that imposes
+                stronger token-level dependencies.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -913,10 +916,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Puzzles</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Two classic puzzle tasks: <i>Sudoku</i> which has a unique
-                solution and <i>Latin Square</i> which has multiple valid
-                solutions. This difference highlights the failure modes of
-                dLLMs.
+                Two classic puzzle tasks: <i>Sudoku</i>, which has a unique
+                solution, and <i>Latin Square</i>, which has multiple valid
+                solutions. This fundamental difference in solution space
+                highlights the distinct failure modes of dLLMs.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -2136,9 +2139,9 @@
               </li>
               <li>
                 <a
-                  href="#findings"
+                  href="#abstract"
                   class="transition hover:text-primary hover:translate-x-1 inline-block"
-                  >Key Findings</a
+                  >Paper</a
                 >
               </li>
             </ul>
