@@ -659,11 +659,11 @@
           <div class="mt-16 grid gap-10 lg:grid-cols-[1.4fr,1fr]">
             <div class="space-y-8">
               <p class="text-lg text-slate-600 leading-relaxed">
-                <b>ParallelBench</b> couples synthetic and realistic workloads
-                to isolate where parallel decoding fails. Each family ships gold
-                solutions, baselines, and instrumentation to measure latency,
-                accuracy, and dependency violations under different unmasking
-                policies.
+                <b>ParallelBench</b> systematically evaluates the trade-offs of
+                parallel decoding in dLLMs, capturing quality degradation that
+                standard benchmarks fail to expose. It provides both synthetic
+                and realistic tasks to stress-test adaptive parallelism and
+                speed–quality trade-offs.
               </p>
               <div class="space-y-4">
                 <div class="flex items-start gap-4">
@@ -708,8 +708,9 @@
                   </div>
                   <div>
                     <p class="text-base text-slate-700">
-                      Knobbed difficulty to test parallelizability and adaptive
-                      controllers.
+                      <strong>Covers full parallel decoding spectrum:</strong>
+                      From trivial (<i>copy, paraphrase</i>) to highly
+                      dependency-bound (<i>shuffle, W2S-hard</i>).
                     </p>
                   </div>
                 </div>
@@ -731,29 +732,9 @@
                   </div>
                   <div>
                     <p class="text-base text-slate-700">
-                      Reference implementations for dLLMs and AR baselines.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="h-6 w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-base text-slate-700">
-                      Evaluation harness for both quality and realized speedup.
+                      <strong>Adaptive Difficulty:</strong> Knobbed parameters
+                      (sequence length, word coherence) to test scaling
+                      behavior.
                     </p>
                   </div>
                 </div>
@@ -794,10 +775,10 @@
                     />
                   </svg>
                   <div>
-                    <strong class="text-slate-900">Datasets:</strong>
+                    <strong class="text-slate-900">Library:</strong>
                     <span class="text-slate-600">
-                      JSON/CSV payloads with gold outputs and scoring
-                      scripts.</span
+                      Python package to generate benchmark instances
+                      programmatically.</span
                     >
                   </div>
                 </li>
@@ -816,8 +797,8 @@
                   <div>
                     <strong class="text-slate-900">Tracing Tools:</strong>
                     <span class="text-slate-600">
-                      Hooks to log per-step token dependencies and failure
-                      reasons.</span
+                      Hooks for logging token dependencies, per-step failures,
+                      and decoding trajectories.</span
                     >
                   </div>
                 </li>
@@ -836,8 +817,8 @@
                   <div>
                     <strong class="text-slate-900">Reports:</strong>
                     <span class="text-slate-600">
-                      Ready-made notebooks summarizing baseline
-                      parallelism–accuracy curves.</span
+                      Notebooks and scripts for visualizing baseline vs. dLLM
+                      results and speed–quality trade-offs.</span
                     >
                   </div>
                 </li>
@@ -901,9 +882,8 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Ten tasks where participants manage ordered lists (people,
-                animals, food items). Operations range from independent to
-                highly sequential.
+                Ten tasks where participants manage ordered lists (names).
+                Operations range from independent to highly dependent.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -958,8 +938,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Five NLP sub-tasks—summary, paraphrase, words-to-sentence
-                generation—where fluency depends on coordinating tokens.
+                Five NLP sub-tasks—<i
+                  >summary, paraphrase, words-to-sentence generation</i
+                >
+                —where fluency depends on coordinating tokens.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -2320,7 +2302,7 @@
         waitingLine: {
           title: 'Waiting Line',
           description:
-            'Ten tasks where participants manage ordered lists (people, animals, food items). Operations range from independent (e.g., shuffle all items) to highly sequential (e.g., replace the person at index i with token w).',
+            'Ten tasks where participants manage ordered lists (names). Operations range from independent (e.g., shuffle all items) to highly dependent (e.g., replace the person at index i with token w).',
           icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
           examples: [
             {
