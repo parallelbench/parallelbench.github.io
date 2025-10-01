@@ -534,9 +534,12 @@
               class="w-full rounded-2xl shadow-xl border border-slate-200"
             />
             <p class="mt-4 text-center text-sm text-slate-500 italic">
-              <b>Left:</b> Parallel decoding mixes individually likely tokens into invalid pairs when dependencies are ignored.
-              <b>Middle:</b> Closed-form analyses on list operations quantify accuracy decay as parallelism increases.
-              <b>Right:</b> A realistic benchmark exposes speed–quality trade-offs across dLLMs and decoding strategies.
+              <b>Left:</b> Parallel decoding mixes individually likely tokens
+              into invalid pairs when dependencies are ignored.
+              <b>Middle:</b> Closed-form analyses on list operations quantify
+              accuracy decay as parallelism increases. <b>Right:</b> A realistic
+              benchmark exposes speed–quality trade-offs across dLLMs and
+              decoding strategies.
             </p>
           </div>
 
@@ -841,7 +844,6 @@
               </ul>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -1181,10 +1183,12 @@
             <p
               class="mx-auto mt-6 max-w-3xl text-lg text-slate-600 leading-relaxed"
             >
-              Autoregressive LLMs maintain high quality, while diffusion LLMs
-              with parallel decoding (k=2) struggle with tasks requiring strong
-              token dependencies. Results show average scores across Waiting
-              Line tasks with n=3-6.
+              Comparison of autoregressive and diffusion LLMs across
+              representative tasks. <i>Waiting Line</i> tasks (<i
+                >Copy, Shuffle, Replace Rand</i
+              >) measure sequential coordination, while
+              <i>Text Writing</i> tasks (<i>Summarization, W2S</i>) evaluate
+              grammatical correctness under parallel decoding.
             </p>
           </div>
           <div
@@ -1204,29 +1208,34 @@
                     Type
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Copy
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Reverse
-                  </th>
-                  <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Shuffle
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Replace Idx
-                  </th>
-                  <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Replace Rand
+                  </th>
+                  <th
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                  >
+                    Summarization
+                  </th>
+                  <th
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                  >
+                    W2S (easy)
+                  </th>
+                  <th
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                  >
+                    W2S (hard)
                   </th>
                 </tr>
               </thead>
@@ -1243,28 +1252,45 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      100
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       96
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      23
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      88
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
-                      88
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      97
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      97
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                 </tr>
@@ -1278,28 +1304,45 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
-                      75
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       97
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      67
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      92
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      92
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      93
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      97
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                 </tr>
@@ -1311,32 +1354,49 @@
                     <span
                       class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
                     >
-                      Closed (AR)
+                      Autoregressive
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      32
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                 </tr>
@@ -1350,28 +1410,45 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      99
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
+                    >
                       18
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      15
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      70
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
-                      70
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      77
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      89
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      72
                     </div>
                   </td>
                 </tr>
@@ -1385,28 +1462,45 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      91
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
                       87
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      27
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      99
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      85
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      89
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      56
                     </div>
                   </td>
                 </tr>
@@ -1416,32 +1510,49 @@
                     <span
                       class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
                     >
-                      Closed (Diffusion)
+                      Diffusion (Closed)
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       100
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      100
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       92
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
-                      28
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      98
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
-                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
-                      98
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      93
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                 </tr>
@@ -1450,20 +1561,45 @@
           </div>
 
           <!-- Key Insight -->
-          <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+          <div
+            class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6"
+          >
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
-                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+                <h3 class="text-lg font-bold text-blue-900 mb-2">
+                  💡 Key Insight
+                </h3>
                 <p class="text-sm text-blue-800 leading-relaxed">
-                  dLLMs excel at independent tasks (<span class="font-bold">Copy: 100%</span>) but dramatically collapse on
-                  sequential dependency tasks (<span class="font-bold text-red-600">Replace Index: 15-32%</span>).
-                  Even state-of-the-art closed models struggle with strong token coordination.
-                  <a href="https://arxiv.org/abs/asdf" class="underline font-semibold hover:text-blue-600">See full paper</a>
+                  All models achieve perfect scores on <i>Copy</i> tasks, but
+                  diffusion LLMs show significant degradation on
+                  <i>Shuffle</i> (<span class="font-bold text-red-600"
+                    >18-92%</span
+                  >) and <i>Replace Rand</i> (<span
+                    class="font-bold text-red-600"
+                    >70-98%</span
+                  >). <i>Text Writing</i> tasks reveal performance degradation
+                  in diffusion models, with scores ranging from 56-93% compared
+                  to near-perfect AR performance.
+                  <a
+                    href="https://arxiv.org/abs/asdf"
+                    class="underline font-semibold hover:text-blue-600"
+                    >See full paper</a
+                  >
                   for comprehensive 17-task analysis.
                 </p>
               </div>
