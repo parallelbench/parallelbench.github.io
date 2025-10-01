@@ -514,7 +514,7 @@
               Why ParallelBench?
             </h2>
             <p
-              class="mx-auto mt-6 max-w-3xl text-lg text-slate-600 leading-relaxed"
+              class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
               Parallel decoding is fast, but not free. When outputs require
               token-to-token coordination, factorized predictions ignore
@@ -659,18 +659,18 @@
               Benchmark Overview
             </h2>
             <p
-              class="mx-auto mt-6 max-w-3xl text-lg text-slate-600 leading-relaxed"
+              class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              <b>ParallelBench</b> systematically evaluates the trade-offs of
-              parallel decoding in dLLMs, capturing quality degradation that
-              standard benchmarks fail to expose. It provides both synthetic and
-              realistic tasks to stress-test adaptive parallelism and
-              speed–quality trade-offs.
+              <b>ParallelBench</b> systematically evaluates the speed-quality
+              trade-offs of parallel decoding in dLLMs, capturing quality
+              degradation that standard benchmarks fail to expose. It provides
+              both synthetic and realistic tasks to stress-test adaptive
+              parallelism and speed–quality trade-offs.
             </p>
           </div>
 
           <!-- Key Features Grid -->
-          <div class="grid gap-6 md:grid-cols-3 mb-16">
+          <!-- <div class="grid gap-6 md:grid-cols-3 mb-16">
             <div
               class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
             >
@@ -757,15 +757,15 @@
                 scaling behavior and adaptive strategies.
               </p>
             </div>
-          </div>
+          </div> -->
 
           <!-- Task Categories Section -->
-          <div class="text-center mb-10">
+          <!-- <div class="text-center mb-10">
             <h3 class="text-2xl font-bold text-slateInk">Task Categories</h3>
             <p class="mt-3 text-slate-600">
               Explore detailed examples from each task family
             </p>
-          </div>
+          </div> -->
 
           <!-- Task Cards -->
           <div class="grid gap-6 md:grid-cols-3">
@@ -797,8 +797,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Ten tasks where participants manage ordered lists (names).
-                Operations range from independent to highly dependent.
+                Ten simple list manipulation tasks (e.g., copy, replace,
+                shuffle) with varying list length. These tasks require
+                <u>different levels of token dependency</u>, from independent to
+                highly dependent.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -853,10 +855,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Five NLP sub-tasks—<i
-                  >summary, paraphrase, words-to-sentence generation</i
-                >
-                —where fluency depends on coordinating tokens.
+                Five text generating tasks:
+                <i>summary, paraphrase, words-to-sentence generation</i>. We
+                introduce <i>Grammar Score</i> which imposes stronger
+                token-level dependencies.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -911,8 +913,10 @@
               </div>
               <h3 class="text-xl font-bold text-slateInk mb-2">Puzzles</h3>
               <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                <i>Sudoku (4×4)</i> and <i>Latin Square (4×4)</i> comparing
-                solution spaces to demonstrate token dependency effects.
+                Two classic puzzle tasks: <i>Sudoku</i> which has a unique
+                solution and <i>Latin Square</i> which has multiple valid
+                solutions. This difference highlights the failure modes of
+                dLLMs.
               </p>
               <div
                 class="flex items-center gap-2 text-primary font-semibold text-sm"
@@ -1075,14 +1079,14 @@
               Baseline Snapshot
             </h2>
             <p
-              class="mx-auto mt-6 max-w-3xl text-lg text-slate-600 leading-relaxed"
+              class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              Comparison of autoregressive and diffusion LLMs across
-              representative tasks. <i>Waiting Line</i> tasks (<i
+              Comparison of autoregressive and dLLMs across representative
+              tasks. <i>Waiting Line</i> tasks (<i
                 >Copy, Shuffle, Replace Rand</i
-              >) measure sequential coordination, while
-              <i>Text Writing</i> tasks (<i>Summarization, W2S</i>) evaluate
-              grammatical correctness under parallel decoding.
+              >) evaluate accuracy, while <i>Text Writing</i> tasks (<i
+                >Summarization, W2S</i
+              >) evaluate grammatical correctness under parallel decoding.
             </p>
           </div>
           <div
@@ -1102,32 +1106,37 @@
                     Type
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Copy
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                  >
+                    Reverse
+                  </th>
+                  <th
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Shuffle
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    Replace Rand
+                    Replace Random
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    Summarization
+                    Summar- ization
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     W2S (easy)
                   </th>
                   <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     W2S (hard)
                   </th>
@@ -1144,6 +1153,13 @@
                     >
                       Autoregressive
                     </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
                   </td>
                   <td class="px-6 py-4 text-center">
                     <div
@@ -1202,6 +1218,13 @@
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      75
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -1276,6 +1299,13 @@
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
                       99
                     </div>
                   </td>
@@ -1300,7 +1330,7 @@
                     <span
                       class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
                     >
-                      Diffusion (k=2)
+                      Parallel (k=2)
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -1308,6 +1338,13 @@
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -1347,12 +1384,12 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">Dream 7B</td>
+                  <td class="px-6 py-4 font-bold text-slate-900"></td>
                   <td class="px-6 py-4">
                     <span
                       class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
                     >
-                      Diffusion (k=2)
+                      One-by-One (k=1)
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -1360,6 +1397,72 @@
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      95
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      74
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
+                    >
+                      39
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      86
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      83
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-6 py-4 font-bold text-slate-900">Dream 7B</td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                    >
+                      Parallel (k=2)
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      91
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -1392,9 +1495,68 @@
                   </td>
                   <td class="px-6 py-4 text-center">
                     <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
                     >
                       56
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-6 py-4 font-bold text-slate-900"></td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                    >
+                      One-by-One (k=1)
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      98
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      80
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
+                    >
+                      35
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
+                    >
+                      66
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      83
                     </div>
                   </td>
                 </tr>
@@ -1404,8 +1566,15 @@
                     <span
                       class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
                     >
-                      Diffusion (Closed)
+                      Parallel (k=?)
                     </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
                   </td>
                   <td class="px-6 py-4 text-center">
                     <div
@@ -1455,7 +1624,7 @@
           </div>
 
           <!-- Key Insight -->
-          <div
+          <!-- <div
             class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6"
           >
             <div class="flex items-start gap-4">
@@ -1480,15 +1649,15 @@
                 </h3>
                 <p class="text-sm text-blue-800 leading-relaxed">
                   All models achieve perfect scores on <i>Copy</i> tasks, but
-                  diffusion LLMs show significant degradation on
-                  <i>Shuffle</i> (<span class="font-bold text-red-600"
+                  dLLMs show significant degradation on <i>Shuffle</i> (<span
+                    class="font-bold text-red-600"
                     >18-92%</span
                   >) and <i>Replace Rand</i> (<span
                     class="font-bold text-red-600"
                     >70-98%</span
                   >). <i>Text Writing</i> tasks reveal performance degradation
-                  in diffusion models, with scores ranging from 56-93% compared
-                  to near-perfect AR performance.
+                  in dLLMs, with scores ranging from 56-93% compared to
+                  near-perfect AR performance.
                   <a
                     href="https://arxiv.org/abs/asdf"
                     class="underline font-semibold hover:text-blue-600"
@@ -1498,11 +1667,11 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
 
-      <section
+      <!-- <section
         id="findings"
         class="bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16 lg:py-24"
       >
@@ -1630,7 +1799,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <section id="abstract" class="bg-white py-12 sm:py-16 lg:py-24">
         <div class="mx-auto max-w-6xl px-6 lg:px-12">
@@ -1909,8 +2078,7 @@
             </h4>
             <p class="text-sm text-slate-600 leading-relaxed">
               <b>ParallelBench</b> is the first benchmark designed to analyze
-              diffusion LLMs under parallel decoding, revealing speed-quality
-              trade-offs.
+              dLLMs under parallel decoding, revealing speed-quality trade-offs.
             </p>
           </div>
 
@@ -2283,7 +2451,7 @@ Paraphrase:`,
         puzzles: {
           title: 'Puzzles',
           description:
-            'Sudoku (4×4) and Latin Square (4×4) comparing solution spaces to demonstrate token dependency effects.',
+            'Sudoku and Latin Square comparing solution spaces to demonstrate token dependency effects.',
           icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
           examples: [
             {
@@ -2320,11 +2488,11 @@ Output:`,
 
         // Set content
         modalContent.innerHTML = `
-          <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <!-- <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-sm">
             <p class="text-sm text-slate-600 leading-relaxed">${
               task.description
             }</p>
-          </div>
+          </div> -->
           ${task.examples
             .map(
               (example) => `
