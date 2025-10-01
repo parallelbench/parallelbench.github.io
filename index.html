@@ -1081,12 +1081,14 @@
             <p
               class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              Comparison of autoregressive and dLLMs across representative
-              tasks. <i>Waiting Line</i> tasks (<i
-                >Copy, Shuffle, Replace Rand</i
-              >) evaluate accuracy, while <i>Text Writing</i> tasks (<i
+              Performance comparison of <u>Parallel</u> versus
+              <u>One-by-One</u> decoding for state-of-the-art dLLMs (LLaDA-1.5,
+              Dream 7B) across tasks in <strong>ParallelBench</strong>.
+              <i>Waiting Line</i> tasks (<i>Copy, Shuffle, Replace Rand</i>)
+              measure output accuracy, while <i>Text Writing</i> tasks (<i
                 >Summarization, W2S</i
-              >) evaluate grammatical correctness under parallel decoding.
+              >) assess grammatical correctness and coherence in parallel
+              decoding mode.
             </p>
           </div>
           <div
@@ -1096,107 +1098,107 @@
               <thead class="bg-gradient-to-r from-slate-50 to-slate-100">
                 <tr>
                   <th
-                    class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Model
                   </th>
                   <th
-                    class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Type
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Copy
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Reverse
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
                     Shuffle
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    Replace Random
+                    Replace<br />Random
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    Summar- ization
+                    Summar-<br />ization
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    W2S (easy)
+                    W2S<br />(easy)
                   </th>
                   <th
-                    class="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
+                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
                   >
-                    W2S (hard)
+                    W2S<br />(hard)
                   </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">
+                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-4 font-bold text-slate-900">
                     Llama 3.1 8B
                   </td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4">
                     <span
                       class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
                     >
                       Autoregressive
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       96
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       88
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       97
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       97
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
@@ -1205,177 +1207,177 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">Qwen3 4B</td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4 font-bold text-slate-900">Qwen3 4B</td>
+                  <td class="px-4 py-4">
                     <span
                       class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
                     >
                       Autoregressive
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       75
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       97
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       92
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       93
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       97
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       99
                     </div>
                   </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">
+                </tr> -->
+                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-4 font-bold text-slate-900">
                     Claude Haiku 3.5
                   </td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4">
                     <span
                       class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
                     >
                       Autoregressive
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       99
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       99
                     </div>
                   </td>
-                </tr>
+                </tr> -->
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">LLaDA 1.5</td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4 font-bold text-slate-900">LLaDA 1.5</td>
+                  <td class="px-4 py-4">
                     <span
-                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
                     >
                       Parallel (k=2)
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       99
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
                     >
                       18
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       70
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       77
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       89
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
@@ -1384,116 +1386,116 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900"></td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4 font-bold text-slate-900"></td>
+                  <td class="px-4 py-4">
                     <span
-                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
                     >
                       One-by-One (k=1)
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       95
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       74
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
-                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
-                      39
+                      92
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      86
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      83
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">Dream 7B</td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
-                    >
-                      Parallel (k=2)
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      91
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      87
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       99
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                </tr>
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-4 font-bold text-slate-900">Dream 7B</td>
+                  <td class="px-4 py-4">
+                    <span
+                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
+                    >
+                      Parallel (k=2)
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      91
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
+                    >
+                      87
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       85
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       89
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
                     >
@@ -1502,123 +1504,123 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900"></td>
-                  <td class="px-6 py-4">
+                  <td class="px-4 py-4 font-bold text-slate-900"></td>
+                  <td class="px-4 py-4">
                     <span
-                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
+                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
                     >
                       One-by-One (k=1)
                     </span>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       98
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
                     >
                       80
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       100
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
-                    >
-                      35
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
-                    >
-                      66
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      83
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-slate-900">Mercury</td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800"
-                    >
-                      Parallel (k=?)
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
-                      100
+                      97
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
-                      100
+                      96
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      92
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      98
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-4 py-4 text-center">
                     <div
                       class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
                     >
                       93
                     </div>
                   </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
                 </tr>
+                <!-- <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="px-4 py-4 font-bold text-slate-900">Mercury</td>
+                  <td class="px-4 py-4">
+                    <span
+                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
+                    >
+                      Parallel (k=?)
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      100
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      92
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      98
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      93
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    <div
+                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
+                    >
+                      99
+                    </div>
+                  </td>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -2042,10 +2044,10 @@
 @misc{parallelbench2025,
   title={ParallelBench: Understanding the Trade-offs of Parallel Decoding in Diffusion LLMs},
   author={Wonjun Kang and Kevin Galim and Seunghyuk Oh and Minjae Lee and Yuchen Zeng and
-          Shuibai Zhang and Coleman Richard Charles Hooper and Yuezhou Hu and
+          Shuibai Zhang and Coleman Hooper and Yuezhou Hu and
           Hyung Il Koo and Nam Ik Cho and Kangwook Lee},
   year={2025},
-  howpublished={\url{https://parallel-bench.github.io}}
+  howpublished={\url{https://github.com/furiosa-ai/ParallelBench}}
 }
 </pre
             >
