@@ -1625,9 +1625,8 @@
                 Quality Collapse Under Independence
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                When token dependencies exceed the parallel decoding horizon,
-                accuracy can drop by 20–40 points—even on analytically simple
-                tasks—due to factorization error.
+                The accuracy of parallel decoding is proven to collapse when
+                token dependencies exceed the decoding horizon.
               </p>
             </div>
             <div
@@ -1654,9 +1653,8 @@
                 Speed vs. Quality Trade-off
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                Static top-k parallelism rarely nets wins: throughput plateaus
-                (&lt;1.5×) while accuracy degrades (&gt;15 pts). Adaptive
-                thresholds help but still leave large headroom.
+                Using static <i>top-k</i> parallelism results in a sharp drop in
+                quality for a small increase in throughput.
               </p>
             </div>
             <div
@@ -1683,9 +1681,8 @@
                 Adaptivity Is Lacking
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                Current heuristics do not dial back parallelism on hard inputs.
-                Dependency-aware controllers are needed to modulate
-                tokens-per-step per sample.
+                Current heuristics are unable to reduce parallelism when
+                dependencies increase.
               </p>
             </div>
             <div
@@ -1709,12 +1706,11 @@
                 </svg>
               </div>
               <h3 class="text-xl font-bold text-slateInk">
-                Benchmark as a Guide
+                ParallelBench as a Guide
               </h3>
               <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-                ParallelBench localizes failure modes, enabling principled
-                research on hybrid/ semi-AR decoding and improved diffusion
-                objectives.
+                <b>ParallelBench</b> reveals failure modes that are invisible in
+                mathematical and coding benchmarks.
               </p>
             </div>
           </div>
@@ -1914,7 +1910,8 @@
             </span>
             <h3 class="mt-6 text-3xl font-bold text-slateInk">Citation</h3>
             <p class="mt-4 text-slate-600">
-              If you use ParallelBench in your research, please cite our paper:
+              If you use <b>ParallelBench</b> in your research, please cite our
+              paper:
             </p>
           </div>
           <div
