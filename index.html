@@ -407,14 +407,14 @@
               href="https://github.com/furiosa-ai/ParallelBench"
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-center gap-3 rounded-2xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-xl transition-all hover:border-slate-400 hover:shadow-2xl hover:scale-105"
+              class="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-2xl hover:scale-105"
             >
               <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
                 />
               </svg>
-              <span>GitHub Repository</span>
+              <span>Try ParallelBench</span>
               <svg
                 class="h-5 w-5 transition-transform group-hover:translate-x-1"
                 fill="none"
@@ -448,7 +448,7 @@
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              <span>Read the Paper</span>
+              <span>Read Full Paper</span>
               <svg
                 class="h-5 w-5 transition-transform group-hover:translate-x-1"
                 fill="none"
@@ -460,6 +460,38 @@
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </a>
+            <a
+              href="#details"
+              class="group inline-flex items-center gap-3 rounded-2xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-xl transition-all hover:border-slate-400 hover:shadow-2xl hover:scale-105"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+              <span>Explore Tasks</span>
+              <svg
+                class="h-5 w-5 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
                 />
               </svg>
             </a>
@@ -493,15 +525,30 @@
               handling.
             </p>
           </div>
+
+          <!-- Teaser Figure -->
+          <div class="mt-12 mb-8">
+            <img
+              src="assets/images/teaser_figure.png"
+              alt="ParallelBench Teaser: Issue, Analysis, and Benchmark Overview"
+              class="w-full rounded-2xl shadow-xl border border-slate-200"
+            />
+            <p class="mt-4 text-center text-sm text-slate-500 italic">
+              <b>Left:</b> Parallel decoding mixes individually likely tokens into invalid pairs when dependencies are ignored.
+              <b>Middle:</b> Closed-form analyses on list operations quantify accuracy decay as parallelism increases.
+              <b>Right:</b> A realistic benchmark exposes speed–quality trade-offs across dLLMs and decoding strategies.
+            </p>
+          </div>
+
           <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div
               class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
             >
               <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-primary"
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-primary"
               >
                 <svg
-                  class="h-6 w-6 text-white"
+                  class="h-8 w-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -529,10 +576,10 @@
               class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
             >
               <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-primary"
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-primary"
               >
                 <svg
-                  class="h-6 w-6 text-white"
+                  class="h-8 w-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -563,10 +610,10 @@
               class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
             >
               <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-primary"
+                class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-primary"
               >
                 <svg
-                  class="h-6 w-6 text-white"
+                  class="h-8 w-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -606,199 +653,99 @@
               Benchmark Highlights
             </h2>
           </div>
-          <div class="mt-16 grid gap-10 lg:grid-cols-[1.4fr,1fr]">
-            <div class="space-y-8">
-              <p class="text-lg text-slate-600 leading-relaxed">
-                <b>ParallelBench</b> couples synthetic and realistic workloads
-                to isolate where parallel decoding fails. Each family ships gold
-                solutions, baselines, and instrumentation to measure latency,
-                accuracy, and dependency violations under different unmasking
-                policies.
-              </p>
-              <div class="space-y-4">
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="h-6 w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-base text-slate-700">
-                      <strong>17 tasks, 3 families:</strong>
-                      <i>Waiting Line</i> (10), <i>Text Writing</i> (5),
-                      <i>Puzzles</i> (2).
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="h-6 w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-base text-slate-700">
-                      Knobbed difficulty to test parallelizability and adaptive
-                      controllers.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="h-6 w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-base text-slate-700">
-                      Reference implementations for dLLMs and AR baselines.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-1">
-                    <svg
-                      class="h-6 w-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-base text-slate-700">
-                      Evaluation harness for both quality and realized speedup.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 shadow-xl"
-            >
-              <div
-                class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary shadow-lg"
-              >
-                <svg
-                  class="h-7 w-7 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                  />
+          <p class="mx-auto mt-6 mb-12 max-w-3xl text-center text-lg text-slate-600 leading-relaxed">
+            ParallelBench is designed to <b>stress-test parallel decoding</b> where existing benchmarks fall short.
+          </p>
+
+          <div class="mt-12 grid gap-8 md:grid-cols-3">
+            <!-- Card 1: Targeted Design -->
+            <div class="rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-blue-600">
+                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-primary mb-6">What You Get</h3>
-              <ul class="space-y-5">
-                <li class="flex items-start gap-3">
-                  <svg
-                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <div>
-                    <strong class="text-slate-900">Datasets:</strong>
-                    <span class="text-slate-600">
-                      JSON/CSV payloads with gold outputs and scoring
-                      scripts.</span
-                    >
-                  </div>
+              <h3 class="text-xl font-bold text-slateInk mb-3">🎯 Targeted Design</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                17 tasks explicitly designed to expose token dependency failures
+              </p>
+              <ul class="space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-0.5">•</span>
+                  <span>Easy for humans & AR models</span>
                 </li>
-                <li class="flex items-start gap-3">
-                  <svg
-                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <div>
-                    <strong class="text-slate-900">Tracing Tools:</strong>
-                    <span class="text-slate-600">
-                      Hooks to log per-step token dependencies and failure
-                      reasons.</span
-                    >
-                  </div>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-0.5">•</span>
+                  <span>Challenging for dLLMs under parallel decoding</span>
                 </li>
-                <li class="flex items-start gap-3">
-                  <svg
-                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <div>
-                    <strong class="text-slate-900">Reports:</strong>
-                    <span class="text-slate-600">
-                      Ready-made notebooks summarizing baseline
-                      parallelism–accuracy curves.</span
-                    >
-                  </div>
+                <li class="flex items-start gap-2">
+                  <span class="text-primary mt-0.5">•</span>
+                  <span>3 families: Waiting Line, Text Writing, Puzzles</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 2: Difficulty Spectrum -->
+            <div class="rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
+                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slateInk mb-3">📈 Difficulty Spectrum</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                From fully independent to highly sequential tasks
+              </p>
+              <ul class="space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-0.5">•</span>
+                  <span>Adjustable task difficulty (n=3-10)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-0.5">•</span>
+                  <span>Tests model behavior across parallelizability levels</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-500 mt-0.5">•</span>
+                  <span>Enables adaptive controller development</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Comprehensive Evaluation -->
+            <div class="rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600">
+                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slateInk mb-3">🔬 Comprehensive Evaluation</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Beyond accuracy: dependency violations, latency, speedup metrics
+              </p>
+              <ul class="space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="text-orange-500 mt-0.5">•</span>
+                  <span>Gold solutions & scoring scripts</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-orange-500 mt-0.5">•</span>
+                  <span>Baseline results for 6+ models</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-orange-500 mt-0.5">•</span>
+                  <span>Evaluation harness for quality & speedup</span>
                 </li>
               </ul>
             </div>
           </div>
+
         </div>
       </section>
+
       <section
         id="details"
-        class="bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16 lg:py-24"
+        class="bg-gradient-to-b from-white to-slate-50 py-12 sm:py-16 lg:py-24"
       >
         <div class="mx-auto max-w-6xl px-6 lg:px-12">
           <div class="text-center">
@@ -1182,7 +1129,7 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
-                <tr class="hover:bg-blue-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">
                     Llama 3.1 8B
                   </td>
@@ -1193,33 +1140,33 @@
                       Autoregressive
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    96
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      96
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-amber-600"
-                  >
-                    23
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      23
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    88
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
+                      88
+                    </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-blue-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">Qwen3 4B</td>
                   <td class="px-6 py-4">
                     <span
@@ -1228,33 +1175,33 @@
                       Autoregressive
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    75
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
+                      75
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    97
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      97
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    67
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      67
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    92
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      92
+                    </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-blue-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">
                     Claude Haiku 3.5
                   </td>
@@ -1265,33 +1212,33 @@
                       Closed (AR)
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-amber-600"
-                  >
-                    32
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      32
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-amber-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">LLaDA 1.5</td>
                   <td class="px-6 py-4">
                     <span
@@ -1300,29 +1247,33 @@
                       Diffusion (k=2)
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    99
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      99
+                    </div>
                   </td>
-                  <td class="px-6 py-4 text-center font-semibold text-red-600">
-                    18
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      18
+                    </div>
                   </td>
-                  <td class="px-6 py-4 text-center font-semibold text-red-600">
-                    15
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      15
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-amber-600"
-                  >
-                    70
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
+                      70
+                    </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-amber-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">Dream 7B</td>
                   <td class="px-6 py-4">
                     <span
@@ -1331,33 +1282,33 @@
                       Diffusion (k=2)
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    91
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      91
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    87
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800">
+                      87
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-amber-600"
-                  >
-                    27
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      27
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    99
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      99
+                    </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-amber-50/30 transition-colors">
+                <tr class="hover:bg-slate-50/50 transition-colors">
                   <td class="px-6 py-4 font-bold text-slate-900">Mercury</td>
                   <td class="px-6 py-4">
                     <span
@@ -1366,34 +1317,55 @@
                       Closed (Diffusion)
                     </span>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    100
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      100
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    92
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      92
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-amber-600"
-                  >
-                    28
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800">
+                      28
+                    </div>
                   </td>
-                  <td
-                    class="px-6 py-4 text-center font-semibold text-green-600"
-                  >
-                    98
+                  <td class="px-6 py-4 text-center">
+                    <div class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800">
+                      98
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Key Insight -->
+          <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+                <p class="text-sm text-blue-800 leading-relaxed">
+                  dLLMs excel at independent tasks (<span class="font-bold">Copy: 100%</span>) but dramatically collapse on
+                  sequential dependency tasks (<span class="font-bold text-red-600">Replace Index: 15-32%</span>).
+                  Even state-of-the-art closed models struggle with strong token coordination.
+                  <a href="https://arxiv.org/abs/asdf" class="underline font-semibold hover:text-blue-600">See full paper</a>
+                  for comprehensive 17-task analysis.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1665,80 +1637,6 @@
                 accelerate the development of truly efficient dLLMs.
               </p>
             </div>
-          </div>
-
-          <div class="mt-16">
-            <div
-              class="group relative overflow-hidden rounded-3xl border-2 border-slate-200 bg-white shadow-2xl cursor-pointer transition-all hover:shadow-3xl hover:scale-[1.01]"
-              onclick="openImageModal()"
-              onkeydown="if(event.key==='Enter'||event.key===' ')openImageModal()"
-              tabindex="0"
-              role="button"
-              aria-label="Enlarge teaser figure"
-            >
-              <div
-                class="bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-4 border-b border-slate-200 flex items-center justify-between"
-              >
-                <p class="text-sm font-semibold text-slate-700">
-                  📊 Teaser Figure
-                </p>
-                <span class="text-xs text-slate-500 flex items-center gap-1">
-                  <svg
-                    class="w-3 h-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                    />
-                  </svg>
-                  <span class="hidden sm:inline">Click to enlarge</span>
-                  <span class="sm:hidden">Tap to enlarge</span>
-                </span>
-              </div>
-              <div class="p-6 lg:p-8 relative">
-                <img
-                  src="assets/images/teaser_figure.png"
-                  alt="ParallelBench: Overview of limitations, analysis, and benchmark"
-                  class="w-full rounded-xl transition-all group-hover:brightness-95"
-                />
-                <div
-                  class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/5 pointer-events-none"
-                >
-                  <div
-                    class="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg"
-                  >
-                    <svg
-                      class="w-8 h-8 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p
-              class="mt-6 text-center text-sm leading-relaxed text-slate-600 max-w-4xl mx-auto"
-            >
-              <strong>ParallelBench Overview:</strong> (left) Parallel decoding
-              mixes individually likely tokens into invalid pairs when
-              dependencies are ignored (e.g., "New" + "City"). (middle)
-              Closed-form analyses on list operations quantify accuracy decay as
-              parallelism increases. (right) A realistic benchmark exposes
-              speed–quality trade-offs across dLLMs and decoding strategies.
-            </p>
           </div>
 
           <div class="mt-12 flex justify-center">
