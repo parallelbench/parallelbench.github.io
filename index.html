@@ -653,88 +653,190 @@
               Benchmark Highlights
             </h2>
           </div>
-          <p class="mx-auto mt-6 mb-12 max-w-3xl text-center text-lg text-slate-600 leading-relaxed">
-            ParallelBench is designed to <b>stress-test parallel decoding</b> where existing benchmarks fall short.
-          </p>
-
-          <div class="mt-12 grid gap-8 md:grid-cols-3">
-            <!-- Card 1: Targeted Design -->
-            <div class="rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-white p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-blue-600">
-                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk mb-3">🎯 Targeted Design</h3>
-              <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                17 tasks explicitly designed to expose token dependency failures
+          <div class="mt-16 grid gap-10 lg:grid-cols-[1.4fr,1fr]">
+            <div class="space-y-8">
+              <p class="text-lg text-slate-600 leading-relaxed">
+                <b>ParallelBench</b> couples synthetic and realistic workloads
+                to isolate where parallel decoding fails. Each family ships gold
+                solutions, baselines, and instrumentation to measure latency,
+                accuracy, and dependency violations under different unmasking
+                policies.
               </p>
-              <ul class="space-y-2 text-sm text-slate-600">
-                <li class="flex items-start gap-2">
-                  <span class="text-primary mt-0.5">•</span>
-                  <span>Easy for humans & AR models</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-primary mt-0.5">•</span>
-                  <span>Challenging for dLLMs under parallel decoding</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-primary mt-0.5">•</span>
-                  <span>3 families: Waiting Line, Text Writing, Puzzles</span>
-                </li>
-              </ul>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-base text-slate-700">
+                      <strong>17 tasks, 3 families:</strong>
+                      <i>Waiting Line</i> (10), <i>Text Writing</i> (5),
+                      <i>Puzzles</i> (2).
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-base text-slate-700">
+                      Knobbed difficulty to test parallelizability and adaptive
+                      controllers.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-base text-slate-700">
+                      Reference implementations for dLLMs and AR baselines.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 mt-1">
+                    <svg
+                      class="h-6 w-6 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-base text-slate-700">
+                      Evaluation harness for both quality and realized speedup.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <!-- Card 2: Difficulty Spectrum -->
-            <div class="rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600">
-                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <div
+              class="rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 shadow-xl"
+            >
+              <div
+                class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary shadow-lg"
+              >
+                <svg
+                  class="h-7 w-7 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                  />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-slateInk mb-3">📈 Difficulty Spectrum</h3>
-              <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                From fully independent to highly sequential tasks
-              </p>
-              <ul class="space-y-2 text-sm text-slate-600">
-                <li class="flex items-start gap-2">
-                  <span class="text-purple-500 mt-0.5">•</span>
-                  <span>Adjustable task difficulty (n=3-10)</span>
+              <h3 class="text-2xl font-bold text-primary mb-6">What You Get</h3>
+              <ul class="space-y-5">
+                <li class="flex items-start gap-3">
+                  <svg
+                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div>
+                    <strong class="text-slate-900">Datasets:</strong>
+                    <span class="text-slate-600">
+                      JSON/CSV payloads with gold outputs and scoring
+                      scripts.</span
+                    >
+                  </div>
                 </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-purple-500 mt-0.5">•</span>
-                  <span>Tests model behavior across parallelizability levels</span>
+                <li class="flex items-start gap-3">
+                  <svg
+                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div>
+                    <strong class="text-slate-900">Tracing Tools:</strong>
+                    <span class="text-slate-600">
+                      Hooks to log per-step token dependencies and failure
+                      reasons.</span
+                    >
+                  </div>
                 </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-purple-500 mt-0.5">•</span>
-                  <span>Enables adaptive controller development</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Card 3: Comprehensive Evaluation -->
-            <div class="rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600">
-                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slateInk mb-3">🔬 Comprehensive Evaluation</h3>
-              <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                Beyond accuracy: dependency violations, latency, speedup metrics
-              </p>
-              <ul class="space-y-2 text-sm text-slate-600">
-                <li class="flex items-start gap-2">
-                  <span class="text-orange-500 mt-0.5">•</span>
-                  <span>Gold solutions & scoring scripts</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-orange-500 mt-0.5">•</span>
-                  <span>Baseline results for 6+ models</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-orange-500 mt-0.5">•</span>
-                  <span>Evaluation harness for quality & speedup</span>
+                <li class="flex items-start gap-3">
+                  <svg
+                    class="h-5 w-5 text-primary flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div>
+                    <strong class="text-slate-900">Reports:</strong>
+                    <span class="text-slate-600">
+                      Ready-made notebooks summarizing baseline
+                      parallelism–accuracy curves.</span
+                    >
+                  </div>
                 </li>
               </ul>
             </div>
