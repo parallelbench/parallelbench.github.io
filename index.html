@@ -926,313 +926,356 @@
               Performance Results
             </span>
             <h2 class="mt-6 text-4xl font-bold text-slateInk">
-              Baseline Snapshot
+              Evaluation Results on ParallelBench
             </h2>
             <p
               class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              Performance comparison of <u>Parallel</u> versus
-              <u>One-by-One</u> decoding for state-of-the-art dLLMs (LLaDA-1.5,
-              Dream 7B) across tasks in <strong>ParallelBench</strong>.
-              <i>Waiting Line</i> tasks (<i>Copy, Shuffle, Replace Rand</i>)
-              measure output accuracy, while <i>Text Writing</i> tasks (<i
-                >Summarization, W2S</i
-              >) assess grammatical correctness in parallel decoding mode.
+              This section presents evaluation results of state-of-the-art dLLMs
+              (LLaDA-1.5 and Dream 7B) on the <i>Waiting Line</i> benchmark,
+              analyzing the speed-quality trade-offs in parallel decoding. For
+              the full experimental setup and detailed results, please refer to
+              our
+              <a
+                href="https://arxiv.org/abs/asdf"
+                class="underline font-semibold hover:text-blue-600"
+                >paper</a
+              >.
             </p>
           </div>
-          <div
-            class="mt-12 overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl"
-          >
-            <table class="min-w-full divide-y divide-slate-200 text-sm">
-              <thead class="bg-gradient-to-r from-slate-50 to-slate-100">
-                <tr>
-                  <th
-                    class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Model
-                  </th>
-                  <th
-                    class="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Type
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Copy
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Reverse
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Shuffle
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Replace<br />Random
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Summar-<br />ization
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    W2S<br />(easy)
-                  </th>
-                  <th
-                    class="px-4 py-4 text-center text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    W2S<br />(hard)
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100">
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">LLaDA 1.5</td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
-                    >
-                      Parallel (k=2)
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
-                    >
-                      18
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      70
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      77
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      89
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      72
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900"></td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
-                    >
-                      One-by-One (k=1)
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      95
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      74
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      92
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900">Dream 7B</td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800"
-                    >
-                      Parallel (k=2)
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      91
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      87
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      99
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      85
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      89
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800"
-                    >
-                      56
-                    </div>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-4 py-4 font-bold text-slate-900"></td>
-                  <td class="px-4 py-4">
-                    <span
-                      class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-800"
-                    >
-                      One-by-One (k=1)
-                    </span>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      98
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-yellow-100 px-4 py-2 font-bold text-yellow-800"
-                    >
-                      80
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      100
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      97
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      96
-                    </div>
-                  </td>
-                  <td class="px-4 py-4 text-center">
-                    <div
-                      class="inline-flex items-center justify-center rounded-lg bg-green-100 px-4 py-2 font-bold text-green-800"
-                    >
-                      93
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div
+              class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+            >
+              <figure class="w-full">
+                <div class="relative h-96">
+                  <canvas id="lladaChart"></canvas>
+                </div>
+                <figcaption class="mt-4 text-center text-sm text-slate-600">
+                  Performance of <i>LLaDA-1.5</i> on <i>Copy</i>,
+                  <i>Replace Index</i>, <i>Replace Random</i>, and
+                  <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div
+              class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+            >
+              <figure class="w-full">
+                <div class="relative h-96">
+                  <canvas id="dreamChart"></canvas>
+                </div>
+                <figcaption class="mt-4 text-center text-sm text-slate-600">
+                  Performance of <i>Dream 7B</i> on <i>Copy</i>,
+                  <i>Replace Index</i>, <i>Replace Random</i>, and
+                  <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+                </figcaption>
+              </figure>
+            </div>
           </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+          <script>
+            const ctx = document.getElementById('lladaChart').getContext('2d');
+            new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: [1, 2, 4, 8, 16, 32],
+                datasets: [
+                  {
+                    label: 'Copy',
+                    data: [100, 100, 100, 100, 100, 98],
+                    borderColor: 'rgb(249, 115, 22)',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Replace Idx.',
+                    data: [43, 42, 38, 38, 35, 25],
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Replace Rand.',
+                    data: [99, 79, 71, 39, 21, 8],
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Shuffle',
+                    data: [100, 30, 27, 4, 3, 1],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false,
+                },
+                plugins: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      font: {
+                        size: 14,
+                        weight: 'bold',
+                      },
+                      padding: 15,
+                      usePointStyle: true,
+                      pointStyle: 'circle',
+                      boxWidth: 15,
+                      boxHeight: 15,
+                    },
+                    maxWidth: 500,
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    titleFont: {
+                      size: 14,
+                      weight: 'bold',
+                    },
+                    bodyFont: {
+                      size: 13,
+                    },
+                    callbacks: {
+                      label: function (context) {
+                        return (
+                          context.dataset.label + ': ' + context.parsed.y + '%'
+                        );
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    type: 'linear',
+                    title: {
+                      display: true,
+                      text: '# Tokens per Step',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: 0,
+                    max: 35,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    ticks: {
+                      values: [1, 2, 4, 8, 16, 32],
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                    },
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: 'Accuracy (%)',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: -10,
+                    max: 110,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    afterBuildTicks: function (axis) {
+                      axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                        value: v,
+                      }));
+                    },
+                    ticks: {
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                      callback: function (value) {
+                        return value + '%';
+                      },
+                    },
+                  },
+                },
+              },
+            });
+
+            // Second chart - Speed
+            const ctx2 = document.getElementById('dreamChart').getContext('2d');
+            new Chart(ctx2, {
+              type: 'line',
+              data: {
+                labels: [1, 2, 4, 8, 16, 32],
+                datasets: [
+                  {
+                    label: 'Copy',
+                    data: [100, 100, 100, 100, 100, 100],
+                    borderColor: 'rgb(249, 115, 22)',
+                    backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Replace Idx.',
+                    data: [27, 26, 24, 26, 27, 24],
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Replace Rand.',
+                    data: [99, 100, 53, 27, 17, 3],
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                  {
+                    label: 'Shuffle',
+                    data: [99, 99, 9, 0, 0, 0],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false,
+                },
+                plugins: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      font: {
+                        size: 14,
+                        weight: 'bold',
+                      },
+                      padding: 15,
+                      usePointStyle: true,
+                      pointStyle: 'circle',
+                      boxWidth: 15,
+                      boxHeight: 15,
+                    },
+                    maxWidth: 500,
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    titleFont: {
+                      size: 14,
+                      weight: 'bold',
+                    },
+                    bodyFont: {
+                      size: 13,
+                    },
+                    callbacks: {
+                      label: function (context) {
+                        return (
+                          context.dataset.label + ': ' + context.parsed.y + '%'
+                        );
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    type: 'linear',
+                    title: {
+                      display: true,
+                      text: '# Tokens per Step',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: 0,
+                    max: 35,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    ticks: {
+                      values: [1, 2, 4, 8, 16, 32],
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                    },
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: 'Accuracy (%)',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: -10,
+                    max: 110,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    afterBuildTicks: function (axis) {
+                      axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                        value: v,
+                      }));
+                    },
+                    ticks: {
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                      callback: function (value) {
+                        return value + '%';
+                      },
+                    },
+                  },
+                },
+              },
+            });
+          </script>
 
           <!-- Key Insight -->
           <div
@@ -1259,19 +1302,307 @@
                   💡 Key Insight
                 </h3>
                 <p class="text-sm text-blue-800 leading-relaxed">
-                  Both LLaDA and Dream achieve (almost) perfect scores across
-                  the benchmark with <i>One-by-One</i> decoding. However,
-                  <i>Parallel</i> decoding show significant degradation on
-                  <i>Shuffle</i> compared to <i>One-by-One</i> and
-                  <i>Replace Rand</i>. <i>Text Writing</i> tasks reveal
-                  performance degradation in dLLMs, with scores ranging from
-                  56-93% compared to near-perfect AR performance.
+                  Both <i>LLaDA-1.5</i> and <i>Dream 7B</i> show moderate
+                  performance degradation on the <i>Replace Index</i> task as
+                  parallelism increases. However, <i>Replace Random</i> and
+                  <i>Shuffle</i> tasks, which have stronger token dependencies,
+                  exhibit significantly steeper accuracy drops with increased
+                  parallelism, with <i>Shuffle</i> being the most affected.
                   <a
                     href="https://arxiv.org/abs/asdf"
                     class="underline font-semibold hover:text-blue-600"
                     >See full paper</a
                   >
                   for comprehensive 17-task analysis.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+          >
+            <figure class="w-full">
+              <div class="relative h-[600px]">
+                <canvas id="tradeoffChart"></canvas>
+              </div>
+              <figcaption class="mt-4 text-center text-sm text-slate-600">
+                <i>Parallelism</i> vs. <i>Accuracy</i> Trade-off on the
+                <strong>ParallelBench</strong> for various decoding strategies
+                with <i>LLaDA-1.5</i>.
+              </figcaption>
+            </figure>
+          </div>
+
+          <script>
+            const ctx3 = document
+              .getElementById('tradeoffChart')
+              .getContext('2d');
+            new Chart(ctx3, {
+              type: 'scatter',
+              data: {
+                datasets: [
+                  {
+                    label: 'Entropy',
+                    data: [
+                      { x: 1.0, y: 85.04 },
+                      { x: 2.0, y: 68.2 },
+                      { x: 4.0, y: 53.37 },
+                      { x: 8.0, y: 38.43 },
+                      { x: 16.0, y: 26.6 },
+                      { x: 32.0, y: 16.8 },
+                    ],
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgb(59, 130, 246)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Left to Right',
+                    data: [
+                      { x: 1.0, y: 78.07 },
+                      { x: 2.0, y: 58.56 },
+                      { x: 4.0, y: 31.39 },
+                      { x: 8.0, y: 21.39 },
+                      { x: 16.0, y: 17.0 },
+                      { x: 32.0, y: 16.7 },
+                    ],
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgb(168, 85, 247)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Random',
+                    data: [
+                      { x: 1.0, y: 75.81 },
+                      { x: 2.0, y: 67.74 },
+                      { x: 4.0, y: 63.04 },
+                      { x: 8.0, y: 47.27 },
+                      { x: 16.0, y: 32.89 },
+                      { x: 32.0, y: 20.0 },
+                    ],
+                    borderColor: 'rgb(14, 165, 233)',
+                    backgroundColor: 'rgb(14, 165, 233)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Top-k Margin',
+                    data: [
+                      { x: 1.0, y: 86.03 },
+                      { x: 2.0, y: 68.23 },
+                      { x: 4.0, y: 57.47 },
+                      { x: 8.0, y: 39.84 },
+                      { x: 16.0, y: 27.2 },
+                      { x: 32.0, y: 16.5 },
+                    ],
+                    borderColor: 'rgb(236, 72, 153)',
+                    backgroundColor: 'rgb(236, 72, 153)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Low Confidence',
+                    data: [
+                      { x: 1.0, y: 86.36 },
+                      { x: 2.0, y: 68.91 },
+                      { x: 4.0, y: 55.68 },
+                      { x: 8.0, y: 38.63 },
+                      { x: 16.0, y: 26.7 },
+                      { x: 32.0, y: 16.5 },
+                    ],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgb(34, 197, 94)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Low Confidence Factor',
+                    data: [
+                      { x: 7.46, y: 79.43 },
+                      { x: 8.29, y: 75.05 },
+                      { x: 9.05, y: 70.27 },
+                      { x: 9.83, y: 68.16 },
+                      { x: 10.47, y: 63.69 },
+                    ],
+                    borderColor: 'rgb(239, 68, 68)',
+                    backgroundColor: 'rgb(239, 68, 68)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Low Confidence Threshold',
+                    data: [
+                      { x: 3.1, y: 86.16 },
+                      { x: 7.8, y: 84.06 },
+                      { x: 9.8, y: 77.17 },
+                      { x: 11.56, y: 67.29 },
+                      { x: 13.46, y: 58.69 },
+                      { x: 15.94, y: 47.0 },
+                    ],
+                    borderColor: 'rgb(234, 179, 8)',
+                    backgroundColor: 'rgb(234, 179, 8)',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                  },
+                  {
+                    label: 'Low Confidence Threshold Oracle',
+                    data: [{ x: 13.44, y: 88.11 }],
+                    borderColor: 'rgb(234, 179, 8)',
+                    backgroundColor: 'rgb(234, 179, 8)',
+                    pointRadius: 12,
+                    pointHoverRadius: 14,
+                    pointStyle: 'star',
+                    borderWidth: 3,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false,
+                },
+                plugins: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      font: {
+                        size: 14,
+                        weight: 'bold',
+                      },
+                      padding: 15,
+                      usePointStyle: true,
+                      boxWidth: 15,
+                      boxHeight: 15,
+                    },
+                    maxWidth: 500,
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    titleFont: {
+                      size: 14,
+                      weight: 'bold',
+                    },
+                    bodyFont: {
+                      size: 13,
+                    },
+                    callbacks: {
+                      label: function (context) {
+                        return (
+                          context.dataset.label + ': ' + context.parsed.y + '%'
+                        );
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    type: 'linear',
+                    title: {
+                      display: true,
+                      text: 'Parallelism (# Tokens per Step)',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: 0,
+                    max: 35,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    ticks: {
+                      values: [1, 2, 4, 8, 16, 32],
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                    },
+                  },
+                  y: {
+                    title: {
+                      display: true,
+                      text: 'Accuracy (%)',
+                      font: {
+                        size: 16,
+                        weight: 'bold',
+                      },
+                      color: '#334155',
+                    },
+                    min: -10,
+                    max: 110,
+                    grid: {
+                      color: 'rgba(148, 163, 184, 0.1)',
+                    },
+                    afterBuildTicks: function (axis) {
+                      axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                        value: v,
+                      }));
+                    },
+                    ticks: {
+                      font: {
+                        size: 12,
+                      },
+                      color: '#64748b',
+                      callback: function (value) {
+                        return value + '%';
+                      },
+                    },
+                  },
+                },
+              },
+            });
+          </script>
+
+          <!-- Key Insight -->
+          <div
+            class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6"
+          >
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <svg
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-blue-900 mb-2">
+                  💡 Key Insight
+                </h3>
+                <p class="text-sm text-blue-800 leading-relaxed">
+                  Static unmasking methods (e.g., <i>Entropy</i>) show dramatic
+                  accuracy drops as parallelism increases, while adaptive
+                  methods (e.g., <i>Low Confidence Threshold</i>) achieve
+                  superior trade-offs. However, the oracle performance—using
+                  optimal per-sample thresholds—demonstrates that even the best
+                  current methods remain far from optimal, achieving both higher
+                  accuracy and greater speedup. This gap reveals substantial
+                  room for future research in adaptive unmasking strategies.
+                  <!-- Both <i>LLaDA-1.5</i> and <i>Dream 7B</i> show moderate
+                  performance degradation on the <i>Replace Index</i> task as
+                  parallelism increases. However, <i>Replace Random</i> and
+                  <i>Shuffle</i> tasks, which have stronger token dependencies,
+                  exhibit significantly steeper accuracy drops with increased
+                  parallelism, with <i>Shuffle</i> being the most affected. -->
+                  <!-- <a
+                    href="https://arxiv.org/abs/asdf"
+                    class="underline font-semibold hover:text-blue-600"
+                    >See full paper</a
+                  >
+                  for comprehensive 17-task analysis. -->
                 </p>
               </div>
             </div>
