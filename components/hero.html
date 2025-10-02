@@ -1,0 +1,222 @@
+<section
+  class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-white"
+>
+  <!-- Animated background elements -->
+  <div
+    class="absolute -top-24 right-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl animate-pulse"
+  ></div>
+  <div
+    class="absolute -bottom-24 left-0 h-96 w-96 rounded-full bg-purple-500/5 blur-3xl animate-pulse"
+    style="animation-delay: 1s"
+  ></div>
+  <div
+    class="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-3xl"
+  ></div>
+
+  <div
+    class="relative mx-auto max-w-6xl px-6 pb-12 pt-12 text-center sm:pb-16 sm:pt-14 lg:px-12 lg:pb-32 lg:pt-24"
+  >
+    <!-- Logo -->
+    <div class="mx-auto mb-8 flex w-full max-w-md flex-col items-center">
+      <img
+        src="assets/images/logo.png"
+        alt="ParallelBench logo"
+        class="h-32 object-cover"
+      />
+    </div>
+
+    <!-- Title -->
+    <h1
+      class="mx-auto max-w-5xl text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-7xl"
+    >
+      <span
+        class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent"
+      >
+        ParallelBench
+      </span>
+    </h1>
+    <h2
+      class="mx-auto mt-6 max-w-4xl text-2xl font-semibold leading-relaxed text-slate-700 sm:text-3xl"
+    >
+      Understanding the Trade-offs of Parallel Decoding in Diffusion LLMs
+    </h2>
+
+    <!-- Description -->
+    <p
+      class="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-slate-600 lg:text-xl"
+    >
+      Diffusion LLMs (dLLMs) promise faster generation via parallel decoding.
+      However, this speed often comes at the cost of quality, as they ignore
+      token dependencies, an issue that existing benchmarks do not sufficiently
+      capture. To address this issue, we introduce
+      <strong class="font-bold text-primary">ParallelBench</strong>,
+      <strong>the first benchmark</strong> designed to rigorously test this
+      trade-off through <strong>realistic</strong> tasks that humans and
+      autoregressive (AR) LLMs can easily solve, but which cause dLLMs to
+      collapse as parallelism grows. We release
+      <strong class="font-bold text-primary">ParallelBench</strong> to drive
+      research towards truly efficient dLLMs that can overcome this challenge.
+    </p>
+
+    <!-- Authors -->
+    <div class="mt-12 space-y-6">
+      <div class="mx-auto max-w-4xl text-base text-slate-600 leading-relaxed">
+        Wonjun Kang*<sup>1,5</sup>, Kevin Galim*<sup>1</sup>, Seunghyuk
+        Oh*<sup>1</sup>, Minjae Lee<sup>1</sup>, Yuchen Zeng<sup>2,3</sup>,
+        Shuibai Zhang<sup>2</sup>, Coleman Hooper<sup>4</sup>, Yuezhou
+        Hu<sup>4</sup>, Hyung Il Koo<sup>1</sup>, Nam Ik Cho<sup>5</sup>,
+        Kangwook Lee<sup>2,6</sup>
+      </div>
+
+      <!-- Affiliations -->
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs">
+        <a
+          href="https://www.furiosa.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>1</sup> FuriosaAI
+        </a>
+        <a
+          href="https://www.wisc.edu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>2</sup> UW-Madison
+        </a>
+        <a
+          href="https://www.microsoft.com/en-us/research/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>3</sup> Microsoft Research
+        </a>
+        <a
+          href="https://www.berkeley.edu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>4</sup> UC Berkeley
+        </a>
+        <a
+          href="https://www.snu.ac.kr/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>5</sup> Seoul National University
+        </a>
+        <a
+          href="https://www.krafton.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-slate-100 px-4 py-2 font-semibold text-slate-700 transition hover:bg-primary/10 hover:text-primary"
+        >
+          <sup>6</sup> KRAFTON AI
+        </a>
+      </div>
+
+      <p class="text-sm text-slate-500">*Equal Contribution</p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="https://github.com/furiosa-ai/ParallelBench"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-600 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:from-purple-600 hover:to-purple-700 hover:shadow-2xl hover:scale-105"
+      >
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+          />
+        </svg>
+        <span>Try ParallelBench</span>
+        <svg
+          class="h-5 w-5 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7l5 5m0 0l-5 5m5-5H6"
+          />
+        </svg>
+      </a>
+      <a
+        href="assets/pdf/ParallelBench.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-3 rounded-2xl border-2 border-primary bg-gradient-to-r from-primary to-primary/90 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:shadow-2xl hover:scale-105"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          />
+        </svg>
+        <span>Read Full Paper</span>
+        <svg
+          class="h-5 w-5 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7l5 5m0 0l-5 5m5-5H6"
+          />
+        </svg>
+      </a>
+      <a
+        href="#benchmark"
+        class="group inline-flex items-center gap-3 rounded-2xl border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-xl transition-all hover:border-slate-400 hover:shadow-2xl hover:scale-105"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+          />
+        </svg>
+        <span>Explore Benchmark</span>
+        <svg
+          class="h-5 w-5 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,486 @@
+// Initialize all charts after components are loaded
+function initializeCharts() {
+  // Check if Chart.js is loaded
+  if (typeof Chart === 'undefined') {
+    console.error('Chart.js is not loaded');
+    return;
+  }
+
+  // LLaDA Chart
+  const ctx = document.getElementById('lladaChart');
+  if (ctx) {
+    new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [1, 2, 4, 8, 16, 32],
+        datasets: [
+          {
+            label: 'Copy',
+            data: [100, 100, 100, 100, 100, 98],
+            borderColor: 'rgb(249, 115, 22)',
+            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Replace Idx.',
+            data: [43, 42, 38, 38, 35, 25],
+            borderColor: 'rgb(59, 130, 246)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Replace Rand.',
+            data: [99, 79, 71, 39, 21, 8],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Shuffle',
+            data: [100, 30, 27, 4, 3, 1],
+            borderColor: 'rgb(34, 197, 94)',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: '# Tokens per Step',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 0,
+            max: 35,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            ticks: {
+              values: [1, 2, 4, 8, 16, 32],
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Dream Chart
+  const ctx2 = document.getElementById('dreamChart');
+  if (ctx2) {
+    new Chart(ctx2.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [1, 2, 4, 8, 16, 32],
+        datasets: [
+          {
+            label: 'Copy',
+            data: [100, 100, 100, 100, 100, 100],
+            borderColor: 'rgb(249, 115, 22)',
+            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Replace Idx.',
+            data: [27, 26, 24, 26, 27, 24],
+            borderColor: 'rgb(59, 130, 246)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Replace Rand.',
+            data: [99, 100, 53, 27, 17, 3],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Shuffle',
+            data: [99, 99, 9, 0, 0, 0],
+            borderColor: 'rgb(34, 197, 94)',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: '# Tokens per Step',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 0,
+            max: 35,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            ticks: {
+              values: [1, 2, 4, 8, 16, 32],
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Trade-off Chart
+  const ctx3 = document.getElementById('tradeoffChart');
+  if (ctx3) {
+    new Chart(ctx3.getContext('2d'), {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: 'Random Top-k',
+            data: [
+              { x: 1.0, y: 75.81 },
+              { x: 2.0, y: 67.74 },
+              { x: 4.0, y: 63.04 },
+              { x: 8.0, y: 47.27 },
+              { x: 16.0, y: 32.89 },
+              { x: 32.0, y: 20.0 },
+            ],
+            borderColor: 'rgb(14, 165, 233)',
+            backgroundColor: 'rgb(14, 165, 233)',
+            pointRadius: 6,
+            pointHoverRadius: 8,
+          },
+          {
+            label: 'Left to Right Top-k',
+            data: [
+              { x: 1.0, y: 78.07 },
+              { x: 2.0, y: 58.56 },
+              { x: 4.0, y: 31.39 },
+              { x: 8.0, y: 21.39 },
+              { x: 16.0, y: 17.0 },
+              { x: 32.0, y: 16.7 },
+            ],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgb(168, 85, 247)',
+            pointRadius: 6,
+            pointHoverRadius: 8,
+          },
+          {
+            label: 'Confidence Top-k',
+            data: [
+              { x: 1.0, y: 86.36 },
+              { x: 2.0, y: 68.91 },
+              { x: 4.0, y: 55.68 },
+              { x: 8.0, y: 38.63 },
+              { x: 16.0, y: 26.7 },
+              { x: 32.0, y: 16.5 },
+            ],
+            borderColor: 'rgb(34, 197, 94)',
+            backgroundColor: 'rgb(34, 197, 94)',
+            pointRadius: 6,
+            pointHoverRadius: 8,
+          },
+          {
+            label: 'Confidence Threshold',
+            data: [
+              { x: 3.1, y: 86.16 },
+              { x: 7.8, y: 84.06 },
+              { x: 9.8, y: 77.17 },
+              { x: 11.56, y: 67.29 },
+              { x: 13.46, y: 58.69 },
+              { x: 15.94, y: 47.0 },
+            ],
+            borderColor: 'rgb(234, 179, 8)',
+            backgroundColor: 'rgb(234, 179, 8)',
+            pointRadius: 6,
+            pointHoverRadius: 8,
+          },
+          {
+            label: 'Confidence Threshold (Oracle)',
+            data: [{ x: 13.44, y: 88.11 }],
+            borderColor: 'rgb(234, 179, 8)',
+            backgroundColor: 'rgb(234, 179, 8)',
+            pointRadius: 12,
+            pointHoverRadius: 14,
+            pointStyle: 'star',
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: 'Parallelism (# Tokens per Step)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 0,
+            max: 35,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            ticks: {
+              values: [1, 2, 4, 8, 16, 32],
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+}

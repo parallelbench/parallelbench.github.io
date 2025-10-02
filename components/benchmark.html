@@ -1,0 +1,259 @@
+<section
+  id="benchmark"
+  class="bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16 lg:py-24"
+>
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="text-center mb-12">
+      <span
+        class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        What's Included
+      </span>
+      <h2 class="mt-6 text-4xl font-bold text-slateInk">Benchmark Overview</h2>
+      <p class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed">
+        We introduce <b>ParallelBench</b>, a comprehensive benchmark consisting
+        of 17 realistic tasks across 3 categories, designed to systematically
+        evaluate the speed-quality trade-offs of dLLMs.
+
+        <!-- systematically evaluates the speed-quality
+            trade-offs of parallel decoding in dLLMs, capturing quality
+            degradation that standard benchmarks fail to expose. -->
+      </p>
+    </div>
+
+    <!-- Task Cards -->
+    <div class="grid gap-6 md:grid-cols-3">
+      <!-- Waiting Line Card -->
+      <div
+        onclick="openModal('waitingLine')"
+        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('waitingLine')"
+        tabindex="0"
+        role="button"
+        aria-label="View Waiting Line task examples"
+        class="card-hover group cursor-pointer rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/40 transition-all duration-300"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk mb-2">Waiting Line</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          <i>Waiting Line</i> is a set of list operations (e.g., shuffle,
+          replace) manipulating realistic customer service scenarios. The number
+          of customers <i>n</i> serves as a controlled variable for adjusting
+          difficulty.
+          <!-- Ten simple list manipulation tasks (e.g., copy, reverse,
+              replace, shuffle) with varying list lengths.  -->
+          <!-- These tasks exhibit
+              <u>different levels of token dependency</u>, ranging from
+              independent to highly dependent operations. -->
+        </p>
+        <div class="flex items-center gap-2 text-primary font-semibold text-sm">
+          <span>View Examples</span>
+          <svg
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+        <div class="mt-4 text-xs text-slate-500 font-semibold">
+          <span class="inline-block bg-primary/10 px-3 py-1 rounded-full"
+            >10 tasks</span
+          >
+        </div>
+      </div>
+
+      <!-- Text Writing Card -->
+      <div
+        onclick="openModal('textWriting')"
+        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('textWriting')"
+        tabindex="0"
+        role="button"
+        aria-label="View Text Writing task examples"
+        class="card-hover group cursor-pointer rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-500 to-slate-600"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk mb-2">Text Writing</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          <i>Text Writing</i> consists of five text generation tasks:
+          <i>summarization, paraphrasing, words-to-sentence generation</i>. We
+          introduce a <i>Grammar Score</i> metric that imposes stronger
+          token-level dependencies.
+        </p>
+        <div class="flex items-center gap-2 text-primary font-semibold text-sm">
+          <span>View Examples</span>
+          <svg
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+        <div class="mt-4 text-xs text-slate-500 font-semibold">
+          <span class="inline-block bg-slate-100 px-3 py-1 rounded-full"
+            >5 tasks</span
+          >
+        </div>
+      </div>
+
+      <!-- Puzzles Card -->
+      <div
+        onclick="openModal('puzzles')"
+        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('puzzles')"
+        tabindex="0"
+        role="button"
+        aria-label="View Puzzles task examples"
+        class="card-hover group cursor-pointer rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk mb-2">Puzzles</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          <i>Puzzles</i> consists of two classic puzzle tasks: <i>Sudoku</i>,
+          which has a unique solution, and <i>Latin Square</i>, which has
+          multiple valid solutions. This fundamental difference in solution
+          space highlights the distinct failure modes of dLLMs.
+        </p>
+        <div class="flex items-center gap-2 text-primary font-semibold text-sm">
+          <span>View Examples</span>
+          <svg
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+        <div class="mt-4 text-xs text-slate-500 font-semibold">
+          <span class="inline-block bg-slate-100 px-3 py-1 rounded-full"
+            >2 tasks</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      id="taskModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4"
+      onclick="closeModal(event)"
+    >
+      <div
+        class="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 opacity-0 scale-95"
+        onclick="event.stopPropagation()"
+      >
+        <!-- Modal Header -->
+        <div
+          class="sticky top-0 z-10 bg-white border-b border-slate-200 px-6 py-5"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="p-2 rounded-xl bg-slate-100">
+                <svg
+                  id="modalIcon"
+                  class="w-6 h-6 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                ></svg>
+              </div>
+              <h3 id="modalTitle" class="text-xl font-bold text-slate-900">
+                <span></span>
+              </h3>
+            </div>
+            <button
+              onclick="closeModal()"
+              class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal Content -->
+        <div
+          id="modalContent"
+          class="overflow-y-auto px-6 py-6 space-y-8 bg-slate-50"
+          style="max-height: calc(90vh - 84px)"
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,136 @@
+<section
+  id="overview"
+  class="bg-gradient-to-b from-white to-slate-50 py-12 sm:py-16 lg:py-24"
+>
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="text-center">
+      <span
+        class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        Core Contributions
+      </span>
+      <h2 class="mt-6 text-4xl font-bold text-slateInk">Why ParallelBench?</h2>
+      <p class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed">
+        Parallel decoding is fast, but not free. Under conditional independence
+        assumption, parallel decoding ignore dependencies, resulting in a drop
+        in quality when tokens depend on each other. We provide
+        information-theoretic analysis and quantitatively evaluate this
+        trade-off using synthetic list operation tasks.
+      </p>
+    </div>
+
+    <!-- Teaser Figure -->
+    <div class="mt-12 mb-8">
+      <img
+        src="assets/images/teaser_figure.png"
+        alt="ParallelBench Teaser: Issue, Analysis, and Benchmark Overview"
+        class="w-full rounded-2xl shadow-xl border border-slate-200 p-2 lg:p-4"
+      />
+      <p class="mt-4 text-center text-sm text-slate-500 italic">
+        <b>Left:</b> Parallel decoding fails to capture token dependencies,
+        risking incorrect combinations of individually likely tokens(e.g., "New"
+        and "City"). <b>Middle:</b> Quantitative analysis of parallel decoding
+        performance on list operations. <b>Right:</b> Based on our findings, we
+        develop a realistic benchmark to evaluate the speed-quality trade-off of
+        parallel decoding methods.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-primary"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk">
+          Information-Theoretic Analysis
+        </h3>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+          Proves that
+          <u>parallel decoding has fundamental error bounds</u> when tokens
+          depend on each other, showing even perfect models struggle as we
+          increase parallelism on tasks requiring strong token coordination.
+        </p>
+      </div>
+      <div
+        class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-primary"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk">
+          Quantitative Case Studies
+        </h3>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+          Analytically tractable synthetic list operations (<i
+            >Copy, Replace, Shuffle</i
+          >) with closed-form accuracy formulas demonstrate fundamental
+          limitations:
+          <u
+            >specific tasks show inevitable quality degradation under parallel
+            decoding</u
+          >.
+        </p>
+      </div>
+      <div
+        class="card-static group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:border-primary/30"
+      >
+        <div
+          class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-primary"
+        >
+          <svg
+            class="h-8 w-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+            />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-slateInk">
+          Realistic Benchmark Tasks
+        </h3>
+        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+          Seventeen tasks across
+          <i>Waiting Line, Text Writing, and Puzzles</i>—all
+          <u>trivial for humans</u> and <u>AR LLMs</u>—reveal severe quality
+          degradation in dLLMs under parallel decoding in real-world scenarios.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

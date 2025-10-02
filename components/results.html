@@ -1,0 +1,144 @@
+<section id="leaderboard" class="bg-white py-12 sm:py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="text-center">
+      <span
+        class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+      >
+        Performance Results
+      </span>
+      <h2 class="mt-6 text-4xl font-bold text-slateInk">
+        Evaluation Results on ParallelBench
+      </h2>
+      <p class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed">
+        This section presents evaluation results of state-of-the-art dLLMs
+        (LLaDA-1.5 and Dream 7B) on the <i>Waiting Line</i> benchmark, analyzing
+        the speed-quality trade-offs in parallel decoding. For the full
+        experimental setup and detailed results, please refer to our
+        <a
+          href="assets/pdf/ParallelBench.pdf"
+          class="underline font-semibold hover:text-blue-600"
+          >paper</a
+        >.
+      </p>
+    </div>
+    <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div
+        class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+      >
+        <figure class="w-full">
+          <div class="relative h-96">
+            <canvas id="lladaChart"></canvas>
+          </div>
+          <figcaption class="mt-4 text-center text-sm text-slate-600">
+            Performance of <i>LLaDA-1.5</i> on <i>Copy</i>,
+            <i>Replace Index</i>, <i>Replace Random</i>, and
+            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div
+        class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+      >
+        <figure class="w-full">
+          <div class="relative h-96">
+            <canvas id="dreamChart"></canvas>
+          </div>
+          <figcaption class="mt-4 text-center text-sm text-slate-600">
+            Performance of <i>Dream 7B</i> on <i>Copy</i>, <i>Replace Index</i>,
+            <i>Replace Random</i>, and <i>Shuffle</i> tasks from the
+            <i>Waiting Line</i>.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+    <!-- Key Insight -->
+    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <svg
+            class="h-6 w-6 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+          <p class="text-sm text-blue-800 leading-relaxed">
+            Both <i>LLaDA-1.5</i> and <i>Dream 7B</i> show moderate performance
+            degradation on the <i>Replace Index</i> task as parallelism
+            increases. However, <i>Replace Random</i> and <i>Shuffle</i> tasks,
+            which have stronger token dependencies, exhibit significantly
+            steeper accuracy drops with increased parallelism, with
+            <i>Shuffle</i> being the most affected.
+            <a
+              href="assets/pdf/ParallelBench.pdf"
+              class="underline font-semibold hover:text-blue-600"
+              >See full paper</a
+            >
+            for comprehensive 17-task analysis.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+    >
+      <figure class="w-full">
+        <div class="relative h-[600px]">
+          <canvas id="tradeoffChart"></canvas>
+        </div>
+        <figcaption class="mt-4 text-center text-sm text-slate-600">
+          <i>Parallelism</i> vs. <i>Accuracy</i> Trade-off on the
+          <strong>ParallelBench</strong> for various decoding strategies with
+          <i>LLaDA-1.5</i>.
+        </figcaption>
+      </figure>
+    </div>
+
+
+    <!-- Key Insight -->
+    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <svg
+            class="h-6 w-6 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+          <p class="text-sm text-blue-800 leading-relaxed">
+            Static unmasking methods (e.g., <i>Top-K</i>) show dramatic accuracy
+            drops as parallelism increases, while adaptive methods (e.g.,
+            <i>Threshold</i>) achieve superior trade-offs. However, the oracle
+            performance—using optimal per-sample thresholds—demonstrates that
+            even the best current methods remain far from optimal, achieving
+            both higher accuracy and greater speedup. This gap reveals
+            substantial room for future research in adaptive unmasking
+            strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
