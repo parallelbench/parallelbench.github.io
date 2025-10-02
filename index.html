@@ -1342,37 +1342,7 @@
               data: {
                 datasets: [
                   {
-                    label: 'Entropy',
-                    data: [
-                      { x: 1.0, y: 85.04 },
-                      { x: 2.0, y: 68.2 },
-                      { x: 4.0, y: 53.37 },
-                      { x: 8.0, y: 38.43 },
-                      { x: 16.0, y: 26.6 },
-                      { x: 32.0, y: 16.8 },
-                    ],
-                    borderColor: 'rgb(59, 130, 246)',
-                    backgroundColor: 'rgb(59, 130, 246)',
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                  },
-                  {
-                    label: 'Left to Right',
-                    data: [
-                      { x: 1.0, y: 78.07 },
-                      { x: 2.0, y: 58.56 },
-                      { x: 4.0, y: 31.39 },
-                      { x: 8.0, y: 21.39 },
-                      { x: 16.0, y: 17.0 },
-                      { x: 32.0, y: 16.7 },
-                    ],
-                    borderColor: 'rgb(168, 85, 247)',
-                    backgroundColor: 'rgb(168, 85, 247)',
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                  },
-                  {
-                    label: 'Random',
+                    label: 'Random Top-k',
                     data: [
                       { x: 1.0, y: 75.81 },
                       { x: 2.0, y: 67.74 },
@@ -1387,22 +1357,22 @@
                     pointHoverRadius: 8,
                   },
                   {
-                    label: 'Top-k Margin',
+                    label: 'Left to Right Top-k',
                     data: [
-                      { x: 1.0, y: 86.03 },
-                      { x: 2.0, y: 68.23 },
-                      { x: 4.0, y: 57.47 },
-                      { x: 8.0, y: 39.84 },
-                      { x: 16.0, y: 27.2 },
-                      { x: 32.0, y: 16.5 },
+                      { x: 1.0, y: 78.07 },
+                      { x: 2.0, y: 58.56 },
+                      { x: 4.0, y: 31.39 },
+                      { x: 8.0, y: 21.39 },
+                      { x: 16.0, y: 17.0 },
+                      { x: 32.0, y: 16.7 },
                     ],
-                    borderColor: 'rgb(236, 72, 153)',
-                    backgroundColor: 'rgb(236, 72, 153)',
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgb(168, 85, 247)',
                     pointRadius: 6,
                     pointHoverRadius: 8,
                   },
                   {
-                    label: 'Low Confidence',
+                    label: 'Confidence Top-k',
                     data: [
                       { x: 1.0, y: 86.36 },
                       { x: 2.0, y: 68.91 },
@@ -1417,21 +1387,7 @@
                     pointHoverRadius: 8,
                   },
                   {
-                    label: 'Low Confidence Factor',
-                    data: [
-                      { x: 7.46, y: 79.43 },
-                      { x: 8.29, y: 75.05 },
-                      { x: 9.05, y: 70.27 },
-                      { x: 9.83, y: 68.16 },
-                      { x: 10.47, y: 63.69 },
-                    ],
-                    borderColor: 'rgb(239, 68, 68)',
-                    backgroundColor: 'rgb(239, 68, 68)',
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                  },
-                  {
-                    label: 'Low Confidence Threshold',
+                    label: 'Confidence Threshold',
                     data: [
                       { x: 3.1, y: 86.16 },
                       { x: 7.8, y: 84.06 },
@@ -1446,7 +1402,7 @@
                     pointHoverRadius: 8,
                   },
                   {
-                    label: 'Low Confidence Threshold Oracle',
+                    label: 'Confidence Threshold (Oracle)',
                     data: [{ x: 13.44, y: 88.11 }],
                     borderColor: 'rgb(234, 179, 8)',
                     backgroundColor: 'rgb(234, 179, 8)',
@@ -1583,26 +1539,14 @@
                   💡 Key Insight
                 </h3>
                 <p class="text-sm text-blue-800 leading-relaxed">
-                  Static unmasking methods (e.g., <i>Entropy</i>) show dramatic
+                  Static unmasking methods (e.g., <i>Top-K</i>) show dramatic
                   accuracy drops as parallelism increases, while adaptive
-                  methods (e.g., <i>Low Confidence Threshold</i>) achieve
-                  superior trade-offs. However, the oracle performance—using
-                  optimal per-sample thresholds—demonstrates that even the best
-                  current methods remain far from optimal, achieving both higher
-                  accuracy and greater speedup. This gap reveals substantial
-                  room for future research in adaptive unmasking strategies.
-                  <!-- Both <i>LLaDA-1.5</i> and <i>Dream 7B</i> show moderate
-                  performance degradation on the <i>Replace Index</i> task as
-                  parallelism increases. However, <i>Replace Random</i> and
-                  <i>Shuffle</i> tasks, which have stronger token dependencies,
-                  exhibit significantly steeper accuracy drops with increased
-                  parallelism, with <i>Shuffle</i> being the most affected. -->
-                  <!-- <a
-                    href="https://arxiv.org/abs/asdf"
-                    class="underline font-semibold hover:text-blue-600"
-                    >See full paper</a
-                  >
-                  for comprehensive 17-task analysis. -->
+                  methods (e.g., <i>Threshold</i>) achieve superior trade-offs.
+                  However, the oracle performance—using optimal per-sample
+                  thresholds—demonstrates that even the best current methods
+                  remain far from optimal, achieving both higher accuracy and
+                  greater speedup. This gap reveals substantial room for future
+                  research in adaptive unmasking strategies.
                 </p>
               </div>
             </div>
