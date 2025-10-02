@@ -537,12 +537,13 @@
               class="w-full rounded-2xl shadow-xl border border-slate-200 p-2 lg:p-4"
             />
             <p class="mt-4 text-center text-sm text-slate-500 italic">
-              <b>Left:</b> Parallel decoding mixes individually likely tokens
-              into invalid pairs when dependencies are ignored.
-              <b>Middle:</b> Closed-form analyses on list operations quantify
-              accuracy decay as parallelism increases. <b>Right:</b> A realistic
-              benchmark exposes speed–quality trade-offs across dLLMs and
-              decoding strategies.
+              <b>Left:</b> Parallel decoding fails to capture token
+              dependencies, risking incorrect combinations of individually
+              likely tokens(e.g., "New" and "City"). <b>Middle:</b> Quantitative
+              analysis of parallel decoding performance on list operations.
+              <b>Right:</b> Based on our findings, we develop a realistic
+              benchmark to evaluate the speed-quality trade-off of parallel
+              decoding methods.
             </p>
           </div>
 
@@ -2060,11 +2061,12 @@
         >
           <p class="text-xs sm:text-sm leading-relaxed text-white/90">
             <strong>ParallelBench Overview:</strong> (left) Parallel decoding
-            mixes individually likely tokens into invalid pairs when
-            dependencies are ignored (e.g., "New" + "City"). (middle)
-            Closed-form analyses on list operations quantify accuracy decay as
-            parallelism increases. (right) A realistic benchmark exposes
-            speed–quality trade-offs across dLLMs and decoding strategies.
+            fails to capture token dependencies, risking incorrect combinations
+            of individually likely tokens(e.g., "New" and "City"). (middle)
+            Quantitative analysis of parallel decoding performance on list
+            operations. (right) Based on our findings, we develop a realistic
+            benchmark to evaluate the speed-quality trade-off of parallel
+            decoding methods.
           </p>
         </div>
 
