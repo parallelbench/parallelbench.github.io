@@ -519,13 +519,11 @@
             <p
               class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed"
             >
-              Parallel decoding is fast, but not free. When outputs require
-              token-to-token coordination, factorized predictions ignore
-              dependencies, resulting in a drop in quality. Existing
-              <i>math/coding</i> benchmarks rarely expose this.
-              <b>ParallelBench</b> closes the gap with information-theoretic
-              analysis and tasks explicitly designed to stress dependency
-              handling.
+              Parallel decoding is fast, but not free. Under conditional
+              independence assumption, parallel decoding ignore dependencies,
+              resulting in a drop in quality when tokens depend on each other.
+              We provide information-theoretic analysis and quantitatively
+              evaluate this trade-off using synthetic list operation tasks.
             </p>
           </div>
 
