@@ -69,7 +69,8 @@ function initializeCharts() {
         responsive: true,
         maintainAspectRatio: false,
         interaction: {
-          mode: 'index',
+          mode: 'nearest',
+          axis: 'x',
           intersect: false,
         },
         plugins: {
@@ -226,7 +227,7 @@ function initializeCharts() {
         responsive: true,
         maintainAspectRatio: false,
         interaction: {
-          mode: 'index',
+          mode: 'x',
           intersect: false,
         },
         plugins: {
@@ -412,7 +413,7 @@ function initializeCharts() {
         responsive: true,
         maintainAspectRatio: false,
         interaction: {
-          mode: 'index',
+          mode: 'x',
           intersect: false,
         },
         plugins: {
