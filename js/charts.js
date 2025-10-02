@@ -1,3 +1,12 @@
+// Format numbers for tooltip display, trimming trailing zeros for decimals
+function formatTooltipNumber(value) {
+  if (typeof value !== 'number' || !isFinite(value)) {
+    return value;
+  }
+  const rounded = Math.round(value);
+  return Math.abs(value - rounded) < 1e-6 ? rounded : parseFloat(value.toFixed(2));
+}
+
 // Initialize all charts after components are loaded
 function initializeCharts() {
   // Check if Chart.js is loaded
@@ -90,6 +99,13 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return '# Tokens per Step: ' + formatTooltipNumber(xValue);
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
@@ -240,6 +256,13 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return '# Tokens per Step: ' + formatTooltipNumber(xValue);
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
@@ -418,6 +441,15 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return (
+                  'Parallelism: ' + formatTooltipNumber(xValue) + ' tokens per step'
+                );
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
@@ -548,6 +580,13 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return '# Names in Question: ' + formatTooltipNumber(xValue);
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
@@ -682,6 +721,13 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return '# Names in Question: ' + formatTooltipNumber(xValue);
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
@@ -816,6 +862,13 @@ function initializeCharts() {
               size: 13,
             },
             callbacks: {
+              title: function (context) {
+                if (!context.length) return '';
+                const point = context[0];
+                const xValue =
+                  typeof point.parsed?.x !== 'undefined' ? point.parsed.x : point.label;
+                return '# Names in Question: ' + formatTooltipNumber(xValue);
+              },
               label: function (context) {
                 return context.dataset.label + ': ' + context.parsed.y + '%';
               },
