@@ -156,11 +156,6 @@ function openModal(taskId) {
 
   // Set content
   modalContent.innerHTML = `
-          <!-- <div class="p-5 rounded-xl bg-white border border-slate-200 shadow-sm">
-            <p class="text-sm text-slate-600 leading-relaxed">${
-              task.description
-            }</p>
-          </div> -->
           ${task.examples
             .map(
               (example) => `
