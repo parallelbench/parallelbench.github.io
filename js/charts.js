@@ -7,9 +7,9 @@ function initializeCharts() {
   }
 
   // LLaDA Chart
-  const ctx = document.getElementById('lladaChart');
-  if (ctx) {
-    new Chart(ctx.getContext('2d'), {
+  const lladaCtx = document.getElementById('lladaChart');
+  if (lladaCtx) {
+    new Chart(lladaCtx.getContext('2d'), {
       type: 'line',
       data: {
         labels: [1, 2, 4, 8, 16, 32],
@@ -157,9 +157,9 @@ function initializeCharts() {
   }
 
   // Dream Chart
-  const ctx2 = document.getElementById('dreamChart');
-  if (ctx2) {
-    new Chart(ctx2.getContext('2d'), {
+  const dreamCtx = document.getElementById('dreamChart');
+  if (dreamCtx) {
+    new Chart(dreamCtx.getContext('2d'), {
       type: 'line',
       data: {
         labels: [1, 2, 4, 8, 16, 32],
@@ -307,9 +307,9 @@ function initializeCharts() {
   }
 
   // Trade-off Chart
-  const ctx3 = document.getElementById('tradeoffChart');
-  if (ctx3) {
-    new Chart(ctx3.getContext('2d'), {
+  const tradeoffCtx = document.getElementById('tradeoffChart');
+  if (tradeoffCtx) {
+    new Chart(tradeoffCtx.getContext('2d'), {
       type: 'scatter',
       data: {
         datasets: [
