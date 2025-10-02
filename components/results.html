@@ -90,55 +90,6 @@
         </div>
       </div>
     </div>
-    <!-- Trade-off -->
-    <div
-      class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
-    >
-      <figure class="w-full">
-        <div class="relative h-[600px]">
-          <canvas id="tradeoffChart"></canvas>
-        </div>
-        <figcaption class="mt-4 text-center text-sm text-slate-600">
-          <i>Parallelism</i> vs. <i>Accuracy</i> Trade-off on the
-          <strong>ParallelBench</strong> for various decoding strategies with
-          <i>LLaDA-1.5</i>.
-        </figcaption>
-      </figure>
-    </div>
-
-    <!-- Key Insight -->
-    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-blue-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
-          <p class="text-sm text-blue-800 leading-relaxed">
-            Static unmasking methods (e.g., <i>Top-K</i>) show dramatic accuracy
-            drops as parallelism increases, while adaptive methods (e.g.,
-            <i>Threshold</i>) achieve superior trade-offs. However, the oracle
-            performance—using optimal per-sample thresholds—demonstrates that
-            even the best current methods remain far from optimal, achieving
-            both higher accuracy and greater speedup. This gap reveals
-            substantial room for future research in adaptive unmasking
-            strategies.
-          </p>
-        </div>
-      </div>
-    </div>
 
     <!--Mercury Claude Qwen -->
     <div class="mt-24 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -219,6 +170,56 @@
             >. This suggests <i>Mercury</i> has difficulty adaptively managing
             parallelism to preserve quality on tasks with strong token
             dependencies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trade-off -->
+    <div
+      class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+    >
+      <figure class="w-full">
+        <div class="relative h-[600px]">
+          <canvas id="tradeoffChart"></canvas>
+        </div>
+        <figcaption class="mt-4 text-center text-sm text-slate-600">
+          <i>Parallelism</i> vs. <i>Accuracy</i> Trade-off on the
+          <strong>ParallelBench</strong> for various decoding strategies with
+          <i>LLaDA-1.5</i>.
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Key Insight -->
+    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <svg
+            class="h-6 w-6 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+          <p class="text-sm text-blue-800 leading-relaxed">
+            Static unmasking methods (e.g., <i>Top-K</i>) show dramatic accuracy
+            drops as parallelism increases, while adaptive methods (e.g.,
+            <i>Threshold</i>) achieve superior trade-offs. However, the oracle
+            performance—using optimal per-sample thresholds—demonstrates that
+            even the best current methods remain far from optimal, achieving
+            both higher accuracy and greater speedup. This gap reveals
+            substantial room for future research in adaptive unmasking
+            strategies.
           </p>
         </div>
       </div>
