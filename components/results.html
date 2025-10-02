@@ -21,6 +21,7 @@
         >.
       </p>
     </div>
+    <!-- LLaDA and Dream -->
     <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div
         class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
@@ -52,8 +53,6 @@
         </figure>
       </div>
     </div>
-
-
     <!-- Key Insight -->
     <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
       <div class="flex items-start gap-4">
@@ -91,6 +90,7 @@
         </div>
       </div>
     </div>
+    <!-- Trade-off -->
     <div
       class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
     >
@@ -105,7 +105,6 @@
         </figcaption>
       </figure>
     </div>
-
 
     <!-- Key Insight -->
     <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
@@ -136,6 +135,90 @@
             both higher accuracy and greater speedup. This gap reveals
             substantial room for future research in adaptive unmasking
             strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Mercury Claude Qwen -->
+    <div class="mt-24 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div
+        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+      >
+        <figure class="w-full">
+          <div class="relative h-80">
+            <canvas id="mercuryChart"></canvas>
+          </div>
+          <figcaption class="mt-4 text-center text-sm text-slate-600">
+            Performance of <i>Mercury</i> on <i>Reverse</i>, and
+            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div
+        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+      >
+        <figure class="w-full">
+          <div class="relative h-80">
+            <canvas id="claudeChart"></canvas>
+          </div>
+          <figcaption class="mt-4 text-center text-sm text-slate-600">
+            Performance of <i>Claude 3.5 Haiku</i> on <i>Reverse</i>, and
+            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+          </figcaption>
+        </figure>
+      </div>
+      <div
+        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+      >
+        <figure class="w-full">
+          <div class="relative h-80">
+            <canvas id="qwenChart"></canvas>
+          </div>
+          <figcaption class="mt-4 text-center text-sm text-slate-600">
+            Performance of <i>Qwen 3 4B</i> on <i>Reverse</i>, and
+            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <!-- Key Insight -->
+    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+          <svg
+            class="h-6 w-6 text-blue-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
+          <p class="text-sm text-blue-800 leading-relaxed">
+            Our findings extend to closed-source dLLM <i>Mercury</i> as well.
+            <i>Mercury</i>
+            and AR LLMs exhibit opposite accuracy trends on
+            <i>Reverse</i> and <i>Shuffle</i> tasks. While
+            <i>Reverse</i> requires exact token order and is generally harder
+            than <i>Shuffle</i>,
+            <u>AR LLMs achieve higher accuracy on <i>Shuffle</i></u
+            >. In contrast, <i>Mercury</i> maintains near-perfect accuracy on
+            <i>Reverse</i> but
+            <u
+              >its performance drops sharply on <i>Shuffle</i> as parallelism
+              increases</u
+            >. This suggests <i>Mercury</i> has difficulty adaptively managing
+            parallelism to preserve quality on tasks with strong token
+            dependencies.
           </p>
         </div>
       </div>

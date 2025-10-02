@@ -483,4 +483,406 @@ function initializeCharts() {
       },
     });
   }
+
+  // Mercury Chart
+  const mercuryCtx = document.getElementById('mercuryChart');
+  if (mercuryCtx) {
+    new Chart(mercuryCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        datasets: [
+          {
+            label: 'Reverse',
+            data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 99, 99, 100],
+            borderColor: 'rgb(59, 130, 246)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Shuffle',
+            data: [100, 100, 100, 100, 100, 100, 96, 99, 90, 95, 92, 86, 67, 68, 49, 39],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: '# Names in Question (n)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 3,
+            max: 22,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [5, 10, 15, 20].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Claude Chart
+  const claudeCtx = document.getElementById('claudeChart');
+  if (claudeCtx) {
+    new Chart(claudeCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        datasets: [
+          {
+            label: 'Reverse',
+            data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+            borderColor: 'rgb(59, 130, 246)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Shuffle',
+            data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: '# Names in Question (n)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 3,
+            max: 22,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [5, 10, 15, 20].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // Qwen Chart
+  const qwenCtx = document.getElementById('qwenChart');
+  if (qwenCtx) {
+    new Chart(qwenCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        datasets: [
+          {
+            label: 'Reverse',
+            data: [100, 99, 98, 98, 93, 84, 85, 82, 80, 74, 75, 59, 56, 46, 44, 42],
+            borderColor: 'rgb(59, 130, 246)',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+          {
+            label: 'Shuffle',
+            data: [100, 100, 100, 100, 100, 98, 99, 99, 99, 99, 97, 95, 92, 87, 74, 78],
+            borderColor: 'rgb(168, 85, 247)',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              padding: 15,
+              usePointStyle: true,
+              pointStyle: 'circle',
+              boxWidth: 15,
+              boxHeight: 15,
+            },
+            maxWidth: 500,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            padding: 12,
+            titleFont: {
+              size: 14,
+              weight: 'bold',
+            },
+            bodyFont: {
+              size: 13,
+            },
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.parsed.y + '%';
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: '# Names in Question (n)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: 3,
+            max: 22,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [5, 10, 15, 20].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Accuracy (%)',
+              font: {
+                size: 16,
+                weight: 'bold',
+              },
+              color: '#334155',
+            },
+            min: -10,
+            max: 110,
+            grid: {
+              color: 'rgba(148, 163, 184, 0.1)',
+            },
+            afterBuildTicks: function (axis) {
+              axis.ticks = [0, 20, 40, 60, 80, 100].map((v) => ({
+                value: v,
+              }));
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+              color: '#64748b',
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
 }
