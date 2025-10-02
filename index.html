@@ -319,15 +319,18 @@
           <p
             class="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-slate-600 lg:text-xl"
           >
-            Diffusion LLMs (dLLMs) promise massive speedups via parallel
-            decoding, but their conditional-independence assumption breaks when
-            tokens must coordinate.
-            <span class="font-bold text-primary">ParallelBench</span> is the
-            first benchmark designed explicitly for this failure mode. It pairs
-            tractable theory with realistic tasks that humans and Autoregressive
-            (AR) LLMs solve easily—but where dLLMs collapse as parallelism
-            grows—making the speed-quality trade-off measurable and comparable
-            across models and decoding strategies.
+            Diffusion LLMs (dLLMs) promise faster generation via parallel
+            decoding. However, this speed often comes at the cost of quality, as
+            they ignore token dependencies, an issue that existing benchmarks do
+            not sufficiently capture. To address this issue, we introduce
+            <strong class="font-bold text-primary">ParallelBench</strong>,
+            <strong>the first benchmark</strong> designed to rigorously test
+            this trade-off through <strong>realistic</strong> tasks that humans
+            and autoregressive (AR) LLMs can easily solve, but which cause dLLMs
+            to collapse as parallelism grows. We release
+            <strong class="font-bold text-primary">ParallelBench</strong> to
+            drive research towards truly efficient dLLMs that can overcome this
+            challenge.
           </p>
 
           <!-- Authors -->
