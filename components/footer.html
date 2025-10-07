@@ -4,63 +4,63 @@
 >
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
     <!-- Citation Section -->
-    <div class="mb-16">
-          <div class="text-center mb-8">
-            <span
-              class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+    <!-- <div class="mb-16">
+      <div class="text-center mb-8">
+        <span
+          class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+        >
+          Reference
+        </span>
+        <h3 class="mt-6 text-3xl font-bold text-slateInk">Citation</h3>
+        <p class="mt-4 text-slate-600">
+          If you use <b>ParallelBench</b> in your research, please cite our
+          paper:
+        </p>
+      </div>
+      <div
+        class="rounded-3xl border-2 border-slate-200 bg-white shadow-xl overflow-hidden"
+      >
+        <div
+          class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-4 flex items-center justify-between border-b border-slate-700"
+        >
+          <div class="flex items-center gap-2">
+            <svg
+              class="h-5 w-5 text-green-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
             >
-              Reference
-            </span>
-            <h3 class="mt-6 text-3xl font-bold text-slateInk">Citation</h3>
-            <p class="mt-4 text-slate-600">
-              If you use <b>ParallelBench</b> in your research, please cite our
-              paper:
-            </p>
+              <path
+                fill-rule="evenodd"
+                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="text-sm font-semibold text-slate-300">BibTeX</span>
           </div>
-          <div
-            class="rounded-3xl border-2 border-slate-200 bg-white shadow-xl overflow-hidden"
+          <button
+            onclick="copyToClipboard()"
+            class="flex items-center gap-2 rounded-lg bg-primary/20 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/30"
           >
-            <div
-              class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-4 flex items-center justify-between border-b border-slate-700"
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="h-5 w-5 text-green-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span class="text-sm font-semibold text-slate-300">BibTeX</span>
-              </div>
-              <button
-                onclick="copyToClipboard()"
-                class="flex items-center gap-2 rounded-lg bg-primary/20 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/30"
-              >
-                <svg
-                  class="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                  />
-                </svg>
-                Copy
-              </button>
-            </div>
-            <pre
-              id="citation-text"
-              class="overflow-x-auto bg-slate-900 p-8 text-sm text-slate-100 leading-relaxed"
-            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre
+          id="citation-text"
+          class="overflow-x-auto bg-slate-900 p-8 text-sm text-slate-100 leading-relaxed"
+        >
 @misc{kang2025parallelbenchunderstandingtradeoffsparallel,
       title={ParallelBench: Understanding the Trade-offs of Parallel Decoding in Diffusion LLMs}, 
       author={Wonjun Kang and Kevin Galim and Seunghyuk Oh and Minjae Lee and Yuchen Zeng and Shuibai Zhang and Coleman Hooper and Yuezhou Hu and Hyung Il Koo and Nam Ik Cho and Kangwook Lee},
@@ -70,9 +70,10 @@
       primaryClass={cs.LG},
       url={https://arxiv.org/abs/2510.04767}, 
 }
-</pre>
-          </div>
-        </div>
+</pre
+        >
+      </div>
+    </div> -->
 
     <!-- Footer Links and Info -->
     <div class="grid gap-12 border-t-2 border-slate-200 pt-12 md:grid-cols-3">
