@@ -208,7 +208,7 @@
         // Load charts.js first, then main.js
         const chartsScript = document.createElement('script');
         chartsScript.src = 'js/charts.js';
-        chartsScript.onload = function() {
+        chartsScript.onload = function () {
           // Initialize charts after charts.js is loaded
           if (typeof initializeCharts === 'function') {
             initializeCharts();
