@@ -1,5 +1,5 @@
 <section id="results" class="bg-slate-50 py-16 sm:py-20 lg:py-28">
-  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+  <div class="mx-auto max-w-5xl px-6 lg:px-12">
     <div class="text-center mb-16">
       <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
         Results on ParallelBench
@@ -7,8 +7,8 @@
       <p
         class="mx-auto mt-5 max-w-4xl text-base text-slate-600 leading-relaxed"
       >
-        Evaluation of <b>LLaDA 1.5</b> across all 17 tasks reveals systematic
-        quality degradation as parallelism increases.
+        Evaluation of <b>LLaDA 1.5</b> across tasks reveals systematic quality
+        degradation as parallelism increases.
       </p>
     </div>
 
@@ -21,11 +21,9 @@
       </h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <!-- Copy -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/copy.png"
@@ -42,11 +40,9 @@
         </figure>
 
         <!-- Reverse -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/reverse.png"
@@ -63,11 +59,9 @@
         </figure>
 
         <!-- Replace Index -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/replace_index.png"
@@ -84,11 +78,9 @@
         </figure>
 
         <!-- Replace Random -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/replace_random.png"
@@ -105,11 +97,9 @@
         </figure>
 
         <!-- Shuffle -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/shuffle.png"
@@ -126,11 +116,9 @@
         </figure>
 
         <!-- Sort -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/sort.png"
@@ -150,9 +138,7 @@
       <!-- Key Insight Box -->
       <div class="rounded-lg bg-blue-50 border border-blue-200 p-5">
         <div class="flex items-start gap-3">
-          <div
-            class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600"
-          >
+          <div class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600">
             <svg
               class="h-5 w-5"
               fill="none"
@@ -169,7 +155,6 @@
           </div>
           <div>
             <h4 class="text-sm font-semibold text-slate-900 mb-1">
-              
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
@@ -194,11 +179,9 @@
       </h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <!-- Paraphrasing -->
-        <figure
-          class="my-4"
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/paraphrasing.png"
@@ -215,18 +198,9 @@
         </figure>
 
         <!-- W2S Easy -->
-        <figure
-          class="my-4"
-          onclick="
-            openImageZoomModal(
-              'assets/figures/results/w2s_easy.png',
-              'Words-to-Sentence (Easy)',
-              'Performance on the easy Words-to-Sentence task. Relatively stable with moderate parallelism.',
-            )
-          "
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/w2s_easy.png"
@@ -243,18 +217,9 @@
         </figure>
 
         <!-- W2S Hard -->
-        <figure
-          class="my-4"
-          onclick="
-            openImageZoomModal(
-              'assets/figures/results/w2s_hard.png',
-              'Words-to-Sentence (Hard)',
-              'Performance on the hard Words-to-Sentence task. Shows more significant degradation as difficulty increases.',
-            )
-          "
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/w2s_hard.png"
@@ -281,18 +246,9 @@
       </h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6">
         <!-- Sudoku -->
-        <figure
-          class="my-4"
-          onclick="
-            openImageZoomModal(
-              'assets/figures/results/sudoku.png',
-              'Sudoku (4x4)',
-              'Performance on 4x4 Sudoku puzzles with unique solutions. C(Y|X)=0 means parallel decoding maintains accuracy.',
-            )
-          "
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/sudoku.png"
@@ -309,18 +265,9 @@
         </figure>
 
         <!-- Latin Square -->
-        <figure
-          class="my-4"
-          onclick="
-            openImageZoomModal(
-              'assets/figures/results/latin_square.png',
-              'Latin Square (4x4)',
-              'Performance on 4x4 Latin Square puzzles with multiple valid solutions. C(Y|X)>0 causes rapid accuracy degradation under parallelization.',
-            )
-          "
-        >
+        <figure class="my-4">
           <div
-            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm"
           >
             <img
               src="assets/figures/results/latin_square.png"
@@ -339,12 +286,10 @@
 
       <!-- Key Insight Box -->
       <div
-        class="rounded-lg bg-blue-50 border border-blue-200 p-5 max-w-3xl mx-auto"
+        class="rounded-lg bg-blue-50 border border-blue-200 p-5 max-w-5xl mx-auto"
       >
         <div class="flex items-start gap-3">
-          <div
-            class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600"
-          >
+          <div class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600">
             <svg
               class="h-5 w-5"
               fill="none"
@@ -361,7 +306,6 @@
           </div>
           <div>
             <h4 class="text-sm font-semibold text-slate-900 mb-1">
-              
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
