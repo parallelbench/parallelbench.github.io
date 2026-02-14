@@ -7,9 +7,8 @@
       <p
         class="mx-auto mt-4 max-w-3xl text-base text-slate-600 leading-relaxed"
       >
-        We introduce <b>ParallelBench</b>, a comprehensive benchmark consisting
-        of 17 realistic tasks across 3 categories, designed to systematically
-        evaluate the speed-quality trade-offs of dLLMs.
+        <b>ParallelBench</b> consists of 17 tasks across 3 categories. Each task
+        exposes different aspects of the speed-quality trade-off in dLLMs.
       </p>
     </div>
 
@@ -30,7 +29,7 @@
           />
         </div>
         <figcaption class="mt-3 text-center text-sm text-slate-500 italic">
-          ParallelBench covers a broad spectrum of tasks positioned by
+          ParallelBench covers a range of tasks positioned by
           <b>parallelizability</b> and <b>order preference</b>. Tasks requiring
           strong left-to-right ordering (bottom-right) are most challenging for
           parallel decoding.
@@ -190,8 +189,7 @@
         <p class="text-sm text-slate-600 leading-relaxed mb-4">
           <i>Puzzles</i> consists of two classic puzzle tasks: <i>Sudoku</i>,
           which has a unique solution, and <i>Latin Square</i>, which has
-          multiple valid solutions. This fundamental difference in solution
-          space highlights how conditional total correlation C(Y|X) affects parallel decoding.
+           multiple valid solutions. This difference in solution space affects parallel decoding differently based on conditional total correlation C(Y|X).
         </p>
         <div class="mt-auto space-y-3">
           <div
