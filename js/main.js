@@ -7,47 +7,47 @@ if (toggleButton) {
   });
 }
 
-// Image modal functions
-function openImageModal() {
-  const modal = document.getElementById('imageModal');
+// Generic image zoom modal functions
+function openImageZoomModal(imageSrc, title, caption) {
+  const modal = document.getElementById('imageZoomModal');
+  const modalImage = document.getElementById('zoomModalImage');
+  const modalTitle = document.getElementById('zoomModalTitle');
+  const modalCaption = document.getElementById('zoomModalCaption');
+
+  // Set image source and alt text
+  modalImage.src = imageSrc;
+  modalImage.alt = title;
+
+  // Set title
+  modalTitle.textContent = title;
+
+  // Set caption (optional)
+  if (caption) {
+    modalCaption.querySelector('p').textContent = caption;
+    modalCaption.classList.remove('hidden');
+  } else {
+    modalCaption.classList.add('hidden');
+  }
+
+  // Show modal
   modal.classList.remove('hidden');
   modal.classList.add('flex');
   document.body.style.overflow = 'hidden';
 }
 
-function closeImageModal() {
-  const modal = document.getElementById('imageModal');
+function closeImageZoomModal() {
+  const modal = document.getElementById('imageZoomModal');
   modal.classList.remove('flex');
   modal.classList.add('hidden');
   document.body.style.overflow = '';
 }
 
-// Close modal on Escape key
+// Close image zoom modal on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    closeImageModal();
+    closeImageZoomModal();
   }
 });
-
-// Toggle abstract expand/collapse on mobile
-function toggleAbstract() {
-  const readMoreContainer = document.getElementById('readMoreContainer');
-  const readLessContainer = document.getElementById('readLessContainer');
-
-  if (readLessContainer.classList.contains('hidden')) {
-    // Expand
-    readMoreContainer.classList.add('hidden');
-    readLessContainer.classList.remove('hidden');
-  } else {
-    // Collapse
-    readMoreContainer.classList.remove('hidden');
-    readLessContainer.classList.add('hidden');
-    // Scroll back to abstract section
-    document
-      .getElementById('abstract')
-      .scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
 
 // Modal functionality
 const taskData = {

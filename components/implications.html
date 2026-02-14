@@ -1,0 +1,200 @@
+<section id="implications" class="bg-slate-50 py-12 sm:py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
+        The Speed-Quality Trade-off
+      </h2>
+      <p
+        class="mx-auto mt-4 max-w-3xl text-base text-slate-600 leading-relaxed"
+      >
+        Current parallel decoding strategies are far from optimal. Oracle
+        performance reveals substantial room for improvement.
+      </p>
+    </div>
+
+    <!-- Main Trade-off Figure -->
+    <div class="mb-16">
+      <figure
+        class="cursor-pointer mx-auto max-w-3xl"
+        onclick="openImageZoomModal('assets/figures/tradeoff.png', 'Speed-Quality Trade-off', 'Accuracy vs. tokens-per-step for different unmasking strategies on LLaDA 1.5. Static methods (Top-K) degrade rapidly; adaptive methods (Threshold) perform better. The Oracle (star) shows that even the best current methods are far from optimal, achieving 88% accuracy at 13.4 tokens per step.')"
+      >
+        <div
+          class="rounded-xl border border-slate-200 bg-white p-4 lg:p-6 transition hover:shadow-md"
+        >
+          <img
+            src="assets/figures/tradeoff.png"
+            alt="Speed-Quality Trade-off with Oracle Performance"
+            class="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-center text-sm text-slate-500 italic">
+          <b>Accuracy vs. Tokens-per-Step</b> for different unmasking
+          strategies. Static methods (Top-K) degrade rapidly, while adaptive
+          methods (Threshold) achieve better trade-offs. The <b>Oracle</b>
+          (star) demonstrates the gap between current approaches and optimal
+          performance.
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Key Insight Box -->
+    <div class="rounded-lg bg-blue-50 border border-blue-200 p-6 mb-16 max-w-4xl mx-auto">
+      <div class="flex items-start">
+        <div
+          class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600 mr-3"
+        >
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-slate-900 mb-1">Key Insight</h4>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            Current parallel decoding strategies struggle to adapt their degree
+            of parallelism based on task difficulty. The Oracle achieves
+            <b>88% accuracy at 13.4 tokens per step</b>, while existing methods
+            plateau far below this. This gap underscores the pressing need for
+            innovative, <u>adaptive decoding methods</u> that can overcome the
+            current speed-quality trade-off.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Techniques Section -->
+    <div>
+      <h3 class="text-2xl font-bold text-slate-900 mb-4 text-center">
+        Can Advanced Techniques Help?
+      </h3>
+      <p class="text-center text-base text-slate-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+        We evaluate advanced techniques including fine-tuning, chain-of-thought
+        prompting, and specialized decoding methods (ReMDM, RCR). While some
+        show modest improvements, <b>none fully solve</b> the fundamental
+        speed-quality trade-off.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Pretrained -->
+        <figure
+          class="cursor-pointer"
+          onclick="openImageZoomModal('assets/figures/advanced/pretrained.png', 'Pretrained', 'Baseline pretrained LLaDA 1.5 performance on Waiting Line tasks.')"
+        >
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-2 transition hover:shadow-md hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/advanced/pretrained.png"
+              alt="Pretrained results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Pretrained
+          </figcaption>
+        </figure>
+
+        <!-- Fine-tuned -->
+        <figure
+          class="cursor-pointer"
+          onclick="openImageZoomModal('assets/figures/advanced/finetuned.png', 'Fine-tuned', 'Performance after fine-tuning on Waiting Line tasks. Shows marginal improvements.')"
+        >
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-2 transition hover:shadow-md hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/advanced/finetuned.png"
+              alt="Fine-tuned results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Fine-tuned
+          </figcaption>
+        </figure>
+
+        <!-- Chain-of-Thought -->
+        <figure
+          class="cursor-pointer"
+          onclick="openImageZoomModal('assets/figures/advanced/cot.png', 'Chain-of-Thought', 'Performance with chain-of-thought prompting. Limited effectiveness on parallel decoding challenges.')"
+        >
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-2 transition hover:shadow-md hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/advanced/cot.png"
+              alt="Chain-of-Thought results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Chain-of-Thought
+          </figcaption>
+        </figure>
+
+        <!-- ReMDM -->
+        <figure
+          class="cursor-pointer"
+          onclick="openImageZoomModal('assets/figures/advanced/remdm.png', 'ReMDM', 'Performance with ReMDM remasking sampler. Shows some improvement on certain tasks.')"
+        >
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-2 transition hover:shadow-md hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/advanced/remdm.png"
+              alt="ReMDM results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            ReMDM
+          </figcaption>
+        </figure>
+
+        <!-- RCR -->
+        <figure
+          class="cursor-pointer"
+          onclick="openImageZoomModal('assets/figures/advanced/rcr.png', 'RCR', 'Performance with RCR (Recurrence Candidate Refinement). Modest gains but fundamental limitations remain.')"
+        >
+          <div
+            class="rounded-xl border border-slate-200 bg-white p-2 transition hover:shadow-md hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/advanced/rcr.png"
+              alt="RCR results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            RCR
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

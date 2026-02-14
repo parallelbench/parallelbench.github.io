@@ -1,27 +1,24 @@
 <header
-  class="sticky top-0 z-50 border-b-2 border-slate-200/50 bg-white/80 backdrop-blur-xl shadow-sm"
+  class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm"
 >
   <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
+    class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3 lg:px-12"
   >
     <a
       href="#top"
-      class="group flex items-center gap-3 text-lg font-bold text-slate-900 transition-all hover:scale-105"
+      class="flex items-center gap-2.5 text-base font-bold text-slate-900 transition hover:opacity-80"
     >
       <img
         src="assets/images/logo.png"
         alt="ParallelBench logo"
-        class="h-10 object-cover transition-all group-hover:scale-110"
+        class="h-8 object-cover"
       />
-      <span
-        class="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent"
-        >ParallelBench</span
-      >
+      <span>ParallelBench</span>
     </a>
     <button
       type="button"
       id="menu-toggle"
-      class="rounded-xl border-2 border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-primary hover:bg-primary/5 hover:text-primary lg:hidden"
+      class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50 lg:hidden"
     >
       <svg
         class="h-5 w-5"
@@ -39,33 +36,28 @@
     </button>
     <nav
       id="main-nav"
-      class="hidden items-center gap-2 text-sm font-semibold lg:flex"
+      class="hidden items-center gap-1 text-sm font-medium lg:flex"
     >
       <a
-        href="#overview"
-        class="rounded-lg px-4 py-2 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
+        href="#abstract"
+        class="rounded-md px-3 py-1.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
         >Overview</a
       >
       <a
         href="#benchmark"
-        class="rounded-lg px-4 py-2 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
+        class="rounded-md px-3 py-1.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
         >Benchmark</a
       >
       <a
-        href="#abstract"
-        class="rounded-lg px-4 py-2 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
-        >Paper</a
+        href="#results"
+        class="rounded-md px-3 py-1.5 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+        >Results</a
       >
-      <!-- <a
-        href="#citation"
-        class="rounded-lg px-4 py-2 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
-        >Citation</a
-      > -->
       <a
         href="https://github.com/furiosa-ai/ParallelBench"
         target="_blank"
         rel="noopener noreferrer"
-        class="ml-2 flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-white shadow-lg transition-all hover:bg-slate-800 hover:shadow-xl"
+        class="ml-2 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-1.5 text-sm text-white transition hover:bg-slate-700"
       >
         <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
           <path
@@ -78,34 +70,34 @@
   </div>
   <div
     id="mobile-nav"
-    class="hidden border-t-2 border-slate-200 bg-white/95 backdrop-blur-xl px-6 py-4 text-sm font-semibold shadow-lg lg:hidden"
+    class="hidden border-t border-slate-200 bg-white px-6 py-3 text-sm font-medium lg:hidden"
   >
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <a
-        href="#overview"
-        class="rounded-lg px-4 py-3 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
+        href="#abstract"
+        class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
         >Overview</a
       >
       <a
         href="#benchmark"
-        class="rounded-lg px-4 py-3 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
+        class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
         >Benchmark</a
       >
       <a
-        href="#abstract"
-        class="rounded-lg px-4 py-3 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
-        >Paper</a
+        href="#results"
+        class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+        >Results</a
       >
       <a
         href="#citation"
-        class="rounded-lg px-4 py-3 text-slate-700 transition-all hover:bg-primary/10 hover:text-primary"
+        class="rounded-md px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
         >Citation</a
       >
       <a
         href="https://github.com/furiosa-ai/ParallelBench"
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-2 flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-3 text-white shadow-lg transition-all hover:bg-slate-800"
+        class="mt-1 flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
       >
         <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
           <path
