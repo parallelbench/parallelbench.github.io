@@ -7,48 +7,6 @@ if (toggleButton) {
   });
 }
 
-// Image modal functions
-function openImageModal() {
-  const modal = document.getElementById('imageModal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeImageModal() {
-  const modal = document.getElementById('imageModal');
-  modal.classList.remove('flex');
-  modal.classList.add('hidden');
-  document.body.style.overflow = '';
-}
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeImageModal();
-  }
-});
-
-// Toggle abstract expand/collapse on mobile
-function toggleAbstract() {
-  const readMoreContainer = document.getElementById('readMoreContainer');
-  const readLessContainer = document.getElementById('readLessContainer');
-
-  if (readLessContainer.classList.contains('hidden')) {
-    // Expand
-    readMoreContainer.classList.add('hidden');
-    readLessContainer.classList.remove('hidden');
-  } else {
-    // Collapse
-    readMoreContainer.classList.remove('hidden');
-    readLessContainer.classList.add('hidden');
-    // Scroll back to abstract section
-    document
-      .getElementById('abstract')
-      .scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
 // Modal functionality
 const taskData = {
   waitingLine: {

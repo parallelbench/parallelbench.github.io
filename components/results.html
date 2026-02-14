@@ -1,226 +1,376 @@
-<section id="leaderboard" class="bg-white py-12 sm:py-16 lg:py-24">
+<section id="results" class="bg-slate-50 py-16 sm:py-20 lg:py-28">
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-    <div class="text-center">
-      <span
-        class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
-      >
-        Evaluation Results
-      </span>
-      <h2 class="mt-6 text-4xl font-bold text-slateInk">
-        Evaluation Results on ParallelBench
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">
+        Results on ParallelBench
       </h2>
-      <p class="mx-auto mt-6 max-w-4xl text-lg text-slate-600 leading-relaxed">
-        This section presents evaluation results of state-of-the-art dLLMs
-        (LLaDA-1.5 and Dream 7B) on the <i>Waiting Line</i> benchmark, analyzing
-        the speed-quality trade-offs in parallel decoding. For the full
-        experimental setup and detailed results, please refer to our
-        <a
-          href="https://arxiv.org/abs/2510.04767"
-          class="underline font-semibold hover:text-blue-600"
-          >paper</a
-        >.
+      <p
+        class="mx-auto mt-5 max-w-4xl text-base text-slate-600 leading-relaxed"
+      >
+        Evaluation of <b>LLaDA 1.5</b> across all 17 tasks reveals systematic
+        quality degradation as parallelism increases.
       </p>
     </div>
-    <!-- LLaDA and Dream -->
-    <div class="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div
-        class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+
+    <!-- Waiting Line Results -->
+    <div class="mb-16">
+      <h3
+        class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-primary/20 pb-2"
       >
-        <figure class="w-full">
-          <div class="relative h-96">
-            <canvas id="lladaChart"></canvas>
+        Waiting Line
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <!-- Copy -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/copy.png"
+              alt="Copy task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
           </div>
-          <figcaption class="mt-4 text-center text-sm text-slate-600">
-            Performance of <i>LLaDA-1.5</i> on <i>Copy</i>,
-            <i>Replace Index</i>, <i>Replace Random</i>, and
-            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Copy
+          </figcaption>
+        </figure>
+
+        <!-- Reverse -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/reverse.png"
+              alt="Reverse task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Reverse
+          </figcaption>
+        </figure>
+
+        <!-- Replace Index -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/replace_index.png"
+              alt="Replace Index task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Replace Index
+          </figcaption>
+        </figure>
+
+        <!-- Replace Random -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/replace_random.png"
+              alt="Replace Random task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Replace Random
+          </figcaption>
+        </figure>
+
+        <!-- Shuffle -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/shuffle.png"
+              alt="Shuffle task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Shuffle
+          </figcaption>
+        </figure>
+
+        <!-- Sort -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
+          >
+            <img
+              src="assets/figures/results/sort.png"
+              alt="Sort task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Sort
           </figcaption>
         </figure>
       </div>
 
-      <div
-        class="overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
-      >
-        <figure class="w-full">
-          <div class="relative h-96">
-            <canvas id="dreamChart"></canvas>
-          </div>
-          <figcaption class="mt-4 text-center text-sm text-slate-600">
-            Performance of <i>Dream 7B</i> on <i>Copy</i>, <i>Replace Index</i>,
-            <i>Replace Random</i>, and <i>Shuffle</i> tasks from the
-            <i>Waiting Line</i>.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-    <!-- Key Insight -->
-    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-blue-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+      <!-- Key Insight Box -->
+      <div class="rounded-lg bg-blue-50 border border-blue-200 p-5">
+        <div class="flex items-start gap-3">
+          <div
+            class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
-          <p class="text-sm text-blue-800 leading-relaxed">
-            Both <i>LLaDA-1.5</i> and <i>Dream 7B</i> show moderate performance
-            degradation on the <i>Replace Index</i> task as parallelism
-            increases. However, <i>Replace Random</i> and <i>Shuffle</i> tasks,
-            which have stronger token dependencies, exhibit significantly
-            steeper accuracy drops with increased parallelism, with
-            <i>Shuffle</i> being the most affected.
-            <a
-              href="https://arxiv.org/abs/2510.04767"
-              class="underline font-semibold hover:text-blue-600"
-              >See full paper</a
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-            for comprehensive 17-task analysis.
-          </p>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-slate-900 mb-1">
+              
+              Key Insight
+            </h4>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Replace Index and Replace Random exhibit contrasting trends.
+              Despite Replace Random achieving near-perfect one-by-one decoding
+              accuracy compared to Replace Index's below 50% accuracy, this
+              advantage reverses under parallelization. This aligns with our
+              theory: C(Y|X)=0 for Replace Index but C(Y|X)>0 for Replace
+              Random.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!--Mercury Claude Qwen -->
-    <div class="mt-24 grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div
-        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
+    <!-- Text Writing Results -->
+    <div class="mb-16">
+      <h3
+        class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-primary/20 pb-2"
       >
-        <figure class="w-full">
-          <div class="relative h-80">
-            <canvas id="mercuryChart"></canvas>
-          </div>
-          <figcaption class="mt-4 text-center text-sm text-slate-600">
-            Performance of <i>Mercury</i> on <i>Reverse</i>, and
-            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
-          </figcaption>
-        </figure>
-      </div>
-
-      <div
-        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
-      >
-        <figure class="w-full">
-          <div class="relative h-80">
-            <canvas id="claudeChart"></canvas>
-          </div>
-          <figcaption class="mt-4 text-center text-sm text-slate-600">
-            Performance of <i>Claude 3.5 Haiku</i> on <i>Reverse</i>, and
-            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
-          </figcaption>
-        </figure>
-      </div>
-      <div
-        class="overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
-      >
-        <figure class="w-full">
-          <div class="relative h-80">
-            <canvas id="qwenChart"></canvas>
-          </div>
-          <figcaption class="mt-4 text-center text-sm text-slate-600">
-            Performance of <i>Qwen 3 4B</i> on <i>Reverse</i>, and
-            <i>Shuffle</i> tasks from the <i>Waiting Line</i>.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-    <!-- Key Insight -->
-    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-blue-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        Text Writing
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <!-- Paraphrasing -->
+        <figure
+          class="my-4"
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            <img
+              src="assets/figures/results/paraphrasing.png"
+              alt="Paraphrasing task results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
             />
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
-          <p class="text-sm text-blue-800 leading-relaxed">
-            Our findings extend to closed-source dLLM <i>Mercury</i> as well.
-            <i>Mercury</i>
-            and AR LLMs exhibit opposite accuracy trends on
-            <i>Reverse</i> and <i>Shuffle</i> tasks. While
-            <i>Reverse</i> requires exact token order and is generally harder
-            than <i>Shuffle</i>,
-            <u>AR LLMs achieve higher accuracy on <i>Shuffle</i></u
-            >. In contrast, <i>Mercury</i> maintains near-perfect accuracy on
-            <i>Reverse</i> but
-            <u
-              >its performance drops sharply on <i>Shuffle</i> as parallelism
-              increases</u
-            >. This suggests <i>Mercury</i> has difficulty adaptively managing
-            parallelism to preserve quality on tasks with strong token
-            dependencies.
-          </p>
-        </div>
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Paraphrasing
+          </figcaption>
+        </figure>
+
+        <!-- W2S Easy -->
+        <figure
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/w2s_easy.png',
+              'Words-to-Sentence (Easy)',
+              'Performance on the easy Words-to-Sentence task. Relatively stable with moderate parallelism.',
+            )
+          "
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+          >
+            <img
+              src="assets/figures/results/w2s_easy.png"
+              alt="Words-to-Sentence Easy results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            W2S (Easy)
+          </figcaption>
+        </figure>
+
+        <!-- W2S Hard -->
+        <figure
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/w2s_hard.png',
+              'Words-to-Sentence (Hard)',
+              'Performance on the hard Words-to-Sentence task. Shows more significant degradation as difficulty increases.',
+            )
+          "
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+          >
+            <img
+              src="assets/figures/results/w2s_hard.png"
+              alt="Words-to-Sentence Hard results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            W2S (Hard)
+          </figcaption>
+        </figure>
       </div>
     </div>
 
-    <!-- Trade-off -->
-    <div
-      class="mt-24 mx-auto max-w-3xl overflow-x-auto overflow-y-visible rounded-3xl border-2 border-slate-200 bg-white shadow-2xl p-8"
-    >
-      <figure class="w-full">
-        <div class="relative h-[600px]">
-          <canvas id="tradeoffChart"></canvas>
-        </div>
-        <figcaption class="mt-4 text-center text-sm text-slate-600">
-          <i>Parallelism</i> vs. <i>Accuracy</i> Trade-off on the
-          <strong>ParallelBench</strong> for various decoding strategies with
-          <i>LLaDA-1.5</i>.
-        </figcaption>
-      </figure>
-    </div>
-
-    <!-- Key Insight -->
-    <div class="mt-8 rounded-2xl border-2 border-blue-100 bg-blue-50/50 p-6">
-      <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-blue-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+    <!-- Puzzles Results -->
+    <div class="mb-8">
+      <h3
+        class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-primary/20 pb-2"
+      >
+        Puzzles
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6">
+        <!-- Sudoku -->
+        <figure
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/sudoku.png',
+              'Sudoku (4x4)',
+              'Performance on 4x4 Sudoku puzzles with unique solutions. C(Y|X)=0 means parallel decoding maintains accuracy.',
+            )
+          "
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            <img
+              src="assets/figures/results/sudoku.png"
+              alt="Sudoku results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
             />
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-blue-900 mb-2">💡 Key Insight</h3>
-          <p class="text-sm text-blue-800 leading-relaxed">
-            Static unmasking methods (e.g., <i>Top-K</i>) show dramatic accuracy
-            drops as parallelism increases, while adaptive methods (e.g.,
-            <i>Threshold</i>) achieve superior trade-offs. However, the oracle
-            performance—using optimal per-sample thresholds—demonstrates that
-            even the best current methods remain far from optimal, achieving
-            both higher accuracy and greater speedup. This gap reveals
-            substantial room for future research in adaptive unmasking
-            strategies.
-          </p>
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Sudoku
+          </figcaption>
+        </figure>
+
+        <!-- Latin Square -->
+        <figure
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/latin_square.png',
+              'Latin Square (4x4)',
+              'Performance on 4x4 Latin Square puzzles with multiple valid solutions. C(Y|X)>0 causes rapid accuracy degradation under parallelization.',
+            )
+          "
+        >
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-sm hover:border-slate-300 cursor-pointer"
+          >
+            <img
+              src="assets/figures/results/latin_square.png"
+              alt="Latin Square results"
+              class="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <figcaption
+            class="mt-2 text-center text-sm text-slate-500 font-medium"
+          >
+            Latin Square
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Key Insight Box -->
+      <div
+        class="rounded-lg bg-blue-50 border border-blue-200 p-5 max-w-3xl mx-auto"
+      >
+        <div class="flex items-start gap-3">
+          <div
+            class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-slate-900 mb-1">
+              
+              Key Insight
+            </h4>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Latin Square outperforms the harder Sudoku under one-by-one
+              decoding, but this advantage disappears with increased
+              parallelism. This reflects the difference in conditional total
+              correlation: C(Y|X)>0 for Latin Square, while C(Y|X)=0 for Sudoku.
+            </p>
+          </div>
         </div>
       </div>
     </div>
