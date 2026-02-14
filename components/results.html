@@ -180,7 +180,7 @@
             <p class="text-sm text-slate-700 leading-relaxed">
               Tasks with <b>strong token dependencies</b> (Shuffle, Replace
               Random) show the most dramatic accuracy drops, while
-              <b>order-independent tasks</b> (Copy) maintain near-perfect
+              <b>tasks where C(Y|X)=0</b> (Copy) maintain near-perfect
               accuracy even at high parallelism levels.
             </p>
           </div>
@@ -277,7 +277,7 @@
         <!-- Sudoku -->
         <figure
           class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/sudoku.png', 'Sudoku (4x4)', 'Performance on 4x4 Sudoku puzzles with unique solutions. Parallel decoding struggles with constraint satisfaction.')"
+          onclick="openImageZoomModal('assets/figures/results/sudoku.png', 'Sudoku (4x4)', 'Performance on 4x4 Sudoku puzzles with unique solutions. C(Y|X)=0 means parallel decoding maintains accuracy.')"
         >
           <div
             class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
@@ -299,7 +299,7 @@
         <!-- Latin Square -->
         <figure
           class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/latin_square.png', 'Latin Square (4x4)', 'Performance on 4x4 Latin Square puzzles with multiple valid solutions. Shows different failure patterns compared to Sudoku.')"
+          onclick="openImageZoomModal('assets/figures/results/latin_square.png', 'Latin Square (4x4)', 'Performance on 4x4 Latin Square puzzles with multiple valid solutions. C(Y|X)>0 causes rapid accuracy degradation under parallelization.')"
         >
           <div
             class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
@@ -345,9 +345,9 @@
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
               <b>Sudoku</b> (unique solution) and <b>Latin Square</b> (multiple
-              solutions) reveal distinct failure modes: parallel decoding
-              struggles more when the solution space is highly constrained,
-              highlighting fundamental limitations in constraint satisfaction.
+              solutions) show different behavior: parallel decoding performance
+              depends on conditional total correlation, with C(Y|X)>0 for Latin
+              Square causing quality degradation while C(Y|X)=0 for Sudoku maintains stability.
             </p>
           </div>
         </div>
