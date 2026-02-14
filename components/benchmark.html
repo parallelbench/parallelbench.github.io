@@ -5,21 +5,21 @@
         Benchmark Overview
       </h2>
       <p
-        class="mx-auto mt-4 max-w-3xl text-base text-slate-600 leading-relaxed"
+        class="mx-auto mt-4 max-w-4xl text-base text-slate-600 leading-relaxed"
       >
         <b>ParallelBench</b> consists of 17 tasks across 3 categories. Each task
-        exposes different aspects of the speed-quality trade-off in dLLMs.
+        exposes different aspects of<br /><b>the speed-quality trade-off</b> in
+        dLLMs.
       </p>
     </div>
 
     <!-- Task Clustering Figure -->
     <div class="mb-16">
       <figure
-        class="cursor-pointer mx-auto max-w-3xl"
-        onclick="openImageZoomModal('assets/figures/task_clustering.png', 'Task Clustering', 'ParallelBench covers a range of tasks positioned by parallelizability and order preference. Tasks in the bottom-right (e.g., Shuffle, Sort) require strong left-to-right ordering and are most challenging for parallel decoding, while tasks in the top-left (e.g., Copy, Remove) are more parallelizable.')"
+        class="mx-auto max-w-3xl my-6"
       >
         <div
-          class="rounded-xl border border-slate-200 bg-white p-3 lg:p-4 transition hover:shadow-md"
+          class="rounded-xl border border-slate-200 bg-white p-4 sm:p-6 lg:p-8 transition hover:shadow-md"
         >
           <img
             src="assets/figures/task_clustering.png"
@@ -42,7 +42,10 @@
       <!-- Waiting Line Card -->
       <div
         onclick="openModal('waitingLine')"
-        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('waitingLine')"
+        onkeydown="
+          if (event.key === 'Enter' || event.key === ' ')
+            openModal('waitingLine');
+        "
         tabindex="0"
         role="button"
         aria-label="View Waiting Line task examples"
@@ -102,7 +105,10 @@
       <!-- Text Writing Card -->
       <div
         onclick="openModal('textWriting')"
-        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('textWriting')"
+        onkeydown="
+          if (event.key === 'Enter' || event.key === ' ')
+            openModal('textWriting');
+        "
         tabindex="0"
         role="button"
         aria-label="View Text Writing task examples"
@@ -162,7 +168,9 @@
       <!-- Puzzles Card -->
       <div
         onclick="openModal('puzzles')"
-        onkeydown="if(event.key==='Enter'||event.key===' ')openModal('puzzles')"
+        onkeydown="
+          if (event.key === 'Enter' || event.key === ' ') openModal('puzzles');
+        "
         tabindex="0"
         role="button"
         aria-label="View Puzzles task examples"
@@ -189,7 +197,9 @@
         <p class="text-sm text-slate-600 leading-relaxed mb-4">
           <i>Puzzles</i> consists of two classic puzzle tasks: <i>Sudoku</i>,
           which has a unique solution, and <i>Latin Square</i>, which has
-           multiple valid solutions. This difference in solution space affects parallel decoding differently based on conditional total correlation C(Y|X).
+          multiple valid solutions. This difference in solution space affects
+          parallel decoding differently based on conditional total correlation
+          C(Y|X).
         </p>
         <div class="mt-auto space-y-3">
           <div

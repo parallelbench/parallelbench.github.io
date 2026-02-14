@@ -5,22 +5,20 @@
         Cross-Model Comparison
       </h2>
       <p
-        class="mx-auto mt-4 max-w-3xl text-base text-slate-600 leading-relaxed"
+        class="mx-auto mt-4 max-w-4xl text-base text-slate-600 leading-relaxed"
       >
-        The speed-quality trade-off is not unique to LLaDA. Closed-source dLLM
-        <b>Mercury</b> and autoregressive LLMs show contrasting behaviors.
+        The speed-quality trade-off is not unique to LLaDA.<br />
+        Closed-source dLLM <b>Mercury</b> and autoregressive LLMs show
+        contrasting behaviors.
       </p>
     </div>
 
     <!-- dLLM vs AR LLM Comparison -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       <!-- Mercury -->
-      <figure
-        class="cursor-pointer"
-        onclick="openImageZoomModal('assets/figures/comparison/mercury.png', 'Mercury', 'Performance of Mercury, a closed-source dLLM. Mercury maintains perfect Reverse accuracy but shows sharp degradation on Shuffle.')"
-      >
+      <figure class="my-4">
         <div
-          class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+          class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
         >
           <img
             src="assets/figures/comparison/mercury.png"
@@ -29,20 +27,15 @@
             loading="lazy"
           />
         </div>
-        <figcaption
-          class="mt-2 text-center text-sm text-slate-500 font-medium"
-        >
+        <figcaption class="mt-2 text-center text-sm text-slate-500 font-medium">
           Mercury (dLLM)
         </figcaption>
       </figure>
 
       <!-- Claude Haiku -->
-      <figure
-        class="cursor-pointer"
-        onclick="openImageZoomModal('assets/figures/comparison/claude_haiku.png', 'Claude 3.5 Haiku', 'Performance of Claude 3.5 Haiku, an autoregressive LLM. Maintains 100% accuracy on both Reverse and Shuffle tasks across all input sizes.')"
-      >
+      <figure class="my-4">
         <div
-          class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+          class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
         >
           <img
             src="assets/figures/comparison/claude_haiku.png"
@@ -51,20 +44,15 @@
             loading="lazy"
           />
         </div>
-        <figcaption
-          class="mt-2 text-center text-sm text-slate-500 font-medium"
-        >
+        <figcaption class="mt-2 text-center text-sm text-slate-500 font-medium">
           Claude 3.5 Haiku (AR)
         </figcaption>
       </figure>
 
       <!-- Qwen 3B -->
-      <figure
-        class="cursor-pointer"
-        onclick="openImageZoomModal('assets/figures/comparison/qwen_3.png', 'Qwen2.5 3B', 'Performance of Qwen2.5 3B, an autoregressive LLM. Shows degradation on Reverse but handles Shuffle better than Mercury.')"
-      >
+      <figure class="my-4">
         <div
-          class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+          class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
         >
           <img
             src="assets/figures/comparison/qwen_3.png"
@@ -73,16 +61,16 @@
             loading="lazy"
           />
         </div>
-        <figcaption
-          class="mt-2 text-center text-sm text-slate-500 font-medium"
-        >
+        <figcaption class="mt-2 text-center text-sm text-slate-500 font-medium">
           Qwen2.5 3B (AR)
         </figcaption>
       </figure>
     </div>
 
     <!-- Key Insight Box -->
-    <div class="rounded-lg bg-blue-50 border border-blue-200 p-6 max-w-4xl mx-auto">
+    <div
+      class="rounded-lg bg-blue-50 border border-blue-200 p-6 max-w-4xl mx-auto"
+    >
       <div class="flex items-start">
         <div
           class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600 mr-3"
@@ -104,7 +92,12 @@
         <div>
           <h4 class="text-sm font-semibold text-slate-900 mb-1">Key Insight</h4>
           <p class="text-sm text-slate-700 leading-relaxed">
-            Mercury and autoregressive LLMs show opposite accuracy trends on Reverse and Shuffle. Mercury maintains near-perfect accuracy on Reverse but fails with Shuffle, with accuracy dropping sharply as n increases. This indicates that the closed-source Mercury struggles to adaptively adjust its parallelism to maintain quality on tasks with high token dependencies.
+            Mercury and autoregressive LLMs show opposite accuracy trends on
+            Reverse and Shuffle. Mercury maintains near-perfect accuracy on
+            Reverse but fails with Shuffle, with accuracy dropping sharply as n
+            increases. This indicates that the closed-source Mercury struggles
+            to adaptively adjust its parallelism to maintain quality on tasks
+            with high token dependencies.
           </p>
         </div>
       </div>

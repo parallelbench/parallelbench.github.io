@@ -7,48 +7,6 @@ if (toggleButton) {
   });
 }
 
-// Generic image zoom modal functions
-function openImageZoomModal(imageSrc, title, caption) {
-  const modal = document.getElementById('imageZoomModal');
-  const modalImage = document.getElementById('zoomModalImage');
-  const modalTitle = document.getElementById('zoomModalTitle');
-  const modalCaption = document.getElementById('zoomModalCaption');
-
-  // Set image source and alt text
-  modalImage.src = imageSrc;
-  modalImage.alt = title;
-
-  // Set title
-  modalTitle.textContent = title;
-
-  // Set caption (optional)
-  if (caption) {
-    modalCaption.querySelector('p').textContent = caption;
-    modalCaption.classList.remove('hidden');
-  } else {
-    modalCaption.classList.add('hidden');
-  }
-
-  // Show modal
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeImageZoomModal() {
-  const modal = document.getElementById('imageZoomModal');
-  modal.classList.remove('flex');
-  modal.classList.add('hidden');
-  document.body.style.overflow = '';
-}
-
-// Close image zoom modal on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeImageZoomModal();
-  }
-});
-
 // Modal functionality
 const taskData = {
   waitingLine: {

@@ -5,7 +5,7 @@
         Results on ParallelBench
       </h2>
       <p
-        class="mx-auto mt-4 max-w-3xl text-base text-slate-600 leading-relaxed"
+        class="mx-auto mt-4 max-w-4xl text-base text-slate-600 leading-relaxed"
       >
         Evaluation of <b>LLaDA 1.5</b> across all 17 tasks reveals systematic
         quality degradation as parallelism increases.
@@ -22,11 +22,10 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <!-- Copy -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/copy.png', 'Copy', 'Performance on the Copy task. Copy maintains near-perfect accuracy across all parallelism levels as it requires minimal token dependencies.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/copy.png"
@@ -44,11 +43,10 @@
 
         <!-- Reverse -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/reverse.png', 'Reverse', 'Performance on the Reverse task. Reverse shows moderate degradation as parallelism increases.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/reverse.png"
@@ -66,11 +64,10 @@
 
         <!-- Replace Index -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/replace_index.png', 'Replace Index', 'Performance on the Replace Index task. Shows consistent degradation across all unmasking strategies.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/replace_index.png"
@@ -88,11 +85,10 @@
 
         <!-- Replace Random -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/replace_random.png', 'Replace Random', 'Performance on the Replace Random task. Exhibits steep degradation due to strong token dependencies.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/replace_random.png"
@@ -110,11 +106,10 @@
 
         <!-- Shuffle -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/shuffle.png', 'Shuffle', 'Performance on the Shuffle task. The most dramatic accuracy drop among all tasks, falling from 100% to near 0% as parallelism increases.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/shuffle.png"
@@ -132,11 +127,10 @@
 
         <!-- Sort -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/sort.png', 'Sort', 'Performance on the Sort task. Shows significant degradation due to strong ordering requirements.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/sort.png"
@@ -178,7 +172,12 @@
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
-              Replace Index and Replace Random exhibit contrasting trends. Despite Replace Random achieving near-perfect one-by-one decoding accuracy compared to Replace Index's below 50% accuracy, this advantage reverses under parallelization. This aligns with our theory: C(Y|X)=0 for Replace Index but C(Y|X)>0 for Replace Random.
+              Replace Index and Replace Random exhibit contrasting trends.
+              Despite Replace Random achieving near-perfect one-by-one decoding
+              accuracy compared to Replace Index's below 50% accuracy, this
+              advantage reverses under parallelization. This aligns with our
+              theory: C(Y|X)=0 for Replace Index but C(Y|X)>0 for Replace
+              Random.
             </p>
           </div>
         </div>
@@ -195,11 +194,10 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <!-- Paraphrasing -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/paraphrasing.png', 'Paraphrasing', 'Performance on the Paraphrasing task using Grammar Score metric.')"
+          class="my-4"
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/paraphrasing.png"
@@ -209,7 +207,7 @@
             />
           </div>
           <figcaption
-            class="mt-2 text-center text-sm text-slate-500 font-medium"
+            class="mt-2 text-center text-xs text-slate-500 font-medium"
           >
             Paraphrasing
           </figcaption>
@@ -217,11 +215,17 @@
 
         <!-- W2S Easy -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/w2s_easy.png', 'Words-to-Sentence (Easy)', 'Performance on the easy Words-to-Sentence task. Relatively stable with moderate parallelism.')"
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/w2s_easy.png',
+              'Words-to-Sentence (Easy)',
+              'Performance on the easy Words-to-Sentence task. Relatively stable with moderate parallelism.',
+            )
+          "
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/w2s_easy.png"
@@ -239,11 +243,17 @@
 
         <!-- W2S Hard -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/w2s_hard.png', 'Words-to-Sentence (Hard)', 'Performance on the hard Words-to-Sentence task. Shows more significant degradation as difficulty increases.')"
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/w2s_hard.png',
+              'Words-to-Sentence (Hard)',
+              'Performance on the hard Words-to-Sentence task. Shows more significant degradation as difficulty increases.',
+            )
+          "
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/w2s_hard.png"
@@ -268,16 +278,20 @@
       >
         Puzzles
       </h3>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6"
-      >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6">
         <!-- Sudoku -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/sudoku.png', 'Sudoku (4x4)', 'Performance on 4x4 Sudoku puzzles with unique solutions. C(Y|X)=0 means parallel decoding maintains accuracy.')"
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/sudoku.png',
+              'Sudoku (4x4)',
+              'Performance on 4x4 Sudoku puzzles with unique solutions. C(Y|X)=0 means parallel decoding maintains accuracy.',
+            )
+          "
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/sudoku.png"
@@ -295,11 +309,17 @@
 
         <!-- Latin Square -->
         <figure
-          class="cursor-pointer"
-          onclick="openImageZoomModal('assets/figures/results/latin_square.png', 'Latin Square (4x4)', 'Performance on 4x4 Latin Square puzzles with multiple valid solutions. C(Y|X)>0 causes rapid accuracy degradation under parallelization.')"
+          class="my-4"
+          onclick="
+            openImageZoomModal(
+              'assets/figures/results/latin_square.png',
+              'Latin Square (4x4)',
+              'Performance on 4x4 Latin Square puzzles with multiple valid solutions. C(Y|X)>0 causes rapid accuracy degradation under parallelization.',
+            )
+          "
         >
           <div
-            class="rounded-xl border border-slate-200 bg-white p-2 lg:p-3 transition hover:shadow-md hover:border-slate-300"
+            class="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 transition hover:shadow-md hover:border-slate-300"
           >
             <img
               src="assets/figures/results/latin_square.png"
@@ -317,7 +337,9 @@
       </div>
 
       <!-- Key Insight Box -->
-      <div class="rounded-lg bg-blue-50 border border-blue-200 p-6 max-w-3xl mx-auto">
+      <div
+        class="rounded-lg bg-blue-50 border border-blue-200 p-6 max-w-3xl mx-auto"
+      >
         <div class="flex items-start">
           <div
             class="flex-shrink-0 rounded-lg bg-blue-100 p-2 text-blue-600 mr-3"
@@ -341,7 +363,10 @@
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
-              Latin Square outperforms the harder Sudoku under one-by-one decoding, but this advantage disappears with increased parallelism. This reflects the difference in conditional total correlation: C(Y|X)>0 for Latin Square, while C(Y|X)=0 for Sudoku.
+              Latin Square outperforms the harder Sudoku under one-by-one
+              decoding, but this advantage disappears with increased
+              parallelism. This reflects the difference in conditional total
+              correlation: C(Y|X)>0 for Latin Square, while C(Y|X)=0 for Sudoku.
             </p>
           </div>
         </div>
