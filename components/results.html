@@ -178,10 +178,7 @@
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
-              Tasks with <b>strong token dependencies</b> (Shuffle, Replace
-              Random) show the most dramatic accuracy drops, while
-              <b>tasks where C(Y|X)=0</b> (Copy) maintain near-perfect
-              accuracy even at high parallelism levels.
+              Replace Index and Replace Random exhibit contrasting trends. Despite Replace Random achieving near-perfect one-by-one decoding accuracy compared to Replace Index's below 50% accuracy, this advantage reverses under parallelization. This aligns with our theory: C(Y|X)=0 for Replace Index but C(Y|X)>0 for Replace Random.
             </p>
           </div>
         </div>
@@ -344,10 +341,7 @@
               Key Insight
             </h4>
             <p class="text-sm text-slate-700 leading-relaxed">
-              <b>Sudoku</b> (unique solution) and <b>Latin Square</b> (multiple
-              solutions) show different behavior: parallel decoding performance
-              depends on conditional total correlation, with C(Y|X)>0 for Latin
-              Square causing quality degradation while C(Y|X)=0 for Sudoku maintains stability.
+              Latin Square outperforms the harder Sudoku under one-by-one decoding, but this advantage disappears with increased parallelism. This reflects the difference in conditional total correlation: C(Y|X)>0 for Latin Square, while C(Y|X)=0 for Sudoku.
             </p>
           </div>
         </div>

@@ -104,13 +104,7 @@
         <div>
           <h4 class="text-sm font-semibold text-slate-900 mb-1">Key Insight</h4>
           <p class="text-sm text-slate-700 leading-relaxed">
-            <b>Mercury (dLLM)</b> and <b>AR LLMs</b> exhibit opposite accuracy
-            trends. Mercury maintains perfect Reverse accuracy but degrades
-            sharply on Shuffle, while AR LLMs like Claude show perfect
-            performance on both tasks. This confirms the fundamental trade-off
-            of parallel decoding: <u
-              >speed comes at the cost of handling token dependencies</u
-            >.
+            Mercury and autoregressive LLMs show opposite accuracy trends on Reverse and Shuffle. Mercury maintains near-perfect accuracy on Reverse but fails with Shuffle, with accuracy dropping sharply as n increases. This indicates that the closed-source Mercury struggles to adaptively adjust its parallelism to maintain quality on tasks with high token dependencies.
           </p>
         </div>
       </div>
