@@ -1,0 +1,7 @@
+task, tps, accuracy
+waitingline-copy, 1, 100
+waitingline-copy, 2, 100
+waitingline-copy, 4, 100
+waitingline-copy, 8, 100
+waitingline-copy, 16, 100
+waitingline-copy, 32, 100

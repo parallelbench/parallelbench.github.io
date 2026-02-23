@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard - ParallelBench</title>
+    <meta
+      name="description"
+      content="Interactive TPS vs Accuracy trade-off curves for parallel decoding strategies on ParallelBench."
+    />
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              primary: '#1f6feb',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.plot.ly/plotly-basic-2.35.2.min.js" charset="utf-8"></script>
+    <style>
+      body {
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid #1f6feb;
+        outline-offset: 2px;
+        border-radius: 0.375rem;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <div id="header-component"></div>
+
+    <main>
+      <div id="leaderboard-component"></div>
+    </main>
+
+    <div id="footer-component"></div>
+
+    <script>
+      async function loadComponent(componentId, componentFile) {
+        try {
+          const response = await fetch(`components/${componentFile}`);
+          const html = await response.text();
+          document.getElementById(componentId).innerHTML = html;
+        } catch (error) {
+          console.error(`Error loading ${componentFile}:`, error);
+        }
+      }
+
+      async function loadAllComponents() {
+        await Promise.all([
+          loadComponent('header-component', 'header.html'),
+          loadComponent('leaderboard-component', 'leaderboard-chart.html'),
+          loadComponent('footer-component', 'footer.html'),
+        ]);
+
+        const leaderboardScript = document.createElement('script');
+        leaderboardScript.src = 'js/leaderboard.js';
+        document.body.appendChild(leaderboardScript);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadAllComponents);
+      } else {
+        loadAllComponents();
+      }
+    </script>
+  </body>
+</html>

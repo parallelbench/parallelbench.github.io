@@ -1,0 +1,59 @@
+{
+  "strategies": [
+    { "id": "random", "displayName": "Random" },
+    { "id": "l2r", "displayName": "Left-to-Right" },
+    { "id": "slowfast", "displayName": "SlowFast Sampling" },
+    { "id": "apd", "displayName": "APD" },
+    { "id": "dus", "displayName": "DUS" },
+    { "id": "wino", "displayName": "WINO-DLLM" },
+    { "id": "confidence-threshold", "displayName": "Confidence Threshold" },
+    { "id": "confidence-topk", "displayName": "Confidence Top-K" },
+    { "id": "entropy-topk", "displayName": "Entropy Top-K" }
+  ],
+  "models": [
+    {
+      "id": "llada15",
+      "displayName": "LLaDA 1.5",
+      "strategies": ["random", "l2r", "slowfast", "apd", "dus", "wino", "confidence-threshold", "confidence-topk", "entropy-topk"]
+    },
+    {
+      "id": "diffucoder",
+      "displayName": "DiffuCoder",
+      "strategies": []
+    }
+  ],
+  "tasks": {
+    "waitingLine": {
+      "displayName": "Waiting Line",
+      "items": [
+        { "id": "waitingline-copy", "displayName": "Copy" },
+        { "id": "waitingline-reverse", "displayName": "Reverse" },
+        { "id": "waitingline-shuffle", "displayName": "Shuffle" },
+        { "id": "waitingline-sort", "displayName": "Sort" },
+        { "id": "waitingline-insert_index", "displayName": "Insert Index" },
+        { "id": "waitingline-insert_random", "displayName": "Insert Random" },
+        { "id": "waitingline-remove_index", "displayName": "Remove Index" },
+        { "id": "waitingline-remove_random", "displayName": "Remove Random" },
+        { "id": "waitingline-replace_index", "displayName": "Replace Index" },
+        { "id": "waitingline-replace_random", "displayName": "Replace Random" }
+      ]
+    },
+    "textWriting": {
+      "displayName": "Text Writing",
+      "items": [
+        { "id": "textwriting-summarization", "displayName": "Summarization" },
+        { "id": "textwriting-paraphrasing", "displayName": "Paraphrasing" },
+        { "id": "textwriting-w2s_easy", "displayName": "W2S (Easy)" },
+        { "id": "textwriting-w2s_medium", "displayName": "W2S (Medium)" },
+        { "id": "textwriting-w2s_hard", "displayName": "W2S (Hard)" }
+      ]
+    },
+    "puzzles": {
+      "displayName": "Puzzles",
+      "items": [
+        { "id": "puzzles-sudoku", "displayName": "Sudoku" },
+        { "id": "puzzles-latin_square", "displayName": "Latin Square" }
+      ]
+    }
+  }
+}
