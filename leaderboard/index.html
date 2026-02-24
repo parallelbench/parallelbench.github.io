@@ -32,7 +32,12 @@
         },
       };
     </script>
-    <script src="https://cdn.plot.ly/plotly-basic-2.35.2.min.js" charset="utf-8"></script>
+    <script
+      src="https://cdn.plot.ly/plotly-basic-2.35.2.min.js"
+      integrity="sha384-wQ3lfCxuvLfhHGiSdHF5+e3NZ1zNwEMd8/nII+K7VKChF9llO/OwOcn/aVRkB7az"
+      crossorigin="anonymous"
+      charset="utf-8"
+    ></script>
     <style>
       body {
         font-family:
@@ -69,6 +74,8 @@
       async function loadComponent(componentId, componentFile) {
         try {
           const response = await fetch(`components/${componentFile}`);
+          if (!response.ok)
+            throw new Error(`HTTP ${response.status} loading ${componentFile}`);
           const html = await response.text();
           document.getElementById(componentId).innerHTML = html;
         } catch (error) {

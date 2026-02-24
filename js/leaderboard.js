@@ -30,6 +30,7 @@ function parseCSV(csvText) {
 
 async function loadModelsConfig() {
   const response = await fetch('data/metadata.json');
+  if (!response.ok) throw new Error(`HTTP ${response.status} loading metadata.json`);
   return await response.json();
 }
 
@@ -214,8 +215,16 @@ function collectTaskIds(strategyDataMap) {
   return taskIds;
 }
 
+function purgePerTaskCharts() {
+  const container = document.getElementById('per-task-charts');
+  for (const el of container.querySelectorAll('[id^="chart-"]')) {
+    Plotly.purge(el);
+  }
+}
+
 function generatePerTaskCharts(strategyDataMap) {
   const container = document.getElementById('per-task-charts');
+  purgePerTaskCharts();
   container.innerHTML = '';
 
   const allTaskIds = collectTaskIds(strategyDataMap);
@@ -330,6 +339,7 @@ function generatePerTaskCharts(strategyDataMap) {
 
 function generateAverageChart(strategyDataMap) {
   const container = document.getElementById('average-chart');
+  Plotly.purge(container);
 
   const avgX = [];
   const avgY = [];
@@ -554,11 +564,17 @@ function renderLeaderboardTable() {
 
     const strategyCell = document.createElement('td');
     strategyCell.className = 'px-6 py-4';
-    strategyCell.innerHTML =
-      `<div class="flex items-center gap-2">` +
-      `<span class="inline-block w-3 h-3 rounded-full shrink-0" style="background-color: ${color}"></span>` +
-      `<span class="text-sm font-medium text-slate-900">${entry.displayName}</span>` +
-      `</div>`;
+    const cellWrapper = document.createElement('div');
+    cellWrapper.className = 'flex items-center gap-2';
+    const colorDot = document.createElement('span');
+    colorDot.className = 'inline-block w-3 h-3 rounded-full shrink-0';
+    colorDot.style.backgroundColor = color;
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'text-sm font-medium text-slate-900';
+    nameSpan.textContent = entry.displayName;
+    cellWrapper.appendChild(colorDot);
+    cellWrapper.appendChild(nameSpan);
+    strategyCell.appendChild(cellWrapper);
 
     const tpsCell = document.createElement('td');
     tpsCell.className = 'px-6 py-4 text-right text-sm font-semibold text-slate-900';
@@ -696,6 +712,11 @@ async function initializeLeaderboard() {
           }
           updateURL();
           renderCharts();
+        } else {
+          // No valid strategies found — remove invalid parameter from URL
+          const url = new URL(window.location);
+          url.searchParams.delete('strategies');
+          window.history.replaceState({}, '', url);
         }
       }
     }
@@ -708,7 +729,7 @@ async function initializeLeaderboard() {
 const toggleButton = document.getElementById('menu-toggle');
 const mobileNav = document.getElementById('mobile-nav');
 
-if (toggleButton) {
+if (toggleButton && mobileNav) {
   toggleButton.addEventListener('click', () => {
     mobileNav.classList.toggle('hidden');
   });
