@@ -1,15 +1,5 @@
-// Strategy color palette
-const STRATEGY_COLORS = {
-  random: '#64748b',
-  l2r: '#1f6feb',
-  slowfast: '#059669',
-  apd: '#0d9488',
-  dus: '#d97706',
-  wino: '#dc2626',
-  'confidence-threshold': '#7c3aed',
-  'confidence-topk': '#db2777',
-  'entropy-topk': '#0891b2',
-};
+// Strategy color palette (built from metadata.json in initializeLeaderboard)
+let STRATEGY_COLORS = {};
 
 // Chip styles for strategy filter
 const CHIP_ACTIVE = 'rounded-full px-3 py-1 text-xs font-medium border transition border-transparent text-white';
@@ -63,6 +53,14 @@ function buildStrategyLookup(strategies) {
   return lookup;
 }
 
+function buildStrategyColors(strategies) {
+  const colors = {};
+  for (const strategy of strategies) {
+    colors[strategy.id] = strategy.color || '#94a3b8';
+  }
+  return colors;
+}
+
 let strategyLookup = {};
 
 async function loadAllDataForModel(model) {
@@ -101,12 +99,19 @@ function getTaskDisplayName(taskId) {
 
 let selectedStrategies = new Set();
 
-function generateStrategyFilter(strategies) {
+let currentModelStrategies = [];
+
+function generateStrategyFilter(strategyIds) {
   const container = document.getElementById('strategy-filter');
   container.innerHTML = '';
   selectedStrategies.clear();
 
-  for (const strategy of strategies) {
+  currentModelStrategies = strategyIds.map((id) => ({
+    id,
+    displayName: strategyLookup[id] || id,
+  }));
+
+  for (const strategy of currentModelStrategies) {
     selectedStrategies.add(strategy.id);
     const color = STRATEGY_COLORS[strategy.id] || '#94a3b8';
 
@@ -118,18 +123,29 @@ function generateStrategyFilter(strategies) {
     chip.style.backgroundColor = color;
 
     chip.addEventListener('click', () => toggleStrategy(strategy.id, chip, color));
+    chip.addEventListener('dblclick', () => isolateStrategy(strategy.id, color));
     container.appendChild(chip);
   }
 
-  document.getElementById('strategy-filter-all').addEventListener('click', () => {
+  // Remove old listeners by replacing elements
+  const allBtn = document.getElementById('strategy-filter-all');
+  const noneBtn = document.getElementById('strategy-filter-none');
+  const newAllBtn = allBtn.cloneNode(true);
+  const newNoneBtn = noneBtn.cloneNode(true);
+  allBtn.replaceWith(newAllBtn);
+  noneBtn.replaceWith(newNoneBtn);
+
+  newAllBtn.addEventListener('click', () => {
     selectedStrategies.clear();
-    for (const s of strategies) selectedStrategies.add(s.id);
-    updateAllStrategyChipStyles(strategies, true);
+    for (const s of currentModelStrategies) selectedStrategies.add(s.id);
+    updateAllStrategyChipStyles(true);
+    updateURL();
     renderCharts();
   });
-  document.getElementById('strategy-filter-none').addEventListener('click', () => {
+  newNoneBtn.addEventListener('click', () => {
     selectedStrategies.clear();
-    updateAllStrategyChipStyles(strategies, false);
+    updateAllStrategyChipStyles(false);
+    updateURL();
     renderCharts();
   });
 }
@@ -144,10 +160,24 @@ function toggleStrategy(strategyId, chip, color) {
     chip.className = CHIP_ACTIVE;
     chip.style.backgroundColor = color;
   }
+  updateURL();
   renderCharts();
 }
 
-function updateAllStrategyChipStyles(_strategies, active) {
+function isolateStrategy(strategyId, color) {
+  selectedStrategies.clear();
+  selectedStrategies.add(strategyId);
+  updateAllStrategyChipStyles(false);
+  const chip = document.querySelector(`#strategy-filter button[data-strategy-id="${strategyId}"]`);
+  if (chip) {
+    chip.className = CHIP_ACTIVE;
+    chip.style.backgroundColor = color;
+  }
+  updateURL();
+  renderCharts();
+}
+
+function updateAllStrategyChipStyles(active) {
   const chips = document.querySelectorAll('#strategy-filter button[data-strategy-id]');
   chips.forEach((chip) => {
     const id = chip.dataset.strategyId;
@@ -214,7 +244,7 @@ function generatePerTaskCharts(strategyDataMap) {
     const chartDivId = `chart-${taskId}`;
     chartDiv.id = chartDivId;
     chartDiv.style.width = '100%';
-    chartDiv.style.height = '350px';
+    chartDiv.style.height = '450px';
     card.appendChild(chartDiv);
     container.appendChild(card);
 
@@ -255,9 +285,10 @@ function generatePerTaskCharts(strategyDataMap) {
       },
       xaxis: {
         title: {
-          text: 'Tokens per Step',
+          text: '# Tokens per Step (TPS)',
           font: { family: 'Inter, sans-serif', size: 12, color: '#475569' },
         },
+        tickvals: [1, 2, 4, 8, 16, 32],
         gridcolor: '#e2e8f0',
         zerolinecolor: '#cbd5e1',
         tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
@@ -268,20 +299,21 @@ function generatePerTaskCharts(strategyDataMap) {
           font: { family: 'Inter, sans-serif', size: 12, color: '#475569' },
         },
         range: [0, 105],
+        dtick: 10,
         gridcolor: '#e2e8f0',
         zerolinecolor: '#cbd5e1',
         tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
       },
       legend: {
         orientation: 'h',
-        y: -0.3,
+        y: -0.45,
         x: 0.5,
         xanchor: 'center',
         font: { family: 'Inter, sans-serif', size: 10 },
       },
       plot_bgcolor: 'white',
       paper_bgcolor: 'white',
-      margin: { t: 40, r: 20, b: 70, l: 50 },
+      margin: { t: 40, r: 20, b: 90, l: 50 },
       hovermode: 'closest',
     };
 
@@ -345,9 +377,10 @@ function generateAverageChart(strategyDataMap) {
   const layout = {
     xaxis: {
       title: {
-        text: 'Tokens per Step (TPS)',
+        text: '# Tokens per Step (TPS)',
         font: { family: 'Inter, sans-serif', size: 14, color: '#475569' },
       },
+      tickvals: [1, 2, 4, 8, 16, 32],
       gridcolor: '#e2e8f0',
       zerolinecolor: '#cbd5e1',
       tickfont: { family: 'Inter, sans-serif', size: 12, color: '#64748b' },
@@ -358,6 +391,7 @@ function generateAverageChart(strategyDataMap) {
         font: { family: 'Inter, sans-serif', size: 14, color: '#475569' },
       },
       range: [0, 105],
+      dtick: 10,
       gridcolor: '#e2e8f0',
       zerolinecolor: '#cbd5e1',
       tickfont: { family: 'Inter, sans-serif', size: 12, color: '#64748b' },
@@ -558,11 +592,38 @@ function renderCharts() {
   generatePerTaskCharts(filtered);
 }
 
+function getURLParams() {
+  const params = new URLSearchParams(window.location.search);
+  const model = params.get('model');
+  const strategies = params.get('strategies');
+  return {
+    model,
+    strategies: strategies ? strategies.split(',') : null,
+  };
+}
+
+function updateURL() {
+  const url = new URL(window.location);
+  if (currentModelId) {
+    url.searchParams.set('model', currentModelId);
+  }
+  const modelStrategyIds = currentModelStrategies.map((s) => s.id);
+  const allSelected = modelStrategyIds.every((id) => selectedStrategies.has(id));
+  if (allSelected || selectedStrategies.size === 0) {
+    url.searchParams.delete('strategies');
+  } else {
+    url.searchParams.set('strategies', [...selectedStrategies].join(','));
+  }
+  window.history.replaceState({}, '', url);
+}
+
 async function handleModelSelection(modelId) {
   currentModelId = modelId;
   const model = modelsConfig.models.find((m) => m.id === modelId);
 
+  generateStrategyFilter(model.strategies);
   generateModelTabs(modelsConfig.models, modelId);
+  updateURL();
   showLoading();
 
   const [strategyData, leaderboardData] = await Promise.all([
@@ -584,23 +645,17 @@ async function handleModelSelection(modelId) {
     tableSection.classList.add('hidden');
   }
 
-  if (Object.keys(currentStrategyDataMap).length === 0) {
-    showEmpty();
-    return;
-  }
-
-  showCharts();
-  generatePerTaskCharts(currentStrategyDataMap);
-  generateAverageChart(currentStrategyDataMap);
+  renderCharts();
 }
 
 async function initializeLeaderboard() {
   try {
     modelsConfig = await loadModelsConfig();
 
-    // Build strategy lookup
+    // Build strategy lookup and colors
     if (modelsConfig.strategies) {
       strategyLookup = buildStrategyLookup(modelsConfig.strategies);
+      STRATEGY_COLORS = buildStrategyColors(modelsConfig.strategies);
     }
 
     // Build task lookup
@@ -608,18 +663,39 @@ async function initializeLeaderboard() {
       buildTaskLookup(modelsConfig.tasks);
     }
 
-    // Build strategy filter
-    if (modelsConfig.strategies) {
-      generateStrategyFilter(modelsConfig.strategies);
-    }
+    const urlParams = getURLParams();
+    const requestedModel = urlParams.model
+      ? modelsConfig.models.find((m) => m.id === urlParams.model && m.strategies.length > 0)
+      : null;
 
-    const firstModelWithData = modelsConfig.models.find(
+    const initialModel = requestedModel || modelsConfig.models.find(
       (model) => model.strategies.length > 0,
     );
 
-    if (firstModelWithData) {
-      generateModelTabs(modelsConfig.models, firstModelWithData.id);
-      await handleModelSelection(firstModelWithData.id);
+    if (initialModel) {
+      generateModelTabs(modelsConfig.models, initialModel.id);
+      await handleModelSelection(initialModel.id);
+
+      // Apply strategy filter from URL after model is loaded
+      if (urlParams.strategies) {
+        const validIds = new Set(initialModel.strategies);
+        const filtered = urlParams.strategies.filter((id) => validIds.has(id));
+        if (filtered.length > 0) {
+          selectedStrategies.clear();
+          filtered.forEach((id) => selectedStrategies.add(id));
+          updateAllStrategyChipStyles(false);
+          for (const chip of document.querySelectorAll('#strategy-filter button[data-strategy-id]')) {
+            const id = chip.dataset.strategyId;
+            if (selectedStrategies.has(id)) {
+              const color = STRATEGY_COLORS[id] || '#94a3b8';
+              chip.className = CHIP_ACTIVE;
+              chip.style.backgroundColor = color;
+            }
+          }
+          updateURL();
+          renderCharts();
+        }
+      }
     }
   } catch (error) {
     console.error('Failed to initialize leaderboard:', error);
