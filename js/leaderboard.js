@@ -306,14 +306,14 @@ function generatePerTaskCharts(strategyDataMap) {
       },
       legend: {
         orientation: 'h',
-        y: -0.45,
+        y: -0.25,
         x: 0.5,
         xanchor: 'center',
         font: { family: 'Inter, sans-serif', size: 10 },
       },
       plot_bgcolor: 'white',
       paper_bgcolor: 'white',
-      margin: { t: 40, r: 20, b: 90, l: 50 },
+      margin: { t: 40, r: 20, b: 40, l: 50 },
       hovermode: 'closest',
     };
 
