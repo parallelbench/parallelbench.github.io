@@ -250,7 +250,9 @@ function generatePerTaskCharts(strategyDataMap) {
 
     const traces = [];
     for (const [strategyId, strategyInfo] of Object.entries(strategyDataMap)) {
-      const rows = strategyInfo.data.filter((row) => row.task === taskId);
+      const rows = strategyInfo.data
+        .filter((row) => row.task === taskId)
+        .sort((a, b) => a.tps - b.tps || b.accuracy - a.accuracy);
       if (rows.length === 0) continue;
 
       traces.push({
