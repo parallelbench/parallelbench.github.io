@@ -9,7 +9,7 @@
     { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1" },
     { "id": "apd", "displayName": "APD", "color": "#0d9488" },
     { "id": "klass", "displayName": "KLASS", "color": "#eab308" },
-    { "id": "confidence-eb", "displayName": "Confidence EB", "color": "#8b5cf6" },
+    { "id": "confidence-eb", "displayName": "EB-Sampler", "color": "#8b5cf6" },
     { "id": "confidence-pc-sampler", "displayName": "Confidence PC Sampler", "color": "#f472b6" },
     { "id": "random-pc-sampler", "displayName": "Random PC Sampler", "color": "#78716c" },
     { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669" },
