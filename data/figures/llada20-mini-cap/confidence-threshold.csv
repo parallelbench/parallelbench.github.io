@@ -42,7 +42,11 @@ textwriting-w2s_medium,4.1612,94.0
 textwriting-w2s_medium,5.4054,86.0
 textwriting-w2s_medium,7.119,75.0
 waitingline-copy,0.829,100.0
-waitingline-copy,16.6667,99.6
+waitingline-copy,16.6667,99.0
+waitingline-copy,16.6667,99.0
+waitingline-copy,16.6667,100.0
+waitingline-copy,16.6667,100.0
+waitingline-copy,16.6667,100.0
 waitingline-insert_index,0.7512,49.0
 waitingline-insert_index,10.1911,41.0
 waitingline-insert_index,10.7383,36.0
@@ -59,7 +63,8 @@ waitingline-remove_index,1.0349,47.0
 waitingline-remove_index,15.8416,44.0
 waitingline-remove_index,16.4103,43.0
 waitingline-remove_index,17.2973,42.0
-waitingline-remove_index,17.6796,42.5
+waitingline-remove_index,17.6796,42.0
+waitingline-remove_index,17.6796,43.0
 waitingline-remove_random,1.1158,93.0
 waitingline-remove_random,8.9136,89.0
 waitingline-remove_random,10.7383,83.0
@@ -69,6 +74,7 @@ waitingline-remove_random,13.5021,55.0
 waitingline-replace_index,0.8724,35.0
 waitingline-replace_index,13.9738,37.0
 waitingline-replace_index,14.7465,36.0
+waitingline-replace_index,15.6863,35.0
 waitingline-replace_index,15.6863,35.0
 waitingline-replace_index,16.2437,34.0
 waitingline-replace_random,0.8686,98.0
@@ -96,4 +102,8 @@ waitingline-sort,8.3551,18.0
 waitingline-sort,8.6022,12.0
 waitingline-sort,9.6386,14.0
 avg,1.2238,76.7059
-avg,7.7111,70.2706
+avg,7.7111,70.2353
+avg,8.5932,63.4118
+avg,9.5878,56.4706
+avg,10.339,51.4118
+avg,11.1106,45.8824

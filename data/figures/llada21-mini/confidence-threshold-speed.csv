@@ -45,6 +45,7 @@ waitingline-copy,0.6855,100.0
 waitingline-copy,7.7859,100.0
 waitingline-copy,7.9602,100.0
 waitingline-copy,7.98,100.0
+waitingline-copy,7.98,100.0
 waitingline-copy,8.0,100.0
 waitingline-insert_index,0.6418,43.0
 waitingline-insert_index,5.7451,44.0
@@ -104,4 +105,5 @@ avg,0.6777,68.4118
 avg,3.6894,68.5294
 avg,4.0747,68.5294
 avg,4.4271,69.5294
-avg,4.6816,67.4118
+avg,4.6804,67.4118
+avg,5.0089,66.1176

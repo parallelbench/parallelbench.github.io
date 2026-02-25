@@ -46,6 +46,7 @@ waitingline-copy,14.3498,100.0
 waitingline-copy,14.6789,100.0
 waitingline-copy,15.0943,100.0
 waitingline-copy,15.4589,99.0
+waitingline-copy,15.4589,99.0
 waitingline-insert_index,0.7512,46.0
 waitingline-insert_index,9.4955,33.0
 waitingline-insert_index,10.2236,45.0
@@ -63,6 +64,7 @@ waitingline-remove_index,12.4031,45.0
 waitingline-remove_index,13.6752,44.0
 waitingline-remove_index,14.2857,45.0
 waitingline-remove_index,14.4796,44.0
+waitingline-remove_index,14.4796,44.0
 waitingline-remove_random,1.1158,95.0
 waitingline-remove_random,6.7797,93.0
 waitingline-remove_random,9.1168,85.0
@@ -73,6 +75,7 @@ waitingline-replace_index,0.8724,34.0
 waitingline-replace_index,10.596,34.0
 waitingline-replace_index,12.2605,34.0
 waitingline-replace_index,12.549,35.0
+waitingline-replace_index,13.617,34.0
 waitingline-replace_index,13.617,34.0
 waitingline-replace_random,0.8686,94.0
 waitingline-replace_random,5.4329,92.0
@@ -103,3 +106,4 @@ avg,6.1804,72.3529
 avg,6.9384,67.8824
 avg,7.5533,62.2941
 avg,8.3196,54.2941
+avg,9.0058,51.2941

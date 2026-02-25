@@ -43,6 +43,10 @@ textwriting-w2s_medium,2.308,100.0
 textwriting-w2s_medium,2.4446,99.0
 waitingline-copy,1.0,100.0
 waitingline-copy,6.5844,100.0
+waitingline-copy,6.5844,100.0
+waitingline-copy,6.5844,100.0
+waitingline-copy,6.5844,100.0
+waitingline-copy,6.5844,100.0
 waitingline-insert_index,1.0,52.0
 waitingline-insert_index,3.8369,52.0
 waitingline-insert_index,4.0506,54.0
@@ -99,3 +103,7 @@ waitingline-sort,2.6187,15.0
 waitingline-sort,2.847,13.0
 avg,1.0,81.4837
 avg,3.0102,81.0131
+avg,3.1913,79.8366
+avg,3.3178,77.719
+avg,3.443,73.3333
+avg,3.5952,69.3638
