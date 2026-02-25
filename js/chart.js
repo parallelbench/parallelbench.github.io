@@ -426,27 +426,41 @@ function generateModelTabs(models, activeModelId) {
   const selector = document.getElementById('model-selector');
   selector.innerHTML = '';
 
-  models.forEach((model) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = model.displayName;
-    button.dataset.modelId = model.id;
+  const familyGroups = groupModelsByFamily(models);
 
-    const isActive = model.id === activeModelId;
+  for (const group of familyGroups) {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'flex flex-wrap items-center gap-2';
 
-    if (model.strategies.length === 0) {
-      button.disabled = true;
-      button.className = MODEL_TAB_DISABLED;
-      button.title = 'Coming soon';
-    } else if (isActive) {
-      button.className = MODEL_TAB_ACTIVE;
-    } else {
-      button.className = MODEL_TAB_INACTIVE;
+    const label = document.createElement('span');
+    label.className = 'text-xs font-semibold text-slate-400 mr-1';
+    label.textContent = familyLookup[group.familyId] || group.familyId;
+    groupDiv.appendChild(label);
+
+    for (const model of group.models) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = model.displayName;
+      button.dataset.modelId = model.id;
+
+      const isActive = model.id === activeModelId;
+
+      if (model.strategies.length === 0) {
+        button.disabled = true;
+        button.className = MODEL_TAB_DISABLED;
+        button.title = 'Coming soon';
+      } else if (isActive) {
+        button.className = MODEL_TAB_ACTIVE;
+      } else {
+        button.className = MODEL_TAB_INACTIVE;
+      }
+
+      button.addEventListener('click', () => handleModelSelection(model.id));
+      groupDiv.appendChild(button);
     }
 
-    button.addEventListener('click', () => handleModelSelection(model.id));
-    selector.appendChild(button);
-  });
+    selector.appendChild(groupDiv);
+  }
 }
 
 // ── UI: State Management ──

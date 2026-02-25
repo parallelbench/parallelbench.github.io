@@ -20,18 +20,32 @@ function generateModelFilter() {
     (m) => m.strategies.length > 0 && allLeaderboardData[m.id],
   );
 
-  for (const model of availableModels) {
-    selectedModels.add(model.id);
+  const familyGroups = groupModelsByFamily(availableModels);
 
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.textContent = model.displayName;
-    chip.dataset.modelId = model.id;
-    chip.className = MODEL_CHIP_ACTIVE;
+  for (const group of familyGroups) {
+    const groupDiv = document.createElement('div');
+    groupDiv.className = 'flex flex-wrap items-center gap-2';
 
-    chip.addEventListener('click', () => toggleModelFilter(model.id, chip));
-    chip.addEventListener('dblclick', () => isolateModelFilter(model.id));
-    container.appendChild(chip);
+    const label = document.createElement('span');
+    label.className = 'text-xs font-semibold text-slate-400 mr-1';
+    label.textContent = familyLookup[group.familyId] || group.familyId;
+    groupDiv.appendChild(label);
+
+    for (const model of group.models) {
+      selectedModels.add(model.id);
+
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.textContent = model.displayName;
+      chip.dataset.modelId = model.id;
+      chip.className = MODEL_CHIP_ACTIVE;
+
+      chip.addEventListener('click', () => toggleModelFilter(model.id, chip));
+      chip.addEventListener('dblclick', () => isolateModelFilter(model.id));
+      groupDiv.appendChild(chip);
+    }
+
+    container.appendChild(groupDiv);
   }
 
   const allBtn = document.getElementById('model-filter-all');
@@ -160,9 +174,11 @@ function renderCombinedLeaderboardTable() {
     for (const [strategyId, thresholdData] of Object.entries(data.results)) {
       const tps = thresholdData[String(currentThreshold)];
       if (tps !== undefined) {
+        const familyId = modelFamilyMap[modelId] || '';
         entries.push({
           modelId,
           modelDisplayName: modelDisplayNames[modelId] || modelId,
+          familyDisplayName: familyLookup[familyId] || familyId,
           strategyId,
           strategyDisplayName: strategyLookup[strategyId] || strategyId,
           tps,
@@ -177,7 +193,7 @@ function renderCombinedLeaderboardTable() {
 
   if (entries.length === 0) {
     tableBody.innerHTML =
-      '<tr><td colspan="4" class="px-6 py-8 text-center text-sm text-slate-400">No methods meet this accuracy threshold.</td></tr>';
+      '<tr><td colspan="5" class="px-6 py-8 text-center text-sm text-slate-400">No methods meet this accuracy threshold.</td></tr>';
     return;
   }
 
@@ -191,6 +207,10 @@ function renderCombinedLeaderboardTable() {
     const rankCell = document.createElement('td');
     rankCell.className = 'px-6 py-4 text-sm font-medium text-slate-500';
     rankCell.textContent = index + 1;
+
+    const familyCell = document.createElement('td');
+    familyCell.className = 'px-6 py-4 text-sm font-medium text-slate-500';
+    familyCell.textContent = entry.familyDisplayName;
 
     const modelCell = document.createElement('td');
     modelCell.className = 'px-6 py-4 text-sm font-medium text-slate-900';
@@ -216,6 +236,7 @@ function renderCombinedLeaderboardTable() {
     tpsCell.textContent = entry.tps;
 
     row.appendChild(rankCell);
+    row.appendChild(familyCell);
     row.appendChild(modelCell);
     row.appendChild(strategyCell);
     row.appendChild(tpsCell);

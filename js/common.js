@@ -4,6 +4,7 @@ const CHIP_ACTIVE =
   'rounded-full px-3 py-1 text-xs font-medium border transition border-transparent text-white';
 const CHIP_INACTIVE =
   'rounded-full px-3 py-1 text-xs font-medium border transition border-slate-300 bg-white text-slate-500';
+
 const DEFAULT_THRESHOLD = 75;
 
 // ── Shared State ──
@@ -11,6 +12,8 @@ const DEFAULT_THRESHOLD = 75;
 let STRATEGY_COLORS = {};
 let strategyLookup = {};
 let taskIdToDisplayName = {};
+let familyLookup = {};
+let modelFamilyMap = {};
 let modelsConfig = null;
 let currentThreshold = null;
 
@@ -113,6 +116,32 @@ function getTaskDisplayName(taskId) {
   return taskIdToDisplayName[taskId] || taskId;
 }
 
+// ── Family Grouping ──
+
+function groupModelsByFamily(models) {
+  const familyOrder = (modelsConfig.modelFamilies || []).map((f) => f.id);
+  const groups = {};
+
+  for (const model of models) {
+    const familyId = model.family || 'other';
+    if (!groups[familyId]) groups[familyId] = [];
+    groups[familyId].push(model);
+  }
+
+  const sorted = [];
+  for (const fId of familyOrder) {
+    if (groups[fId]) {
+      sorted.push({ familyId: fId, models: groups[fId] });
+      delete groups[fId];
+    }
+  }
+  for (const [familyId, models] of Object.entries(groups)) {
+    sorted.push({ familyId, models });
+  }
+
+  return sorted;
+}
+
 // ── View Tab Selector ──
 
 function generateViewTabSelector(activePage) {
@@ -159,6 +188,20 @@ async function initializeCommon() {
 
   if (modelsConfig.tasks) {
     buildTaskLookup(modelsConfig.tasks);
+  }
+
+  if (modelsConfig.modelFamilies) {
+    familyLookup = {};
+    for (const family of modelsConfig.modelFamilies) {
+      familyLookup[family.id] = family.displayName;
+    }
+  }
+
+  modelFamilyMap = {};
+  for (const model of modelsConfig.models) {
+    if (model.family) {
+      modelFamilyMap[model.id] = model.family;
+    }
   }
 
   return modelsConfig;

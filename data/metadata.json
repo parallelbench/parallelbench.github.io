@@ -18,9 +18,15 @@
     { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7" },
     { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16" }
   ],
+  "modelFamilies": [
+    { "id": "llada", "displayName": "LLaDA" },
+    { "id": "dream", "displayName": "DREAM" },
+    { "id": "sdar", "displayName": "SDAR" }
+  ],
   "models": [
     {
       "id": "llada15",
+      "family": "llada",
       "displayName": "LLaDA 1.5",
       "strategies": [
         "random",
@@ -41,76 +47,91 @@
     },
     {
       "id": "llada10",
+      "family": "llada",
       "displayName": "LLaDA 8B Instruct",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "dream",
+      "family": "dream",
       "displayName": "Dream 7B",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin", "apd", "klass", "confidence-eb"]
     },
     {
       "id": "diffucoder",
+      "family": "dream",
       "displayName": "DiffuCoder",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada-moe",
+      "family": "llada",
       "displayName": "LLaDA MoE 7B",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada-moe-td",
+      "family": "llada",
       "displayName": "LLaDA MoE 7B TD",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada20-mini",
+      "family": "llada",
       "displayName": "LLaDA 2.0 Mini",
       "strategies": ["confidence-threshold"]
     },
     {
       "id": "llada20-mini-cap",
+      "family": "llada",
       "displayName": "LLaDA 2.0 Mini CAP",
       "strategies": ["confidence-threshold"]
     },
     {
       "id": "llada21-mini",
+      "family": "llada",
       "displayName": "LLaDA 2.1 Mini",
       "strategies": ["confidence-threshold-quality", "confidence-threshold-speed"]
     },
     {
       "id": "dparallel-dream",
+      "family": "dream",
       "displayName": "dParallel Dream 7B",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "dparallel-llada",
+      "family": "llada",
       "displayName": "dParallel LLaDA 8B",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "sdar-1.7b",
+      "family": "sdar",
       "displayName": "SDAR 1.7B",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-4b",
+      "family": "sdar",
       "displayName": "SDAR 4B",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-8b",
+      "family": "sdar",
       "displayName": "SDAR 8B",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-trado-4b",
+      "family": "sdar",
       "displayName": "SDAR Trado 4B",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-trado-8b",
+      "family": "sdar",
       "displayName": "SDAR Trado 8B",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     }
