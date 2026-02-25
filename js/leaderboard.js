@@ -379,6 +379,19 @@ function generateAverageChart(strategyDataMap) {
 
   container.style.display = 'block';
 
+  const shapes = [];
+  if (currentThreshold) {
+    shapes.push({
+      type: 'line',
+      x0: 0,
+      x1: 1,
+      xref: 'paper',
+      y0: currentThreshold,
+      y1: currentThreshold,
+      line: { color: '#94a3b8', width: 1.5, dash: 'dash' },
+    });
+  }
+
   const layout = {
     title: {
       text: 'Average Results',
@@ -407,6 +420,7 @@ function generateAverageChart(strategyDataMap) {
       zerolinecolor: '#cbd5e1',
       tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
     },
+    shapes,
     legend: {
       orientation: 'h',
       y: -0.25,
@@ -516,6 +530,8 @@ function generateThresholdSelector(thresholds, activeThreshold) {
       currentThreshold = threshold;
       generateThresholdSelector(thresholds, threshold);
       renderLeaderboardTable();
+      renderCharts();
+      updateURL();
     });
 
     container.appendChild(button);
@@ -598,6 +614,7 @@ let currentModelId = null;
 let currentStrategyDataMap = null;
 let currentLeaderboardData = null;
 let currentThreshold = null;
+const DEFAULT_THRESHOLD = 75;
 
 function renderCharts() {
   if (!currentStrategyDataMap) return;
@@ -618,9 +635,11 @@ function getURLParams() {
   const params = new URLSearchParams(window.location.search);
   const model = params.get('model');
   const strategies = params.get('strategies');
+  const threshold = params.get('threshold');
   return {
     model,
     strategies: strategies ? strategies.split(',') : null,
+    threshold: threshold ? Number(threshold) : null,
   };
 }
 
@@ -636,10 +655,15 @@ function updateURL() {
   } else {
     url.searchParams.set('strategies', [...selectedStrategies].join(','));
   }
+  if (currentThreshold && currentThreshold !== DEFAULT_THRESHOLD) {
+    url.searchParams.set('threshold', currentThreshold);
+  } else {
+    url.searchParams.delete('threshold');
+  }
   window.history.replaceState({}, '', url);
 }
 
-async function handleModelSelection(modelId) {
+async function handleModelSelection(modelId, initialThreshold = null) {
   currentModelId = modelId;
   const model = modelsConfig.models.find((m) => m.id === modelId);
 
@@ -659,7 +683,14 @@ async function handleModelSelection(modelId) {
   // Render leaderboard table
   const tableSection = document.getElementById('leaderboard-table-section');
   if (currentLeaderboardData && currentLeaderboardData.thresholds.length > 0) {
-    currentThreshold = currentLeaderboardData.thresholds[0];
+    const validThresholds = currentLeaderboardData.thresholds;
+    if (initialThreshold && validThresholds.includes(initialThreshold)) {
+      currentThreshold = initialThreshold;
+    } else if (validThresholds.includes(DEFAULT_THRESHOLD)) {
+      currentThreshold = DEFAULT_THRESHOLD;
+    } else {
+      currentThreshold = validThresholds[0];
+    }
     generateThresholdSelector(currentLeaderboardData.thresholds, currentThreshold);
     renderLeaderboardTable();
     tableSection.classList.remove('hidden');
@@ -667,6 +698,7 @@ async function handleModelSelection(modelId) {
     tableSection.classList.add('hidden');
   }
 
+  updateURL();
   renderCharts();
 }
 
@@ -696,7 +728,7 @@ async function initializeLeaderboard() {
 
     if (initialModel) {
       generateModelTabs(modelsConfig.models, initialModel.id);
-      await handleModelSelection(initialModel.id);
+      await handleModelSelection(initialModel.id, urlParams.threshold);
 
       // Apply strategy filter from URL after model is loaded
       if (urlParams.strategies) {
