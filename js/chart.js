@@ -288,14 +288,15 @@ function generatePerTaskCharts(strategyDataMap) {
       },
       legend: {
         orientation: 'h',
-        y: -0.35,
+        y: -0.45,
         x: 0.5,
         xanchor: 'center',
+        yanchor: 'top',
         font: { family: 'Inter, sans-serif', size: 10 },
       },
       plot_bgcolor: 'white',
       paper_bgcolor: 'white',
-      margin: { t: 40, r: 20, b: 80, l: 50 },
+      margin: { t: 40, r: 20, b: 220, l: 50 },
       hovermode: 'closest',
     };
 
@@ -394,14 +395,15 @@ function generateAverageChart(strategyDataMap) {
     shapes,
     legend: {
       orientation: 'h',
-      y: -0.35,
+      y: -0.3,
       x: 0.5,
       xanchor: 'center',
+      yanchor: 'top',
       font: { family: 'Inter, sans-serif', size: 10 },
     },
     plot_bgcolor: 'white',
     paper_bgcolor: 'white',
-    margin: { t: 40, r: 20, b: 80, l: 50 },
+    margin: { t: 40, r: 20, b: 140, l: 50 },
     hovermode: 'closest',
   };
 
