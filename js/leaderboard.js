@@ -178,9 +178,11 @@ function renderCombinedLeaderboardTable() {
         entries.push({
           modelId,
           modelDisplayName: modelDisplayNames[modelId] || modelId,
+          modelUrl: modelUrlLookup[modelId] || null,
           familyDisplayName: familyLookup[familyId] || familyId,
           strategyId,
           strategyDisplayName: strategyLookup[strategyId] || strategyId,
+          strategyUrl: strategyUrlLookup[strategyId] || null,
           tps,
         });
       }
@@ -213,8 +215,19 @@ function renderCombinedLeaderboardTable() {
     familyCell.textContent = entry.familyDisplayName;
 
     const modelCell = document.createElement('td');
-    modelCell.className = 'px-6 py-4 text-sm font-medium text-slate-900';
-    modelCell.textContent = entry.modelDisplayName;
+    modelCell.className = 'px-6 py-4 text-sm font-medium';
+    if (entry.modelUrl) {
+      const modelLink = document.createElement('a');
+      modelLink.href = entry.modelUrl;
+      modelLink.target = '_blank';
+      modelLink.rel = 'noopener noreferrer';
+      modelLink.className = 'text-blue-600 hover:text-blue-800 hover:underline';
+      modelLink.textContent = entry.modelDisplayName;
+      modelCell.appendChild(modelLink);
+    } else {
+      modelCell.classList.add('text-slate-900');
+      modelCell.textContent = entry.modelDisplayName;
+    }
 
     const strategyCell = document.createElement('td');
     strategyCell.className = 'px-6 py-4';
@@ -223,11 +236,22 @@ function renderCombinedLeaderboardTable() {
     const colorDot = document.createElement('span');
     colorDot.className = 'inline-block w-3 h-3 rounded-full shrink-0';
     colorDot.style.backgroundColor = color;
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'text-sm font-medium text-slate-900';
-    nameSpan.textContent = entry.strategyDisplayName;
-    cellWrapper.appendChild(colorDot);
-    cellWrapper.appendChild(nameSpan);
+    if (entry.strategyUrl) {
+      const nameLink = document.createElement('a');
+      nameLink.href = entry.strategyUrl;
+      nameLink.target = '_blank';
+      nameLink.rel = 'noopener noreferrer';
+      nameLink.className = 'text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline';
+      nameLink.textContent = entry.strategyDisplayName;
+      cellWrapper.appendChild(colorDot);
+      cellWrapper.appendChild(nameLink);
+    } else {
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'text-sm font-medium text-slate-900';
+      nameSpan.textContent = entry.strategyDisplayName;
+      cellWrapper.appendChild(colorDot);
+      cellWrapper.appendChild(nameSpan);
+    }
     strategyCell.appendChild(cellWrapper);
 
     const tpsCell = document.createElement('td');

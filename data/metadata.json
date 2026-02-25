@@ -7,14 +7,14 @@
     { "id": "confidence-factor", "displayName": "Confidence Factor", "color": "#e11d48" },
     { "id": "entropy-topk", "displayName": "Entropy Top-K", "color": "#0891b2" },
     { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1" },
-    { "id": "apd", "displayName": "APD", "color": "#0d9488" },
-    { "id": "klass", "displayName": "KLASS", "color": "#eab308" },
-    { "id": "confidence-eb", "displayName": "EB-Sampler", "color": "#8b5cf6" },
-    { "id": "confidence-pc-sampler", "displayName": "PC-Sampler (Confidence)", "color": "#f472b6" },
-    { "id": "random-pc-sampler", "displayName": "PC-Sampler (Random)", "color": "#78716c" },
-    { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669" },
-    { "id": "dus", "displayName": "DUS", "color": "#d97706" },
-    { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626" },
+    { "id": "apd", "displayName": "APD", "color": "#0d9488", "url": "https://github.com/danielmisrael/apd" },
+    { "id": "klass", "displayName": "KLASS", "color": "#eab308", "url": "https://github.com/shkim0116/KLASS" },
+    { "id": "confidence-eb", "displayName": "EB-Sampler", "color": "#8b5cf6", "url": "https://arxiv.org/abs/2505.24857v1" },
+    { "id": "confidence-pc-sampler", "displayName": "PC-Sampler (Confidence)", "color": "#f472b6", "url": "https://github.com/NEUIR/Uncode" },
+    { "id": "random-pc-sampler", "displayName": "PC-Sampler (Random)", "color": "#78716c", "url": "https://github.com/NEUIR/Uncode" },
+    { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669", "url": "https://github.com/LiangrunFlora/Slow-Fast-Sampling" },
+    { "id": "dus", "displayName": "DUS", "color": "#d97706", "url": "https://github.com/omerlux/DUS" },
+    { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626", "url": "https://github.com/Feng-Hong/WINO-DLLM" },
     { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7" },
     { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16" }
   ],
@@ -28,6 +28,7 @@
       "id": "llada15",
       "family": "llada",
       "displayName": "LLaDA 1.5",
+      "url": "https://github.com/ML-GSAI/LLaDA",
       "strategies": [
         "random",
         "l2r",
@@ -49,90 +50,105 @@
       "id": "llada10",
       "family": "llada",
       "displayName": "LLaDA 8B Instruct",
+      "url": "https://github.com/ML-GSAI/LLaDA",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "dream",
       "family": "dream",
       "displayName": "Dream 7B",
+      "url": "https://github.com/DreamLM/Dream",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin", "apd", "klass", "confidence-eb"]
     },
     {
       "id": "diffucoder",
       "family": "dream",
       "displayName": "DiffuCoder",
+      "url": "https://github.com/apple/ml-diffucoder",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada-moe",
       "family": "llada",
       "displayName": "LLaDA MoE 7B",
+      "url": "https://github.com/ML-GSAI/LLaDA",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada-moe-td",
       "family": "llada",
       "displayName": "LLaDA MoE 7B TD",
+      "url": "https://github.com/ML-GSAI/LLaDA",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada20-mini",
       "family": "llada",
       "displayName": "LLaDA 2.0 Mini",
+      "url": "https://github.com/inclusionAI/LLaDA2.X",
       "strategies": ["confidence-threshold"]
     },
     {
       "id": "llada20-mini-cap",
       "family": "llada",
       "displayName": "LLaDA 2.0 Mini CAP",
+      "url": "https://github.com/inclusionAI/LLaDA2.X",
       "strategies": ["confidence-threshold"]
     },
     {
       "id": "llada21-mini",
       "family": "llada",
       "displayName": "LLaDA 2.1 Mini",
+      "url": "https://github.com/inclusionAI/LLaDA2.X",
       "strategies": ["confidence-threshold-quality", "confidence-threshold-speed"]
     },
     {
       "id": "dparallel-dream",
       "family": "dream",
       "displayName": "dParallel Dream 7B",
+      "url": "https://github.com/NVlabs/Fast-dLLM",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "dparallel-llada",
       "family": "llada",
       "displayName": "dParallel LLaDA 8B",
+      "url": "https://github.com/NVlabs/Fast-dLLM",
       "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "sdar-1.7b",
       "family": "sdar",
       "displayName": "SDAR 1.7B",
+      "url": "https://github.com/JetAstra/SDAR",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-4b",
       "family": "sdar",
       "displayName": "SDAR 4B",
+      "url": "https://github.com/JetAstra/SDAR",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-8b",
       "family": "sdar",
       "displayName": "SDAR 8B",
+      "url": "https://github.com/JetAstra/SDAR",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-trado-4b",
       "family": "sdar",
       "displayName": "SDAR Trado 4B",
+      "url": "https://github.com/Gen-Verse/dLLM-RL",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     },
     {
       "id": "sdar-trado-8b",
       "family": "sdar",
       "displayName": "SDAR Trado 8B",
+      "url": "https://github.com/Gen-Verse/dLLM-RL",
       "strategies": ["random", "confidence-threshold", "confidence-topk"]
     }
   ],

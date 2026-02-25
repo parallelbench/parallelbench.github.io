@@ -11,6 +11,8 @@ const DEFAULT_THRESHOLD = 75;
 
 let STRATEGY_COLORS = {};
 let strategyLookup = {};
+let strategyUrlLookup = {};
+let modelUrlLookup = {};
 let taskIdToDisplayName = {};
 let familyLookup = {};
 let modelFamilyMap = {};
@@ -184,6 +186,12 @@ async function initializeCommon() {
   if (modelsConfig.strategies) {
     strategyLookup = buildStrategyLookup(modelsConfig.strategies);
     STRATEGY_COLORS = buildStrategyColors(modelsConfig.strategies);
+    strategyUrlLookup = {};
+    for (const strategy of modelsConfig.strategies) {
+      if (strategy.url) {
+        strategyUrlLookup[strategy.id] = strategy.url;
+      }
+    }
   }
 
   if (modelsConfig.tasks) {
@@ -198,9 +206,13 @@ async function initializeCommon() {
   }
 
   modelFamilyMap = {};
+  modelUrlLookup = {};
   for (const model of modelsConfig.models) {
     if (model.family) {
       modelFamilyMap[model.id] = model.family;
+    }
+    if (model.url) {
+      modelUrlLookup[model.id] = model.url;
     }
   }
 
