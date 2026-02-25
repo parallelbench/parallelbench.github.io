@@ -1,63 +1,10 @@
-<section class="bg-white py-16 sm:py-20 lg:py-28">
+<section class="bg-white pb-16 sm:pb-20 lg:pb-28">
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-    <!-- Page Title -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Leaderboard</h2>
-      <p
-        class="mx-auto mt-5 max-w-4xl text-base text-slate-600 leading-relaxed"
-      >
-        Interactive TPS vs. Accuracy trade-off curves for different unmasking
-        methods on <b>ParallelBench</b>.
-      </p>
-    </div>
-
     <!-- Model Selector Tabs -->
     <div
       id="model-selector"
       class="flex flex-wrap items-center justify-center gap-2 mb-8"
     ></div>
-
-    <!-- Leaderboard Table -->
-    <div id="leaderboard-table-section" class="mb-16 hidden">
-      <h3
-        class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-primary/20 pb-2"
-      >
-        Leaderboard
-      </h3>
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-sm font-semibold text-slate-700"
-          >Accuracy Threshold</span
-        >
-        <div id="threshold-selector" class="flex gap-2"></div>
-      </div>
-      <div
-        id="leaderboard-table-container"
-        class="rounded-xl border border-slate-200 overflow-hidden"
-      >
-        <table class="w-full">
-          <thead>
-            <tr class="bg-slate-50 border-b border-slate-200">
-              <th
-                class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider w-16"
-              >
-                Rank
-              </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider"
-              >
-                Unmasking Method
-              </th>
-              <th
-                class="px-6 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider"
-              >
-                Max TPS
-              </th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-table-body"></tbody>
-        </table>
-      </div>
-    </div>
 
     <!-- Strategy Filter -->
     <div id="strategy-filter-container" class="mb-12">
