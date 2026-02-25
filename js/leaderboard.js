@@ -2,6 +2,94 @@
 // Depends on: js/common.js (loaded first)
 
 let allLeaderboardData = {};
+let selectedModels = new Set();
+
+// ── Model Filter ──
+
+const MODEL_CHIP_ACTIVE =
+  'rounded-full px-3 py-1 text-xs font-medium border transition border-transparent text-white bg-slate-900';
+const MODEL_CHIP_INACTIVE =
+  'rounded-full px-3 py-1 text-xs font-medium border transition border-slate-300 bg-white text-slate-500';
+
+function generateModelFilter() {
+  const container = document.getElementById('model-filter');
+  container.innerHTML = '';
+  selectedModels.clear();
+
+  const availableModels = modelsConfig.models.filter(
+    (m) => m.strategies.length > 0 && allLeaderboardData[m.id],
+  );
+
+  for (const model of availableModels) {
+    selectedModels.add(model.id);
+
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.textContent = model.displayName;
+    chip.dataset.modelId = model.id;
+    chip.className = MODEL_CHIP_ACTIVE;
+
+    chip.addEventListener('click', () => toggleModelFilter(model.id, chip));
+    chip.addEventListener('dblclick', () => isolateModelFilter(model.id));
+    container.appendChild(chip);
+  }
+
+  const allBtn = document.getElementById('model-filter-all');
+  const noneBtn = document.getElementById('model-filter-none');
+  const newAllBtn = allBtn.cloneNode(true);
+  const newNoneBtn = noneBtn.cloneNode(true);
+  allBtn.replaceWith(newAllBtn);
+  noneBtn.replaceWith(newNoneBtn);
+
+  newAllBtn.addEventListener('click', () => {
+    selectedModels.clear();
+    for (const m of availableModels) selectedModels.add(m.id);
+    updateAllModelChipStyles(true);
+    updateLeaderboardURL();
+    renderCombinedLeaderboardTable();
+  });
+  newNoneBtn.addEventListener('click', () => {
+    selectedModels.clear();
+    updateAllModelChipStyles(false);
+    updateLeaderboardURL();
+    renderCombinedLeaderboardTable();
+  });
+}
+
+function toggleModelFilter(modelId, chip) {
+  if (selectedModels.has(modelId)) {
+    selectedModels.delete(modelId);
+    chip.className = MODEL_CHIP_INACTIVE;
+  } else {
+    selectedModels.add(modelId);
+    chip.className = MODEL_CHIP_ACTIVE;
+  }
+  updateLeaderboardURL();
+  renderCombinedLeaderboardTable();
+}
+
+function isolateModelFilter(modelId) {
+  selectedModels.clear();
+  selectedModels.add(modelId);
+  updateAllModelChipStyles(false);
+  const chip = document.querySelector(
+    `#model-filter button[data-model-id="${modelId}"]`,
+  );
+  if (chip) {
+    chip.className = MODEL_CHIP_ACTIVE;
+  }
+  updateLeaderboardURL();
+  renderCombinedLeaderboardTable();
+}
+
+function updateAllModelChipStyles(active) {
+  const chips = document.querySelectorAll(
+    '#model-filter button[data-model-id]',
+  );
+  chips.forEach((chip) => {
+    chip.className = active ? MODEL_CHIP_ACTIVE : MODEL_CHIP_INACTIVE;
+  });
+}
 
 async function loadAllLeaderboardData() {
   allLeaderboardData = {};
@@ -68,9 +156,10 @@ function renderCombinedLeaderboardTable() {
 
   const entries = [];
   for (const [modelId, data] of Object.entries(allLeaderboardData)) {
+    if (!selectedModels.has(modelId)) continue;
     for (const [strategyId, thresholdData] of Object.entries(data.results)) {
       const tps = thresholdData[String(currentThreshold)];
-      if (tps !== undefined && tps > 0) {
+      if (tps !== undefined) {
         entries.push({
           modelId,
           modelDisplayName: modelDisplayNames[modelId] || modelId,
@@ -139,8 +228,10 @@ function renderCombinedLeaderboardTable() {
 function getLeaderboardURLParams() {
   const params = new URLSearchParams(window.location.search);
   const threshold = params.get('threshold');
+  const models = params.get('models');
   return {
     threshold: threshold ? Number(threshold) : null,
+    models: models ? models.split(',') : null,
   };
 }
 
@@ -151,6 +242,16 @@ function updateLeaderboardURL() {
     url.searchParams.set('threshold', currentThreshold);
   } else {
     url.searchParams.delete('threshold');
+  }
+
+  const availableModelIds = modelsConfig.models
+    .filter((m) => m.strategies.length > 0 && allLeaderboardData[m.id])
+    .map((m) => m.id);
+  const allSelected = availableModelIds.every((id) => selectedModels.has(id));
+  if (allSelected || selectedModels.size === 0) {
+    url.searchParams.delete('models');
+  } else {
+    url.searchParams.set('models', [...selectedModels].join(','));
   }
 
   window.history.replaceState({}, '', url);
@@ -190,8 +291,32 @@ async function initializeLeaderboard() {
       currentThreshold = sortedThresholds[0];
     }
 
-    // Render table
+    // Render filters and table
     generateCombinedThresholdSelector(currentThreshold);
+    generateModelFilter();
+
+    // Apply model filter from URL
+    if (urlParams.models) {
+      const availableIds = new Set(
+        modelsConfig.models
+          .filter((m) => m.strategies.length > 0 && allLeaderboardData[m.id])
+          .map((m) => m.id),
+      );
+      const filtered = urlParams.models.filter((id) => availableIds.has(id));
+      if (filtered.length > 0) {
+        selectedModels.clear();
+        filtered.forEach((id) => selectedModels.add(id));
+        updateAllModelChipStyles(false);
+        for (const chip of document.querySelectorAll(
+          '#model-filter button[data-model-id]',
+        )) {
+          if (selectedModels.has(chip.dataset.modelId)) {
+            chip.className = MODEL_CHIP_ACTIVE;
+          }
+        }
+      }
+    }
+
     renderCombinedLeaderboardTable();
 
     // Hide loading, show table

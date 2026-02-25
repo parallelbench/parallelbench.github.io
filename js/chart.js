@@ -5,6 +5,62 @@ let selectedStrategies = new Set();
 let currentModelStrategies = [];
 let currentModelId = null;
 let currentStrategyDataMap = null;
+let allLeaderboardData = {};
+
+// ── Accuracy Threshold Selector ──
+
+async function loadAllLeaderboardData() {
+  allLeaderboardData = {};
+  const loadPromises = modelsConfig.models
+    .filter((m) => m.strategies.length > 0)
+    .map(async (model) => {
+      const data = await loadLeaderboardData(model.id);
+      if (data) {
+        allLeaderboardData[model.id] = data;
+      }
+    });
+  await Promise.all(loadPromises);
+}
+
+function generateChartThresholdSelector(activeThreshold) {
+  const container = document.getElementById('chart-threshold-selector');
+  container.innerHTML = '';
+
+  const allThresholds = new Set();
+  for (const data of Object.values(allLeaderboardData)) {
+    for (const t of data.thresholds) {
+      allThresholds.add(t);
+    }
+  }
+  const thresholds = [...allThresholds].sort((a, b) => b - a);
+
+  for (const threshold of thresholds) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = `${threshold}%`;
+    button.dataset.threshold = threshold;
+
+    if (threshold === activeThreshold) {
+      button.className =
+        'rounded-lg px-4 py-1.5 text-sm font-semibold bg-slate-900 text-white transition';
+    } else {
+      button.className =
+        'rounded-lg px-4 py-1.5 text-sm font-semibold border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-50';
+    }
+
+    button.addEventListener('click', () => {
+      currentThreshold = threshold;
+      generateChartThresholdSelector(threshold);
+      generateViewTabSelector('chart');
+      updateChartURL();
+      renderCharts();
+    });
+
+    container.appendChild(button);
+  }
+
+  return thresholds;
+}
 
 // ── Strategy Filter ──
 
@@ -359,6 +415,13 @@ function generateAverageChart(strategyDataMap) {
 
 // ── UI: Model Tabs ──
 
+const MODEL_TAB_ACTIVE =
+  'rounded-full px-3 py-1 text-xs font-medium border transition border-transparent text-white bg-slate-900';
+const MODEL_TAB_INACTIVE =
+  'rounded-full px-3 py-1 text-xs font-medium border transition border-slate-300 bg-white text-slate-500 hover:border-slate-400';
+const MODEL_TAB_DISABLED =
+  'rounded-full px-3 py-1 text-xs font-medium border transition border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed';
+
 function generateModelTabs(models, activeModelId) {
   const selector = document.getElementById('model-selector');
   selector.innerHTML = '';
@@ -373,15 +436,12 @@ function generateModelTabs(models, activeModelId) {
 
     if (model.strategies.length === 0) {
       button.disabled = true;
-      button.className =
-        'rounded-lg px-5 py-2 text-sm font-semibold border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed';
+      button.className = MODEL_TAB_DISABLED;
       button.title = 'Coming soon';
     } else if (isActive) {
-      button.className =
-        'rounded-lg px-5 py-2 text-sm font-semibold bg-slate-900 text-white transition';
+      button.className = MODEL_TAB_ACTIVE;
     } else {
-      button.className =
-        'rounded-lg px-5 py-2 text-sm font-semibold border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-50 hover:border-slate-400';
+      button.className = MODEL_TAB_INACTIVE;
     }
 
     button.addEventListener('click', () => handleModelSelection(model.id));
@@ -490,15 +550,32 @@ async function initializeChart() {
 
     const urlParams = getChartURLParams();
 
-    // Set threshold from URL
-    if (urlParams.threshold) {
+    // Load leaderboard data for threshold options
+    await loadAllLeaderboardData();
+
+    // Determine threshold from available options
+    const allThresholds = new Set();
+    for (const data of Object.values(allLeaderboardData)) {
+      for (const t of data.thresholds) {
+        allThresholds.add(t);
+      }
+    }
+    const sortedThresholds = [...allThresholds].sort((a, b) => b - a);
+
+    if (
+      urlParams.threshold &&
+      sortedThresholds.includes(urlParams.threshold)
+    ) {
       currentThreshold = urlParams.threshold;
-    } else {
+    } else if (sortedThresholds.includes(DEFAULT_THRESHOLD)) {
       currentThreshold = DEFAULT_THRESHOLD;
+    } else if (sortedThresholds.length > 0) {
+      currentThreshold = sortedThresholds[0];
     }
 
-    // Render tab selector
+    // Render tab selector and threshold selector
     generateViewTabSelector('chart');
+    generateChartThresholdSelector(currentThreshold);
 
     // Initialize model selection + chart data
     const requestedModel = urlParams.model

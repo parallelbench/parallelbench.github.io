@@ -1,10 +1,23 @@
 <section class="bg-white pb-16 sm:pb-20 lg:pb-28">
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-    <!-- Model Selector Tabs -->
-    <div
-      id="model-selector"
-      class="flex flex-wrap items-center justify-center gap-2 mb-8"
-    ></div>
+    <!-- Model Selector -->
+    <div class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-3">
+        <span class="text-sm font-semibold text-slate-700">Models</span>
+      </div>
+      <div
+        id="model-selector"
+        class="flex flex-wrap gap-2"
+      ></div>
+    </div>
+
+    <!-- Accuracy Threshold -->
+    <div class="flex items-center gap-3 mb-8">
+      <span class="text-sm font-semibold text-slate-700"
+        >Accuracy Threshold</span
+      >
+      <div id="chart-threshold-selector" class="flex gap-2"></div>
+    </div>
 
     <!-- Strategy Filter -->
     <div id="strategy-filter-container" class="mb-12">
