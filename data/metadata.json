@@ -1,0 +1,173 @@
+{
+  "strategies": [
+    { "id": "random", "displayName": "Random", "color": "#64748b" },
+    { "id": "l2r", "displayName": "Left-to-Right", "color": "#1f6feb" },
+    { "id": "confidence-threshold", "displayName": "Confidence Threshold", "color": "#7c3aed" },
+    { "id": "confidence-topk", "displayName": "Confidence Top-K", "color": "#db2777" },
+    { "id": "confidence-factor", "displayName": "Confidence Factor", "color": "#e11d48" },
+    { "id": "entropy-topk", "displayName": "Entropy Top-K", "color": "#0891b2" },
+    { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1" },
+    { "id": "apd", "displayName": "APD", "color": "#0d9488" },
+    { "id": "klass", "displayName": "KLASS", "color": "#eab308" },
+    { "id": "confidence-eb", "displayName": "Confidence EB", "color": "#8b5cf6" },
+    { "id": "confidence-pc-sampler", "displayName": "Confidence PC Sampler", "color": "#f472b6" },
+    { "id": "random-pc-sampler", "displayName": "Random PC Sampler", "color": "#78716c" },
+    { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669" },
+    { "id": "dus", "displayName": "DUS", "color": "#d97706" },
+    { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626" },
+    { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7" },
+    { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16" }
+  ],
+  "modelFamilies": [
+    { "id": "llada", "displayName": "LLaDA" },
+    { "id": "dream", "displayName": "DREAM" },
+    { "id": "sdar", "displayName": "SDAR" }
+  ],
+  "models": [
+    {
+      "id": "llada15",
+      "family": "llada",
+      "displayName": "LLaDA 1.5",
+      "strategies": [
+        "random",
+        "l2r",
+        "confidence-threshold",
+        "confidence-topk",
+        "confidence-factor",
+        "entropy-topk",
+        "topk-margin",
+        "klass",
+        "confidence-eb",
+        "confidence-pc-sampler",
+        "random-pc-sampler",
+        "slowfast",
+        "dus",
+        "wino"
+      ]
+    },
+    {
+      "id": "llada10",
+      "family": "llada",
+      "displayName": "LLaDA 8B Instruct",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "dream",
+      "family": "dream",
+      "displayName": "Dream 7B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin", "apd", "klass", "confidence-eb"]
+    },
+    {
+      "id": "diffucoder",
+      "family": "dream",
+      "displayName": "DiffuCoder",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada-moe",
+      "family": "llada",
+      "displayName": "LLaDA MoE 7B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada-moe-td",
+      "family": "llada",
+      "displayName": "LLaDA MoE 7B TD",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada20-mini",
+      "family": "llada",
+      "displayName": "LLaDA 2.0 Mini",
+      "strategies": ["confidence-threshold"]
+    },
+    {
+      "id": "llada20-mini-cap",
+      "family": "llada",
+      "displayName": "LLaDA 2.0 Mini CAP",
+      "strategies": ["confidence-threshold"]
+    },
+    {
+      "id": "llada21-mini",
+      "family": "llada",
+      "displayName": "LLaDA 2.1 Mini",
+      "strategies": ["confidence-threshold-quality", "confidence-threshold-speed"]
+    },
+    {
+      "id": "dparallel-dream",
+      "family": "dream",
+      "displayName": "dParallel Dream 7B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "dparallel-llada",
+      "family": "llada",
+      "displayName": "dParallel LLaDA 8B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "sdar-1.7b",
+      "family": "sdar",
+      "displayName": "SDAR 1.7B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-4b",
+      "family": "sdar",
+      "displayName": "SDAR 4B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-8b",
+      "family": "sdar",
+      "displayName": "SDAR 8B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-trado-4b",
+      "family": "sdar",
+      "displayName": "SDAR Trado 4B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-trado-8b",
+      "family": "sdar",
+      "displayName": "SDAR Trado 8B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    }
+  ],
+  "tasks": {
+    "waitingLine": {
+      "displayName": "Waiting Line",
+      "items": [
+        { "id": "waitingline-copy", "displayName": "Copy" },
+        { "id": "waitingline-reverse", "displayName": "Reverse" },
+        { "id": "waitingline-shuffle", "displayName": "Shuffle" },
+        { "id": "waitingline-sort", "displayName": "Sort" },
+        { "id": "waitingline-insert_index", "displayName": "Insert Index" },
+        { "id": "waitingline-insert_random", "displayName": "Insert Random" },
+        { "id": "waitingline-remove_index", "displayName": "Remove Index" },
+        { "id": "waitingline-remove_random", "displayName": "Remove Random" },
+        { "id": "waitingline-replace_index", "displayName": "Replace Index" },
+        { "id": "waitingline-replace_random", "displayName": "Replace Random" }
+      ]
+    },
+    "textWriting": {
+      "displayName": "Text Writing",
+      "items": [
+        { "id": "textwriting-summarization", "displayName": "Summarization" },
+        { "id": "textwriting-paraphrasing", "displayName": "Paraphrasing" },
+        { "id": "textwriting-w2s_easy", "displayName": "W2S (Easy)" },
+        { "id": "textwriting-w2s_medium", "displayName": "W2S (Medium)" },
+        { "id": "textwriting-w2s_hard", "displayName": "W2S (Hard)" }
+      ]
+    },
+    "puzzles": {
+      "displayName": "Puzzles",
+      "items": [
+        { "id": "puzzles-sudoku", "displayName": "Sudoku" },
+        { "id": "puzzles-latin_square", "displayName": "Latin Square" }
+      ]
+    }
+  }
+}

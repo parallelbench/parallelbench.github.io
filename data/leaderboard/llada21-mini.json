@@ -1,0 +1,19 @@
+{
+  "thresholds": [
+    80,
+    75,
+    70
+  ],
+  "results": {
+    "confidence-threshold-quality": {
+      "80": 0.0,
+      "75": 0.0,
+      "70": 4.64
+    },
+    "confidence-threshold-speed": {
+      "80": 0.0,
+      "75": 0.0,
+      "70": 0.0
+    }
+  }
+}
