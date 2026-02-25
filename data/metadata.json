@@ -6,31 +6,113 @@
     { "id": "confidence-topk", "displayName": "Confidence Top-K", "color": "#db2777" },
     { "id": "confidence-factor", "displayName": "Confidence Factor", "color": "#e11d48" },
     { "id": "entropy-topk", "displayName": "Entropy Top-K", "color": "#0891b2" },
+    { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1" },
     { "id": "apd", "displayName": "APD", "color": "#0d9488" },
+    { "id": "klass", "displayName": "KLASS", "color": "#eab308" },
+    { "id": "confidence-eb", "displayName": "Confidence EB", "color": "#8b5cf6" },
+    { "id": "confidence-pc-sampler", "displayName": "Confidence PC Sampler", "color": "#f472b6" },
+    { "id": "random-pc-sampler", "displayName": "Random PC Sampler", "color": "#78716c" },
     { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669" },
     { "id": "dus", "displayName": "DUS", "color": "#d97706" },
-    { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626" }
+    { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626" },
+    { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7" },
+    { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16" }
   ],
   "models": [
     {
       "id": "llada10",
       "displayName": "LLaDA 8B Instruct",
-      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk"]
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "llada15",
       "displayName": "LLaDA 1.5",
-      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "slowfast", "dus", "wino"]
+      "strategies": [
+        "random",
+        "l2r",
+        "confidence-threshold",
+        "confidence-topk",
+        "confidence-factor",
+        "entropy-topk",
+        "topk-margin",
+        "klass",
+        "confidence-eb",
+        "confidence-pc-sampler",
+        "random-pc-sampler",
+        "slowfast",
+        "dus",
+        "wino"
+      ]
     },
     {
       "id": "dream",
       "displayName": "Dream 7B",
-      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "apd"]
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin", "apd", "klass", "confidence-eb"]
     },
     {
       "id": "diffucoder",
       "displayName": "DiffuCoder",
-      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk"]
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada-moe",
+      "displayName": "LLaDA MoE 7B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada-moe-td",
+      "displayName": "LLaDA MoE 7B TD",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "llada20-mini",
+      "displayName": "LLaDA 2.0 Mini",
+      "strategies": ["confidence-threshold"]
+    },
+    {
+      "id": "llada20-mini-cap",
+      "displayName": "LLaDA 2.0 Mini CAP",
+      "strategies": ["confidence-threshold"]
+    },
+    {
+      "id": "llada21-mini",
+      "displayName": "LLaDA 2.1 Mini",
+      "strategies": ["confidence-threshold-quality", "confidence-threshold-speed"]
+    },
+    {
+      "id": "dparallel-dream",
+      "displayName": "dParallel Dream 7B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "dparallel-llada",
+      "displayName": "dParallel LLaDA 8B",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
+    },
+    {
+      "id": "sdar-1.7b",
+      "displayName": "SDAR 1.7B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-4b",
+      "displayName": "SDAR 4B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-8b",
+      "displayName": "SDAR 8B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-trado-4b",
+      "displayName": "SDAR Trado 4B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
+    },
+    {
+      "id": "sdar-trado-8b",
+      "displayName": "SDAR Trado 8B",
+      "strategies": ["random", "confidence-threshold", "confidence-topk"]
     }
   ],
   "tasks": {

@@ -1,103 +1,109 @@
-task, tps, accuracy
-puzzles-latin_square, 1.4, 44.0
-puzzles-latin_square, 3.36, 45.0
-puzzles-latin_square, 5.02, 32.0
-puzzles-latin_square, 6.93, 21.0
-puzzles-latin_square, 9.46, 7.0
-puzzles-latin_square, 12.83, 1.0
-puzzles-sudoku, 2.48, 98.1
-puzzles-sudoku, 11.05, 97.2
-puzzles-sudoku, 16.84, 93.5
-puzzles-sudoku, 23.22, 74.1
-puzzles-sudoku, 25.5, 63.0
-puzzles-sudoku, 29.43, 41.7
-textwriting-paraphrasing, 1.78, 87.0
-textwriting-paraphrasing, 3.68, 87.0
-textwriting-paraphrasing, 4.65, 86.0
-textwriting-paraphrasing, 6.44, 88.0
-textwriting-paraphrasing, 8.59, 91.0
-textwriting-paraphrasing, 12.24, 88.0
-textwriting-summarization, 1.1, 98.0
-textwriting-summarization, 2.13, 98.0
-textwriting-summarization, 2.93, 98.0
-textwriting-summarization, 4.23, 100.0
-textwriting-summarization, 5.76, 98.0
-textwriting-summarization, 8.05, 93.0
-textwriting-w2s_easy, 1.7, 100.0
-textwriting-w2s_easy, 3.13, 100.0
-textwriting-w2s_easy, 3.68, 100.0
-textwriting-w2s_easy, 4.52, 100.0
-textwriting-w2s_easy, 5.87, 99.0
-textwriting-w2s_easy, 8.31, 92.0
-textwriting-w2s_hard, 1.09, 99.0
-textwriting-w2s_hard, 1.73, 99.0
-textwriting-w2s_hard, 1.9, 99.0
-textwriting-w2s_hard, 2.1, 98.0
-textwriting-w2s_hard, 2.36, 95.0
-textwriting-w2s_hard, 2.87, 87.0
-textwriting-w2s_medium, 1.45, 99.0
-textwriting-w2s_medium, 2.54, 99.0
-textwriting-w2s_medium, 2.8, 99.0
-textwriting-w2s_medium, 3.14, 99.0
-textwriting-w2s_medium, 3.71, 97.0
-textwriting-w2s_medium, 4.95, 93.0
-waitingline-copy, 9.56, 100.0
-waitingline-copy, 28.16, 100.0
-waitingline-copy, 30.88, 100.0
-waitingline-copy, 31.52, 100.0
-waitingline-copy, 31.68, 100.0
-waitingline-copy, 32.0, 100.0
-waitingline-insert_index, 4.95, 53.0
-waitingline-insert_index, 15.51, 51.0
-waitingline-insert_index, 17.49, 42.0
-waitingline-insert_index, 18.35, 38.0
-waitingline-insert_index, 19.49, 36.0
-waitingline-insert_index, 21.61, 29.0
-waitingline-insert_random, 1.15, 95.0
-waitingline-insert_random, 5.43, 92.0
-waitingline-insert_random, 8.06, 74.0
-waitingline-insert_random, 9.32, 46.0
-waitingline-insert_random, 11.13, 32.0
-waitingline-insert_random, 12.66, 19.0
-waitingline-remove_index, 5.42, 54.0
-waitingline-remove_index, 23.63, 55.0
-waitingline-remove_index, 26.64, 56.0
-waitingline-remove_index, 28.16, 54.0
-waitingline-remove_index, 29.28, 54.0
-waitingline-remove_index, 30.56, 53.0
-waitingline-remove_random, 1.78, 100.0
-waitingline-remove_random, 6.83, 100.0
-waitingline-remove_random, 9.76, 88.0
-waitingline-remove_random, 12.98, 82.0
-waitingline-remove_random, 14.93, 63.0
-waitingline-remove_random, 17.92, 40.0
-waitingline-replace_index, 5.82, 27.0
-waitingline-replace_index, 20.16, 31.0
-waitingline-replace_index, 23.2, 34.0
-waitingline-replace_index, 23.99, 33.0
-waitingline-replace_index, 25.28, 31.0
-waitingline-replace_index, 27.57, 29.0
-waitingline-replace_random, 1.26, 99.0
-waitingline-replace_random, 7.43, 100.0
-waitingline-replace_random, 10.24, 85.0
-waitingline-replace_random, 12.02, 64.0
-waitingline-replace_random, 13.43, 44.0
-waitingline-replace_random, 15.36, 34.0
-waitingline-reverse, 3.97, 100.0
-waitingline-reverse, 14.38, 89.0
-waitingline-reverse, 15.65, 76.0
-waitingline-reverse, 16.72, 67.0
-waitingline-reverse, 19.05, 55.0
-waitingline-reverse, 21.09, 44.0
-waitingline-shuffle, 1.61, 99.0
-waitingline-shuffle, 4.0, 83.0
-waitingline-shuffle, 4.85, 70.0
-waitingline-shuffle, 6.05, 40.0
-waitingline-shuffle, 7.64, 19.0
-waitingline-shuffle, 10.21, 7.0
-waitingline-sort, 1.49, 36.0
-waitingline-sort, 5.06, 32.0
-waitingline-sort, 6.71, 21.0
-waitingline-sort, 8.2, 17.0
-waitingline-sort, 9.95, 5.0
-waitingline-sort, 11.89, 2.0
+task,tps,accuracy
+puzzles-latin_square,1.4046,44.0
+puzzles-latin_square,3.3557,45.0
+puzzles-latin_square,5.0185,32.0
+puzzles-latin_square,6.9318,21.0
+puzzles-latin_square,9.4591,7.0
+puzzles-latin_square,12.8307,1.0
+puzzles-sudoku,2.4781,98.1481
+puzzles-sudoku,11.0522,97.2222
+puzzles-sudoku,16.8381,93.5185
+puzzles-sudoku,23.2198,74.0741
+puzzles-sudoku,25.5012,62.963
+puzzles-sudoku,29.4321,41.6667
+textwriting-paraphrasing,1.7839,87.0
+textwriting-paraphrasing,3.68,87.0
+textwriting-paraphrasing,4.6486,86.0
+textwriting-paraphrasing,6.4365,88.0
+textwriting-paraphrasing,8.5885,91.0
+textwriting-paraphrasing,12.2376,88.0
+textwriting-summarization,1.1026,98.0
+textwriting-summarization,2.1348,98.0
+textwriting-summarization,2.9347,98.0
+textwriting-summarization,4.2323,100.0
+textwriting-summarization,5.7628,98.0
+textwriting-summarization,8.0462,93.0
+textwriting-w2s_easy,1.7035,100.0
+textwriting-w2s_easy,3.1332,100.0
+textwriting-w2s_easy,3.6843,100.0
+textwriting-w2s_easy,4.5182,100.0
+textwriting-w2s_easy,5.8742,99.0
+textwriting-w2s_easy,8.3101,92.0
+textwriting-w2s_hard,1.0925,99.0
+textwriting-w2s_hard,1.7318,99.0
+textwriting-w2s_hard,1.9003,99.0
+textwriting-w2s_hard,2.0969,98.0
+textwriting-w2s_hard,2.3589,95.0
+textwriting-w2s_hard,2.8691,87.0
+textwriting-w2s_medium,1.4501,99.0
+textwriting-w2s_medium,2.5361,99.0
+textwriting-w2s_medium,2.7966,99.0
+textwriting-w2s_medium,3.1401,99.0
+textwriting-w2s_medium,3.7138,97.0
+textwriting-w2s_medium,4.9512,93.0
+waitingline-copy,9.5611,100.0
+waitingline-copy,28.16,100.0
+waitingline-copy,30.88,100.0
+waitingline-copy,31.52,100.0
+waitingline-copy,31.68,100.0
+waitingline-copy,32.0,100.0
+waitingline-insert_index,4.9549,53.0
+waitingline-insert_index,15.5093,51.0
+waitingline-insert_index,17.488,42.0
+waitingline-insert_index,18.3533,38.0
+waitingline-insert_index,19.488,36.0
+waitingline-insert_index,21.6107,29.0
+waitingline-insert_random,1.1476,95.0
+waitingline-insert_random,5.4252,92.0
+waitingline-insert_random,8.0629,74.0
+waitingline-insert_random,9.3215,46.0
+waitingline-insert_random,11.128,32.0
+waitingline-insert_random,12.656,19.0
+waitingline-remove_index,5.4206,54.0
+waitingline-remove_index,23.6267,55.0
+waitingline-remove_index,26.64,56.0
+waitingline-remove_index,28.16,54.0
+waitingline-remove_index,29.28,54.0
+waitingline-remove_index,30.56,53.0
+waitingline-remove_random,1.7809,100.0
+waitingline-remove_random,6.8287,100.0
+waitingline-remove_random,9.7608,88.0
+waitingline-remove_random,12.9813,82.0
+waitingline-remove_random,14.9333,63.0
+waitingline-remove_random,17.92,40.0
+waitingline-replace_index,5.819,27.0
+waitingline-replace_index,20.16,31.0
+waitingline-replace_index,23.203,34.0
+waitingline-replace_index,23.9947,33.0
+waitingline-replace_index,25.28,31.0
+waitingline-replace_index,27.5733,29.0
+waitingline-replace_random,1.2573,99.0
+waitingline-replace_random,7.4281,100.0
+waitingline-replace_random,10.2381,85.0
+waitingline-replace_random,12.0213,64.0
+waitingline-replace_random,13.4347,44.0
+waitingline-replace_random,15.36,34.0
+waitingline-reverse,3.9668,100.0
+waitingline-reverse,14.384,89.0
+waitingline-reverse,15.648,76.0
+waitingline-reverse,16.72,67.0
+waitingline-reverse,19.0507,55.0
+waitingline-reverse,21.0933,44.0
+waitingline-shuffle,1.6076,99.0
+waitingline-shuffle,4.0012,83.0
+waitingline-shuffle,4.846,70.0
+waitingline-shuffle,6.0476,40.0
+waitingline-shuffle,7.6375,19.0
+waitingline-shuffle,10.2084,7.0
+waitingline-sort,1.4925,36.0
+waitingline-sort,5.0562,32.0
+waitingline-sort,6.7123,21.0
+waitingline-sort,8.1986,17.0
+waitingline-sort,9.9474,5.0
+waitingline-sort,11.8918,2.0
+avg,2.8249,81.6558
+avg,9.3061,79.8954
+avg,11.253,73.7364
+avg,12.8173,65.9455
+avg,14.3011,58.1743
+avg,16.4441,50.1569

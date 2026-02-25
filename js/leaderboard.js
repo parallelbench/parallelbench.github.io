@@ -341,84 +341,88 @@ function generateAverageChart(strategyDataMap) {
   const container = document.getElementById('average-chart');
   Plotly.purge(container);
 
-  const avgX = [];
-  const avgY = [];
-  const avgText = [];
-  const avgColors = [];
-
+  const traces = [];
   for (const [strategyId, strategyInfo] of Object.entries(strategyDataMap)) {
-    const avgRow = strategyInfo.data.find((row) => row.task === 'avg');
-    if (!avgRow) continue;
+    const rows = strategyInfo.data
+      .filter((row) => row.task === 'avg')
+      .sort((a, b) => a.tps - b.tps || b.accuracy - a.accuracy);
+    if (rows.length === 0) continue;
 
-    avgX.push(avgRow.tps);
-    avgY.push(avgRow.accuracy);
-    avgText.push(strategyInfo.displayName);
-    avgColors.push(STRATEGY_COLORS[strategyId] || '#94a3b8');
+    traces.push({
+      x: rows.map((row) => row.tps),
+      y: rows.map((row) => row.accuracy),
+      mode: 'lines+markers',
+      type: 'scatter',
+      name: strategyInfo.displayName,
+      marker: {
+        size: 7,
+        color: STRATEGY_COLORS[strategyId] || '#94a3b8',
+        line: { width: 1, color: 'white' },
+      },
+      line: {
+        color: STRATEGY_COLORS[strategyId] || '#94a3b8',
+        width: 2,
+      },
+      hovertemplate:
+        'TPS: %{x}<br>' +
+        'Accuracy: %{y}%' +
+        '<extra>' +
+        strategyInfo.displayName +
+        '</extra>',
+    });
   }
 
-  if (avgX.length === 0) {
+  if (traces.length === 0) {
     container.style.display = 'none';
     return;
   }
 
   container.style.display = 'block';
 
-  const traces = [
-    {
-      x: avgX,
-      y: avgY,
-      mode: 'markers+text',
-      type: 'scatter',
-      text: avgText,
-      textposition: 'top center',
-      textfont: { size: 11, family: 'Inter, sans-serif', color: '#334155' },
-      marker: {
-        size: 14,
-        color: avgColors,
-        line: { width: 2, color: 'white' },
-      },
-      hovertemplate:
-        '<b>%{text}</b><br>' +
-        'TPS: %{x}<br>' +
-        'Accuracy: %{y}%' +
-        '<extra></extra>',
-      showlegend: false,
-    },
-  ];
-
   const layout = {
+    title: {
+      text: 'Average Results',
+      font: { family: 'Inter, sans-serif', size: 15, color: '#0f172a' },
+      x: 0.5,
+    },
     xaxis: {
       title: {
         text: '# Tokens per Step (TPS)',
-        font: { family: 'Inter, sans-serif', size: 14, color: '#475569' },
+        font: { family: 'Inter, sans-serif', size: 12, color: '#475569' },
       },
       tickvals: [1, 2, 4, 8, 16, 32],
+      range: [0, 34],
       gridcolor: '#e2e8f0',
       zerolinecolor: '#cbd5e1',
-      tickfont: { family: 'Inter, sans-serif', size: 12, color: '#64748b' },
+      tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
     },
     yaxis: {
       title: {
         text: 'Accuracy (%)',
-        font: { family: 'Inter, sans-serif', size: 14, color: '#475569' },
+        font: { family: 'Inter, sans-serif', size: 12, color: '#475569' },
       },
       range: [0, 105],
       dtick: 10,
       gridcolor: '#e2e8f0',
       zerolinecolor: '#cbd5e1',
-      tickfont: { family: 'Inter, sans-serif', size: 12, color: '#64748b' },
+      tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
+    },
+    legend: {
+      orientation: 'h',
+      y: -0.25,
+      x: 0.5,
+      xanchor: 'center',
+      font: { family: 'Inter, sans-serif', size: 10 },
     },
     plot_bgcolor: 'white',
     paper_bgcolor: 'white',
-    margin: { t: 20, r: 30, b: 80, l: 60 },
+    margin: { t: 40, r: 20, b: 40, l: 50 },
     hovermode: 'closest',
   };
 
   const config = {
     responsive: true,
-    displayModeBar: true,
-    modeBarButtonsToRemove: ['lasso2d', 'select2d'],
-    displaylogo: false,
+    displayModeBar: false,
   };
 
   Plotly.newPlot('average-chart', traces, layout, config);
