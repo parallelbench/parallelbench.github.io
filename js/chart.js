@@ -26,38 +26,33 @@ function generateChartThresholdSelector(activeThreshold) {
   const container = document.getElementById('chart-threshold-selector');
   container.innerHTML = '';
 
-  const allThresholds = new Set();
-  for (const data of Object.values(allLeaderboardData)) {
-    for (const t of data.thresholds) {
-      allThresholds.add(t);
-    }
+  const thresholds = [];
+  for (let t = 100; t >= 50; t -= 5) {
+    thresholds.push(t);
   }
-  const thresholds = [...allThresholds].sort((a, b) => b - a);
+
+  const select = document.createElement('select');
+  select.className =
+    'rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer';
 
   for (const threshold of thresholds) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = `${threshold}%`;
-    button.dataset.threshold = threshold;
-
+    const option = document.createElement('option');
+    option.value = threshold;
+    option.textContent = `${threshold}%`;
     if (threshold === activeThreshold) {
-      button.className =
-        'rounded-lg px-4 py-1.5 text-sm font-semibold bg-slate-900 text-white transition';
-    } else {
-      button.className =
-        'rounded-lg px-4 py-1.5 text-sm font-semibold border border-slate-300 bg-white text-slate-700 transition hover:bg-slate-50';
+      option.selected = true;
     }
-
-    button.addEventListener('click', () => {
-      currentThreshold = threshold;
-      generateChartThresholdSelector(threshold);
-      generateViewTabSelector('chart');
-      updateChartURL();
-      renderCharts();
-    });
-
-    container.appendChild(button);
+    select.appendChild(option);
   }
+
+  select.addEventListener('change', () => {
+    currentThreshold = Number(select.value);
+    generateViewTabSelector('chart');
+    updateChartURL();
+    renderCharts();
+  });
+
+  container.appendChild(select);
 
   return thresholds;
 }
@@ -320,28 +315,62 @@ function generateAverageChart(strategyDataMap) {
       .sort((a, b) => a.tps - b.tps || b.accuracy - a.accuracy);
     if (rows.length === 0) continue;
 
-    traces.push({
-      x: rows.map((row) => row.tps),
-      y: rows.map((row) => row.accuracy),
-      mode: 'lines+markers',
-      type: 'scatter',
-      name: strategyInfo.displayName,
-      marker: {
-        size: 7,
-        color: STRATEGY_COLORS[strategyId] || '#94a3b8',
-        line: { width: 1, color: 'white' },
-      },
-      line: {
-        color: STRATEGY_COLORS[strategyId] || '#94a3b8',
-        width: 2,
-      },
-      hovertemplate:
-        'TPS: %{x}<br>' +
-        'Accuracy: %{y}%' +
-        '<extra>' +
-        strategyInfo.displayName +
-        '</extra>',
-    });
+    const color = STRATEGY_COLORS[strategyId] || '#94a3b8';
+    const hoverTpl =
+      'TPS: %{x}<br>' +
+      'Accuracy: %{y}%' +
+      '<extra>' +
+      strategyInfo.displayName +
+      '</extra>';
+
+    if (currentThreshold && rows.some((r) => r.accuracy < currentThreshold)) {
+      // Background trace: full line at reduced opacity
+      traces.push({
+        x: rows.map((r) => r.tps),
+        y: rows.map((r) => r.accuracy),
+        mode: 'lines+markers',
+        type: 'scatter',
+        name: strategyInfo.displayName,
+        legendgroup: strategyId,
+        showlegend: true,
+        opacity: 0.3,
+        marker: { size: 7, color, line: { width: 1, color: 'white' } },
+        line: { color, width: 2 },
+        hovertemplate: hoverTpl,
+      });
+
+      // Overlay trace: above-threshold points at full opacity
+      const aboveY = rows.map((r) =>
+        r.accuracy >= currentThreshold ? r.accuracy : null,
+      );
+      if (aboveY.some((v) => v !== null)) {
+        traces.push({
+          x: rows.map((r) => r.tps),
+          y: aboveY,
+          mode: 'lines+markers',
+          type: 'scatter',
+          name: strategyInfo.displayName,
+          legendgroup: strategyId,
+          showlegend: false,
+          connectgaps: false,
+          marker: { size: 7, color, line: { width: 1, color: 'white' } },
+          line: { color, width: 2 },
+          hoverinfo: 'skip',
+        });
+      }
+    } else {
+      // All points above threshold or no threshold — single trace
+      traces.push({
+        x: rows.map((r) => r.tps),
+        y: rows.map((r) => r.accuracy),
+        mode: 'lines+markers',
+        type: 'scatter',
+        name: strategyInfo.displayName,
+        marker: { size: 7, color, line: { width: 1, color: 'white' } },
+        line: { color, width: 2 },
+        hovertemplate: hoverTpl,
+      });
+    }
   }
 
   if (traces.length === 0) {
