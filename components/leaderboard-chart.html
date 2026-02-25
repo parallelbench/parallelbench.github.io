@@ -11,14 +11,6 @@
       ></div>
     </div>
 
-    <!-- Accuracy Threshold -->
-    <div class="flex items-center gap-3 mb-8">
-      <span class="text-sm font-semibold text-slate-700"
-        >Accuracy Threshold</span
-      >
-      <div id="chart-threshold-selector" class="flex gap-2"></div>
-    </div>
-
     <!-- Strategy Filter -->
     <div id="strategy-filter-container" class="mb-12">
       <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -45,11 +37,19 @@
 
     <!-- Average Chart -->
     <div class="mb-16">
-      <h3
-        class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-primary/20 pb-2"
-      >
-        Average Results
-      </h3>
+      <div class="flex items-center justify-between mb-6">
+        <h3
+          class="text-2xl font-bold text-slate-900 border-b-2 border-primary/20 pb-2"
+        >
+          Average Results
+        </h3>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-semibold text-slate-700"
+            >Accuracy Threshold</span
+          >
+          <div id="chart-threshold-selector" class="flex gap-2"></div>
+        </div>
+      </div>
       <div class="rounded-xl border border-slate-200 bg-white p-4 sm:p-6">
         <div id="average-chart" style="width: 100%; min-height: 640px"></div>
       </div>
