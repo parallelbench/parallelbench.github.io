@@ -1,4 +1,11 @@
 task,tps,accuracy
+puzzles-latin_square,1.0,11.0
+puzzles-latin_square,2.0,2.0
+puzzles-latin_square,4.0,0.0
+puzzles-latin_square,8.0,0.0
+puzzles-latin_square,16.0,0.0
+puzzles-latin_square,32.0,0.0
+puzzles-latin_square,64.0,0.0
 puzzles-sudoku,1.0,0.0
 puzzles-sudoku,2.0,0.9259
 puzzles-sudoku,4.0,0.0
@@ -101,9 +108,9 @@ waitingline-sort,4.0,2.0
 waitingline-sort,8.0,2.0
 waitingline-sort,16.0,2.0
 waitingline-sort,32.0,2.0
-avg,1.0,67.5625
-avg,2.0,45.9954
-avg,4.0,25.25
-avg,8.0,14.875
-avg,16.0,8.4375
-avg,32.0,7.3125
+avg,1.0,64.2353
+avg,2.0,43.4074
+avg,4.0,23.7647
+avg,8.0,14.0
+avg,16.0,7.9412
+avg,32.0,6.8824
