@@ -270,7 +270,7 @@ function generatePerTaskCharts(strategyDataMap) {
           text: '# Tokens per Step (TPS)',
           font: { family: 'Inter, sans-serif', size: 12, color: '#475569' },
         },
-        tickvals: [1, 2, 4, 8, 16, 32],
+        tickvals: [1, 2, 4, 8, 16, 32, 64],
         gridcolor: '#e2e8f0',
         zerolinecolor: '#cbd5e1',
         tickfont: { family: 'Inter, sans-serif', size: 11, color: '#64748b' },
@@ -288,14 +288,14 @@ function generatePerTaskCharts(strategyDataMap) {
       },
       legend: {
         orientation: 'h',
-        y: -0.25,
+        y: -0.35,
         x: 0.5,
         xanchor: 'center',
         font: { family: 'Inter, sans-serif', size: 10 },
       },
       plot_bgcolor: 'white',
       paper_bgcolor: 'white',
-      margin: { t: 40, r: 20, b: 40, l: 50 },
+      margin: { t: 40, r: 20, b: 80, l: 50 },
       hovermode: 'closest',
     };
 
@@ -394,14 +394,14 @@ function generateAverageChart(strategyDataMap) {
     shapes,
     legend: {
       orientation: 'h',
-      y: -0.25,
+      y: -0.35,
       x: 0.5,
       xanchor: 'center',
       font: { family: 'Inter, sans-serif', size: 10 },
     },
     plot_bgcolor: 'white',
     paper_bgcolor: 'white',
-    margin: { t: 40, r: 20, b: 40, l: 50 },
+    margin: { t: 40, r: 20, b: 80, l: 50 },
     hovermode: 'closest',
   };
 
