@@ -20,11 +20,6 @@
   ],
   "models": [
     {
-      "id": "llada10",
-      "displayName": "LLaDA 8B Instruct",
-      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
-    },
-    {
       "id": "llada15",
       "displayName": "LLaDA 1.5",
       "strategies": [
@@ -43,6 +38,11 @@
         "dus",
         "wino"
       ]
+    },
+    {
+      "id": "llada10",
+      "displayName": "LLaDA 8B Instruct",
+      "strategies": ["random", "l2r", "confidence-threshold", "confidence-topk", "confidence-factor", "entropy-topk", "topk-margin"]
     },
     {
       "id": "dream",
