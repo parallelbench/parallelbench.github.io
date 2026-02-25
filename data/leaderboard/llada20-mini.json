@@ -1,0 +1,14 @@
+{
+  "thresholds": [
+    80,
+    75,
+    70
+  ],
+  "results": {
+    "confidence-threshold": {
+      "80": 0.0,
+      "75": 2.97,
+      "70": 6.65
+    }
+  }
+}
