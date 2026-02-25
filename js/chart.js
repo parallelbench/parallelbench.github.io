@@ -468,20 +468,21 @@ function generateModelTabs(models, activeModelId) {
 function showLoading() {
   document.getElementById('chart-loading').classList.remove('hidden');
   document.getElementById('per-task-charts').innerHTML = '';
-  document.getElementById('average-chart').style.display = 'none';
+  document.getElementById('average-chart').style.visibility = 'hidden';
   document.getElementById('chart-empty').classList.add('hidden');
 }
 
 function showEmpty() {
   document.getElementById('chart-loading').classList.add('hidden');
   document.getElementById('per-task-charts').innerHTML = '';
-  document.getElementById('average-chart').style.display = 'none';
+  document.getElementById('average-chart').style.visibility = 'hidden';
   document.getElementById('chart-empty').classList.remove('hidden');
 }
 
 function showCharts() {
   document.getElementById('chart-loading').classList.add('hidden');
   document.getElementById('chart-empty').classList.add('hidden');
+  document.getElementById('average-chart').style.visibility = 'visible';
 }
 
 // ── Main Logic ──

@@ -16,7 +16,27 @@
       <div
         id="view-tab-selector"
         class="inline-flex rounded-xl bg-slate-100 p-1"
-      ></div>
+      >
+        <span
+          data-tab="leaderboard"
+          class="rounded-lg px-6 py-2 text-sm font-semibold text-slate-500 transition"
+          >Leaderboard</span
+        >
+        <span
+          data-tab="chart"
+          class="rounded-lg px-6 py-2 text-sm font-semibold text-slate-500 transition"
+          >Chart</span
+        >
+      </div>
+      <style>
+        [data-active-page='leaderboard'] [data-tab='leaderboard'],
+        [data-active-page='chart'] [data-tab='chart'] {
+          background: white;
+          color: #0f172a;
+          box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+          cursor: default;
+        }
+      </style>
     </div>
   </div>
 </section>
