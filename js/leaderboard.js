@@ -311,7 +311,7 @@ function renderCombinedLeaderboardTable() {
     const tpsCell = document.createElement('td');
     tpsCell.className =
       'px-6 py-4 text-right text-sm font-semibold text-slate-900';
-    tpsCell.textContent = entry.tps;
+    tpsCell.textContent = Number(entry.tps).toFixed(2);
 
     row.appendChild(rankCell);
     row.appendChild(familyCell);
