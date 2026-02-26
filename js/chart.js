@@ -47,7 +47,6 @@ function generateChartThresholdSelector(activeThreshold) {
 
   select.addEventListener('change', () => {
     currentThreshold = Number(select.value);
-    generateViewTabSelector('chart');
     updateChartURL();
     renderCharts();
   });
@@ -619,8 +618,7 @@ async function initializeChart() {
       currentThreshold = sortedThresholds[0];
     }
 
-    // Render tab selector and threshold selector
-    generateViewTabSelector('chart');
+    // Render threshold selector
     generateChartThresholdSelector(currentThreshold);
 
     // Initialize model selection + chart data

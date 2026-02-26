@@ -158,7 +158,6 @@ function generateCombinedThresholdSelector(activeThreshold) {
       currentThreshold = threshold;
       generateCombinedThresholdSelector(threshold);
       renderCombinedLeaderboardTable();
-      generateViewTabSelector('leaderboard');
       updateLeaderboardURL();
     });
 
@@ -381,9 +380,6 @@ async function initializeLeaderboard() {
     await initializeCommon();
 
     const urlParams = getLeaderboardURLParams();
-
-    // Render tab selector
-    generateViewTabSelector('leaderboard');
 
     // Load all leaderboard data
     await loadAllLeaderboardData();

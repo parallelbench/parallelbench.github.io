@@ -144,40 +144,6 @@ function groupModelsByFamily(models) {
   return sorted;
 }
 
-// ── View Tab Selector ──
-
-function generateViewTabSelector(activePage) {
-  const container = document.getElementById('view-tab-selector');
-  container.innerHTML = '';
-
-  const thresholdParam =
-    currentThreshold && currentThreshold !== DEFAULT_THRESHOLD
-      ? `?threshold=${currentThreshold}`
-      : '';
-
-  const tabs = [
-    { id: 'leaderboard', label: 'Leaderboard', path: 'leaderboard/' },
-    { id: 'chart', label: 'Chart', path: 'chart/' },
-  ];
-
-  for (const tab of tabs) {
-    if (tab.id === activePage) {
-      const span = document.createElement('span');
-      span.textContent = tab.label;
-      span.className =
-        'rounded-lg px-6 py-2 text-sm font-semibold bg-white text-slate-900 shadow-sm transition cursor-default';
-      container.appendChild(span);
-    } else {
-      const link = document.createElement('a');
-      link.textContent = tab.label;
-      link.href = `/${tab.path}${thresholdParam}`;
-      link.className =
-        'rounded-lg px-6 py-2 text-sm font-semibold text-slate-500 transition hover:text-slate-700';
-      container.appendChild(link);
-    }
-  }
-}
-
 // ── Shared Initialization ──
 
 async function initializeCommon() {

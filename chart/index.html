@@ -77,7 +77,7 @@
     </script>
 
     <main>
-      <div id="nav-component" data-active-page="chart"></div>
+      <div id="nav-component"></div>
       <div id="chart-component"></div>
     </main>
 
@@ -99,7 +99,7 @@
       async function loadAllComponents() {
         await Promise.all([
           loadComponent('header-component', 'header.html'),
-          loadComponent('nav-component', 'leaderboard-nav.html'),
+          loadComponent('nav-component', 'chart-nav.html'),
           loadComponent('chart-component', 'leaderboard-chart.html'),
           loadComponent('footer-component', 'footer.html'),
         ]);
