@@ -62,7 +62,19 @@
     </style>
   </head>
   <body class="bg-white">
-    <div id="header-component"></div>
+    <div id="header-component" class="sticky top-0 z-50 transition-transform duration-300"></div>
+    <script>
+      (function () {
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('header-component');
+        window.addEventListener('scroll', function () {
+          const y = window.scrollY;
+          header.style.transform =
+            y > lastScrollY && y > 80 ? 'translateY(-100%)' : 'translateY(0)';
+          lastScrollY = y;
+        });
+      })();
+    </script>
 
     <main>
       <div id="nav-component" data-active-page="chart"></div>
