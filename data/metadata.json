@@ -1,12 +1,12 @@
 {
   "strategies": [
-    { "id": "random", "displayName": "Random", "color": "#64748b" },
+    { "id": "random", "displayName": "Random", "color": "#64748b", "url": "https://openaccess.thecvf.com/content/CVPR2022/html/Chang_MaskGIT_Masked_Generative_Image_Transformer_CVPR_2022_paper.html" },
     { "id": "l2r", "displayName": "Left-to-Right", "color": "#1f6feb" },
-    { "id": "confidence-threshold", "displayName": "Confidence Threshold", "color": "#7c3aed" },
-    { "id": "confidence-topk", "displayName": "Confidence Top-K", "color": "#db2777" },
-    { "id": "confidence-factor", "displayName": "Confidence Factor", "color": "#e11d48" },
-    { "id": "entropy-topk", "displayName": "Entropy Top-K", "color": "#0891b2" },
-    { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1" },
+    { "id": "confidence-threshold", "displayName": "Confidence Threshold", "color": "#7c3aed", "url": "https://arxiv.org/abs/2505.22618" },
+    { "id": "confidence-topk", "displayName": "Confidence Top-K", "color": "#db2777", "url": "https://openaccess.thecvf.com/content/CVPR2022/html/Chang_MaskGIT_Masked_Generative_Image_Transformer_CVPR_2022_paper.html" },
+    { "id": "confidence-factor", "displayName": "Confidence Factor", "color": "#e11d48", "url": "https://arxiv.org/abs/2505.22618" },
+    { "id": "entropy-topk", "displayName": "Entropy Top-K", "color": "#0891b2", "url": "https://arxiv.org/abs/2508.15487" },
+    { "id": "topk-margin", "displayName": "Top-K Margin", "color": "#6366f1", "url": "https://arxiv.org/abs/2502.06768" },
     { "id": "apd", "displayName": "APD", "color": "#0d9488", "url": "https://github.com/danielmisrael/apd" },
     { "id": "klass", "displayName": "KLASS", "color": "#eab308", "url": "https://github.com/shkim0116/KLASS" },
     { "id": "confidence-eb", "displayName": "EB-Sampler", "color": "#8b5cf6", "url": "https://arxiv.org/abs/2505.24857v1" },
@@ -15,8 +15,8 @@
     { "id": "slowfast", "displayName": "SlowFast Sampling", "color": "#059669", "url": "https://github.com/LiangrunFlora/Slow-Fast-Sampling" },
     { "id": "dus", "displayName": "DUS", "color": "#d97706", "url": "https://github.com/omerlux/DUS" },
     { "id": "wino", "displayName": "WINO-DLLM", "color": "#dc2626", "url": "https://github.com/Feng-Hong/WINO-DLLM" },
-    { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7" },
-    { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16" }
+    { "id": "confidence-threshold-quality", "displayName": "Confidence Threshold (Quality)", "color": "#a855f7", "url": "https://arxiv.org/abs/2602.08676" },
+    { "id": "confidence-threshold-speed", "displayName": "Confidence Threshold (Speed)", "color": "#84cc16", "url": "https://arxiv.org/abs/2602.08676" }
   ],
   "modelFamilies": [
     { "id": "llada", "displayName": "LLaDA" },
